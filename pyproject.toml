@@ -1,16 +1,19 @@
 [project]
-name = "uiq-generator"
+name = "clap_eval"
 version = "0.1.0"
-description = "UIQ Generation Pipeline"
+description = "Evaluation Pipeline for CLAP Models (LAION, MGA, M2D)"
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
-    "openai",
-    "tqdm",
-    "python-dotenv",
     "torch",
+    "torchaudio",
     "transformers",
-    "pyyaml>=6.0.3",
+    "accelerate",
+    "pyyaml>=6.0",
+    "tqdm",
+    "pandas",
+    "librosa",
+    "numpy",
 ]
 
 [build-system]
@@ -18,4 +21,4 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["uiq_generation"]
+packages = ["src/clap_eval"]
