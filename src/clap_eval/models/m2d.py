@@ -64,10 +64,10 @@ class M2DClapModel(BaseClapModel):
             
         # Ensure it's 10-seconds (160000 samples) as M2D CLAP usually expects exactly 10s audio
         target_length = 16000 * 10
-        if audio_data.shape[0] < target_length:
-            audio_data = np.pad(audio_data, (0, target_length - audio_data.shape[-1]))
-        elif audio_data.shape[0] > target_length:
+        if audio_data.shape[-1] > target_length:
             audio_data = audio_data[:target_length]
+        elif audio_data.shape[-1] < target_length:
+            audio_data = np.pad(audio_data, (0, target_length - audio_data.shape[-1]))
             
         # Convert to tensor and add batch dim if needed
         audio_tensor = torch.from_numpy(audio_data).float().to(self.device)

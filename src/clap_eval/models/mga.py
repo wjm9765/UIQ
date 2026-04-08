@@ -66,6 +66,12 @@ class MGAClapModel(BaseClapModel):
                 import torchaudio.transforms as T
                 self.resampler_cache[sr] = T.Resample(orig_freq=sr, new_freq=self.target_sr)
             audio_tensor = self.resampler_cache[sr](audio_tensor)
+            
+        # MGA-CLAP (HTSAT 기반)은 고정된 최대 버퍼 크기를 갖습니다.
+        # inference_example.yaml 설정 기준 최대 10초(10 * 32000 = 320000 샘플)
+        max_length = 10 * self.target_sr
+        if audio_tensor.shape[-1] > max_length:
+            audio_tensor = audio_tensor[:max_length]
         
         # Add batch dimension: [1, seq_len]
         audio_tensor = audio_tensor.unsqueeze(0).to(self.device, non_blocking=True)

@@ -1,8 +1,6 @@
 # CLAP Models Evaluation Pipeline on VGGSound
 
-VGGSound 데이터셋을 기반으로 다양한 **CLAP 모델(LAION, MGA, M2D)** 의 성능(예: 제로샷 성능 저하 및 카테고리별 차이)을 평가하기 위한 객체 지향, 확장성 중심의 통합 파이프라인입니다.
-
-각 모델을 동시에 로드하지 않고 순차적으로(Sequential) 로드 및 언로드함으로써 한정된 GPU 메모리를 극대화(`배치 최대화`)할 수 있도록 설계되었습니다.
+VGGSound 데이터셋을 기반으로 다양한 **CLAP 모델(LAION, MGA, M2D)** 의 성능(예: 제로샷 성능 저하 및 카테고리별 차이)을 평가하기 위한 통합 파이프라인입니다.
 
 ---
 
@@ -11,83 +9,62 @@ VGGSound 데이터셋을 기반으로 다양한 **CLAP 모델(LAION, MGA, M2D)**
 ```text
 UIQ/
 ├── .gitignore              # 외부 데이터(체크포인트, 다운로드 리포지토리, 임시결과 등) 무시 설정
-├── config.yaml             # 전체 파이프라인 제어 파일 (데이터셋 양, 모델 경로, 메모리 전략 등)
+├── config.yaml             # 전체 파이프라인 제어 파일
+├── config_laion.yaml       # 개별 독립 실행용 제어 파일
+├── config_m2d.yaml         # 개별 독립 실행용 제어 파일
+├── config_mga.yaml         # 개별 독립 실행용 제어 파일
 ├── pyproject.toml          # uv 설정 및 패키지 의존성 파일
-├── README.md               # 프로젝트 개요 및 실행 가이드 (이 문서)
+├── README.md               # 프로젝트 개요 및 실행 가이드
 ├── input/                  # 다운로드된 데이터 보관 폴더
-│   ├── audio/              # 원본 VGGSound .wav 오디오 파일 디렉토리
-│   └── vggsound.csv        # VGGSound 원본 Metadata CSV
 ├── results/
 │   └── eval_outputs/       # 모델별 Inference(임베딩 결과) JSONL 저장소
-├── models_third_party/     # 허깅페이스에 없는 스탠드얼론(Standalone) Clone 리포지토리 폴더 
+├── models_third_party/     # 허깅페이스에 없는 3rd-party 모델 레포지토리
 │   ├── MGA-CLAP/           # MGA 모델 소스 코드
 │   └── m2d/                # M2D 모델 소스 코드
-├── checkpoints/            # 깃허브에서 개별 다운로드한 가중치 파일(.pt, .pth) 보관 폴더
-├── scripts/                # 파이프라인 실행 스크립트 (실행 엔트리포인트)
-│   ├── setup_server.sh     # GPU 리눅스 서버 초기 구축용 bash 스크립트 (ffmpeg 및 uv 설치)
-│   ├── setup_vggsound.py   # 초기 VGGSound CSV 메타데이터 파일 구조 생성 및 다운로드
-│   ├── setup_models.py     # 외부 딥러닝 깃허브 리포지토리 Clone 및 환경 준비
-│   └── run_eval.py         # 실제 모델 평가를 실행하는 메인 루프 스크립트
+├── checkpoints/            # 깃허브에서 개별 다운로드한 다운로드 가중치 파일(.pt, .pth)
+├── scripts/                # 파이프라인 보조 스크립트
+├── run_laion.sh            # 단일 모델 병렬 평가 실행 스크립트 (LAION)
+├── run_m2d.sh              # 단일 모델 병렬 평가 실행 스크립트 (M2D)
+├── run_mga.sh              # 단일 모델 병렬 평가 실행 스크립트 (MGA)
 └── src/
     └── clap_eval/
-        ├── __init__.py
-        ├── config.py       # config.yaml의 Python 매핑 클래스
-        ├── dataset.py      # 카테고리당 사용할 샘플 개수를 필터링하고 경로를 내어주는 모듈
-        ├── pipeline.py     # 모델 개별 로드부터 결과 생성까지 통합 관리
+        ├── pipeline.py     # 16kHz 단위의 순수 원본 오디오 단일 Dataloader
         └── models/         # 추상화된 모델 평가 래퍼 (Wrapper)
-            ├── base.py     # BaseClapModel 추상 클래스
-            ├── laion.py    # LAION CLAP (HuggingFace Native) 
-            ├── mga.py      # MGA CLAP (Local Codebase)
-            └── m2d.py      # M2D CLAP (Local Codebase)
+            ├── laion.py    # LAION CLAP (HuggingFace Native - 48kHz GPU 자체 리샘플링) 
+            ├── mga.py      # MGA CLAP (Local Codebase - 32kHz GPU 리샘플링, 10초 잘라내기 적용)
+            └── m2d.py      # M2D CLAP (Local Codebase - 16kHz 원본 크기 유지, 10초 패딩/잘라내기 적용)
 ```
 
 ---
 
-## � 60GB 데이터셋의 메모리/디스크 핸들링 원리
-이 프로젝트는 **Hugging Face Datasets**를 사용하여 거대한 VGGSound 60GB 오디오 데이터를 통째로 다운로드하거나 메모리에 올리는 부담을 방지하고, 유연하게 제어합니다. `config.yaml`의 `streaming` 플래그로 두 가지 동작 모드를 지원합니다.
+## 🔧 파이프라인 주요 변경 및 최적화 사항
 
-* **`streaming: true` (개발/테스트 환경용)**
-  * 하드 디스크 여유 공간이 없을 때 사용합니다.
-  * Hugging Face 서버에서 오디오 배열(Array)을 실시간으로 가져와 바로 GPU로 던집니다. 디스크 공간을 사용하지 않지만, 네트워크 속도에 따라 조금 느릴 수 있습니다.
-* **`streaming: false` (실제 1TB 프로덕션 환경용 - 강력 권장 🚀)**
-  * **60GB 전체를 RAM(메모리)에 올리지 않습니다! 절대 OOM(메모리 부족)이 나지 않습니다.**
-  * Hugging Face가 최초 실행 시 전체 60GB 데이터셋을 `config.yaml`에 지정해 둔 로컬 경로(`input/`)에 고속 Arrow/Parquet 바이너리 포맷으로 안전하게 다운로드하여 보관합니다.
-  * 이후 파이프라인에서 읽어들일 때는, 전체를 메모리에 올리는 대신 **OS 레벨의 메모리 매핑(Memory-mapping)** 기술을 사용하여 모델이 요청하는 배치(Batch) 만큼만 순식간에 RAM으로 퍼올립니다. 속도가 압도적으로 빠르고 매우 안정적입니다.
+* **독립된 16kHz 고정 Dataloader Pipeline:** 공통 오디오 파이프라인이 여러 모델에게 연이어 데이터를 평가하더라도 앞선 48kHz 리샘플링이 다음 모델에게 강요되지 않습니다. Dataloader는 언제나 원본 16kHz 오디오만을 전달하며, 리샘플링(`torchaudio.transforms.Resample`)은 각 모델 래퍼(`laion.py`, `mga.py`, `m2d.py`) 내부에서 GPU 위에서 1회만 단독 수행되어 성능 병목을 예방합니다.
+* **배치 단위 오디오 제어(Tansform & Truncate):** 모델 구조의 한계(예: MGA HTSAT 모델의 Swin 아키텍처)에 의한 고정 버퍼 길이 초과 오류(`AssertionError: the wav size should less than or equal to the swin input size`)를 미연에 방지하고자, 10초를 초과하거나 모자라는 길이의 오디오는 모델 래퍼가 스스로 자르거나(Truncate) 부족하면 0으로 채우도록(Padding) 패치되었습니다.
+* **완벽한 GPU 이전 최적화(Device transfer):** 기존 외부 소스코드의 파편화로 인해 자체 스펙트로그램 레이어 등의 객체가 CPU 메모리에 도태되어 남아있으면서 발생하던 텐서 기종 충돌(`Input type and weight type should be the same`) 문제가 해결되어 전체 서브 모델 모듈 트리들이 `cuda`에 정상적으로 통째로 로드됩니다.
+* **신규 의존성 충돌 무결점 완화:** 구버전 API 호환성 유지를 위해 `datasets<4.0.0` 등은 물론이고 `sed_scores_eval==0.0.0`, `setuptools<70.0.0` 제약을 걸어 두었으며 API가 폐기된 `ruamel.yaml`의 함수(`safe_load()`) 사용 로직을 `YAML(typ='safe')` 구문 및 `strict=False` 체크 무효화 등으로 강제 우회하여 구동되도록 모든 최신 의존성 에러 악재를 걷어냈습니다.
 
 ---
 
-## 🚀 실행 순서 (Quick Start Guide)
+## 🚀 멀티 터미널을 활용한 3-Way 단일 서버 병렬 실행 (속도 3배 증가)
 
-### Step 0: 리눅스/GPU 서버 초기 세팅 및 동기화 (`uv sync`)
-이 파이프라인은 엄격하고 빠른 패키지 의존성 관리 환경인 `uv`를 사용합니다. PyTorch, Torchaudio, Transformers, HuggingFace Datasets 모듈을 동기화합니다. 비어있는 GPU 인스턴스라면 환경부터 구성합니다.
+기본적으로 `config.yaml` 1개로 3개의 모델을 직렬(`sequential`)로 돌릴 수 있으나, VRAM 용량이 크더라도 단일 프로세스가 처리하는 CPU 병목(Data I/O Bottleneck)으로 인해 A100 등 대형 GPU의 점유율이 20% 수준에 머무는 문제가 있습니다. 
+
+이를 해결하기 위해 모델별로 설정 파일을 3개로 분할하였으므로, VS Code 터미널 탭을 **3개로 나란히 여신 뒤 아래의 개별 스크립트를 하나씩 병렬로 띄우시면** CPU를 훨씬 골고루 쓰면서 단일 서버 안에서 세 모델 평가를 월등한 속도로 마칠 수 있습니다.
+
+### Terminal 1:
 ```bash
-./scripts/setup_server.sh
-uv sync
+./run_laion.sh
 ```
 
-### Step 1: MGA & M2D 모델 소스 및 가중치 자동 다운로드
-허깅페이스 공식 지원에 없는 `M2D` 및 `MGA-CLAP` 모델의 오픈소스 환경을 구성하고, 지정된 프라이빗 허깅페이스 데이터셋(`wjm9765/clap_weights`)에서 가중치를 다운로드합니다. 
+### Terminal 2:
 ```bash
-export HF_TOKEN="본인의_허깅페이스_토큰"
-./scripts/setup_models.py
-```
-> 실행 완료 시 모델 깃허브 코드가 Clone되고, `checkpoints/` 폴더 내에 가중치 모델링 파일들이 자동 저장됩니다.
-
-### Step 2: 설정 파일 수정 (`config.yaml`)
-현재 환경에 맞게 `config.yaml`을 튜닝합니다. 실제 프로덕션 서버로 옮길 땐 데이터셋 파라미터만 바꾸시면 가장 안전하고 오작동 없는 환경이 구성됩니다.
-```yaml
-dataset:
-  name: "VGGSound"
-  hf_repo: "txya900619/vggsound-16k"
-  cache_dir: "input"       # 전체 다운로드 시 저장될 로컬 캐시 폴더 경로 (기본값)
-  streaming: true          # 개발/테스트 시 true, 1TB 프로덕션 서버에서는 반드시 false로 변경 (가장 빠름!)
-  samples_per_class: 100   # 실제 실험 시 100, 수량 확인 및 테스트 시 2등의 값으로 조절
+./run_m2d.sh
 ```
 
-### Step 3: 메인 평가 파이프라인 실행
-모든 준비가 끝나면 파이프라인을 구동하여 허깅페이스 데이터셋에서 오디오를 48kHz로 가져와 즉시 임베딩을 평가합니다. (더 이상 수동 CSV 다운로드나 유튜브 스크래핑이 작동하지 않습니다).
+### Terminal 3:
 ```bash
-uv run scripts/run_eval.py --config config.yaml
+./run_mga.sh
 ```
 
-* 평가 실행 시 지정된 `output_dir` (기본: `results/eval_outputs/`) 에 `[model_name]_results.jsonl` 형태로 각 라벨에 따른 Audio 임베딩 및 정답, 예측값 정보가 기록됩니다. 이후, 추출된 벡터를 가지고 별도 Metric 분석 코드를 구동시키면 됩니다.
+* 위 과정을 통해 단일 프로세스로 인퍼런스 하는 시간 제약을 줄일 수 있으며, 모든 파이프라인의 평가는 `results/eval_outputs/` 폴더 내에 `[model_name]_results.jsonl` 형태로 기록됩니다. (.jsonl 안에는 Audio 임베딩 및 Caption 텍스트 기반 Text 임베딩 값이 모조리 기록되어 있습니다.)
