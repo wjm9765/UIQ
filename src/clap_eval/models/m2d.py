@@ -33,6 +33,25 @@ class M2DClapModel(BaseClapModel):
 
     @torch.no_grad()
     def get_audio_embedding(self, audio_data: np.ndarray, sr: int) -> np.ndarray:
+        # M2D models typically use 16kHz
+        target_sr = 16000
+        import librosa
+        
+        if len(audio_data.shape) > 1 and audio_data.shape[0] > 1:
+            audio_data = librosa.to_mono(audio_data)
+            
+        if sr != target_sr:
+            audio_data = librosa.resample(audio_data, orig_sr=sr, target_sr=target_sr)
+            
+        # Expected to implement custom processing and feature extraction 
+        return np.zeros((1, 512)) # dummy shape
+
+    @torch.no_grad()
+    def get_text_embedding(self, texts: list[str]) -> np.ndarray:
+        return np.zeros((len(texts), 512)) # dummy shape
+
+    @torch.no_grad()
+    def get_audio_embedding(self, audio_data: np.ndarray, sr: int) -> np.ndarray:
         return np.zeros((1, 768)) # dummy shape
 
     @torch.no_grad()

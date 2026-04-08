@@ -5,8 +5,8 @@ description = "Evaluation Pipeline for CLAP Models (LAION, MGA, M2D)"
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
-    "torch",
-    "torchaudio",
+    "torch>=2.6.0",
+    "torchaudio>=2.6.0",
     "transformers",
     "accelerate",
     "pyyaml>=6.0",
@@ -18,6 +18,15 @@ dependencies = [
     "ffmpeg-python",
     "huggingface_hub",
 ]
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu124" }
+torchaudio = { index = "pytorch-cu124" }
+
+[[tool.uv.index]]
+name = "pytorch-cu124"
+url = "https://download.pytorch.org/whl/cu124"
+explicit = true
 
 [build-system]
 requires = ["hatchling"]

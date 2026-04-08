@@ -30,6 +30,16 @@ class MGAClapModel(BaseClapModel):
 
     @torch.no_grad()
     def get_audio_embedding(self, audio_data: np.ndarray, sr: int) -> np.ndarray:
+        # MGA-CLAP target sampling rate is typically 32kHz
+        target_sr = 32000
+        import librosa
+        
+        if len(audio_data.shape) > 1 and audio_data.shape[0] > 1:
+            audio_data = librosa.to_mono(audio_data)
+            
+        if sr != target_sr:
+            audio_data = librosa.resample(audio_data, orig_sr=sr, target_sr=target_sr)
+            
         # Expected to implement custom processing and feature extraction 
         return np.zeros((1, 512)) # dummy shape
 

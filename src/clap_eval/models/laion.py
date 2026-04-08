@@ -20,9 +20,21 @@ class LaionClapModel(BaseClapModel):
         if sr != target_sr:
             audio_data = librosa.resample(audio_data, orig_sr=sr, target_sr=target_sr)
         
-        inputs = self.processor(audios=audio_data, sampling_rate=target_sr, return_tensors="pt")
+        inputs = self.processor(audio=audio_data, sampling_rate=target_sr, return_tensors="pt")
         inputs = {k: v.to(self.device) for k, v in inputs.items() if hasattr(v, 'to')}
-        embeddings = self.model.get_audio_features(**inputs)
+        
+        outputs = self.model.get_audio_features(**inputs)
+        # HF ClapModel get_audio_features sometimes returns BaseModelOutputWithPooling 
+        # where the projected feature is in pooler_output
+        if hasattr(outputs, "pooler_output"):
+            embeddings = outputs.pooler_output
+        elif hasattr(outputs, "audio_features"):
+            embeddings = outputs.audio_features
+        elif isinstance(outputs, tuple):
+            embeddings = outputs[0]
+        else:
+            embeddings = outputs
+            
         embeddings = embeddings / torch.norm(embeddings, p=2, dim=-1, keepdim=True)
         return embeddings.cpu().numpy()
 
@@ -30,6 +42,19 @@ class LaionClapModel(BaseClapModel):
     def get_text_embedding(self, texts: list[str]) -> np.ndarray:
         inputs = self.processor(text=texts, return_tensors="pt", padding=True)
         inputs = {k: v.to(self.device) for k, v in inputs.items() if hasattr(v, 'to')}
-        embeddings = self.model.get_text_features(**inputs)
+        
+        outputs = self.model.get_text_features(**inputs)
+        # Similar to audio features, might return BaseModelOutputWithPooling
+        if hasattr(outputs, "pooler_output"):
+            embeddings = outputs.pooler_output
+        elif hasattr(outputs, "text_features"):
+            embeddings = outputs.text_features
+        elif hasattr(outputs, "text_embeds"):
+            embeddings = outputs.text_embeds
+        elif isinstance(outputs, tuple):
+            embeddings = outputs[0]
+        else:
+            embeddings = outputs
+            
         embeddings = embeddings / torch.norm(embeddings, p=2, dim=-1, keepdim=True)
         return embeddings.cpu().numpy()
