@@ -3,7 +3,7 @@ dataset:
   hf_repo: "txya900619/vggsound-16k"
   cache_dir: "input"       # 전체 다운로드(streaming: false) 시 저장될 로컬 경로
   streaming: false         # true: 실시간 스트리밍(테스트) / false: 로컬 다운로드 후 매핑(실전용)
-  samples_per_class: 50
+  samples_per_class: 10
 
 models:
   - name: "laion"
@@ -30,7 +30,7 @@ models:
     enabled: true
 
 execution:
-  batch_size: 8
+  batch_size: 16
   device: "cuda"
   output_dir: "results/eval_outputs"
   strategy: "sequential"

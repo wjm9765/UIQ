@@ -1,0 +1,22 @@
+dataset:
+  cache_dir: input
+  hf_repo: txya900619/vggsound-16k
+  name: VGGSound
+  samples_per_class: 10
+  streaming: false
+execution:
+  batch_size: 16
+  device: cuda
+  output_dir: results/eval_outputs
+  strategy: sequential
+  use_accelerate: true
+models:
+- checkpoint_path: checkpoints/checkpoint-30.pth
+  enabled: true
+  hf_download:
+    filename: checkpoint-30.pth
+    repo_id: wjm9765/clap_weights
+    repo_type: dataset
+  name: m2d
+  repo_path: models_third_party/m2d
+  type: local

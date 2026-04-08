@@ -1,0 +1,22 @@
+dataset:
+  cache_dir: input
+  hf_repo: txya900619/vggsound-16k
+  name: VGGSound
+  samples_per_class: 10
+  streaming: false
+execution:
+  batch_size: 16
+  device: cuda
+  output_dir: results/eval_outputs
+  strategy: sequential
+  use_accelerate: true
+models:
+- checkpoint_path: checkpoints/mga-clap.pt
+  enabled: true
+  hf_download:
+    filename: mga-clap.pt
+    repo_id: wjm9765/clap_weights
+    repo_type: dataset
+  name: mga
+  repo_path: models_third_party/MGA-CLAP
+  type: local
