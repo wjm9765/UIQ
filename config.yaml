@@ -2,7 +2,7 @@ dataset:
   name: "VGGSound"
   csv_path: "input/vggsound.csv"
   audio_dir: "input/audio" # (Optional fallback)
-  stream_audio: true       # Use lazy in-memory YouTube loading via yt-dlp/ffmpeg
+  stream_audio: false      # Use lazy in-memory YouTube loading via yt-dlp/ffmpeg
   samples_per_class: 2
 
 models:
