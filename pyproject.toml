@@ -14,9 +14,9 @@ dependencies = [
     "pandas",
     "librosa",
     "numpy",
-    "yt-dlp",
-    "ffmpeg-python",
     "huggingface_hub",
+    "datasets",
+    "resampy",
 ]
 
 [tool.uv.sources]

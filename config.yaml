@@ -1,9 +1,8 @@
 dataset:
   name: "VGGSound"
-  csv_path: "input/vggsound.csv"
-  audio_dir: "input/audio" # (Optional fallback)
-  stream_audio: false      # Use lazy in-memory YouTube loading via yt-dlp/ffmpeg
-  samples_per_class: 2
+  hf_repo: "txya900619/vggsound-16k"
+  streaming: false         # true: 실시간 허깅페이스 네트워크 스트리밍 (테스트용, 용량0) / false: 로컬 전체 캐싱 후 초고속 메모리맵핑 (실전용)
+  samples_per_class: 100
 
 models:
   - name: "laion"

@@ -43,43 +43,50 @@ UIQ/
 
 ---
 
+## � 60GB 데이터셋의 메모리/디스크 핸들링 원리
+이 프로젝트는 **Hugging Face Datasets**를 사용하여 거대한 VGGSound 60GB 오디오 데이터를 통째로 다운로드하거나 메모리에 올리는 부담을 방지하고, 유연하게 제어합니다. `config.yaml`의 `streaming` 플래그로 두 가지 동작 모드를 지원합니다.
+
+* **`streaming: true` (개발/테스트 환경용)**
+  * 하드 디스크 여유 공간이 없을 때 사용합니다.
+  * Hugging Face 서버에서 오디오 배열(Array)을 실시간으로 가져와 바로 GPU로 던집니다. 디스크 공간을 사용하지 않지만, 네트워크 속도에 따라 조금 느릴 수 있습니다.
+* **`streaming: false` (실제 1TB 프로덕션 환경용 - 강력 권장 🚀)**
+  * **60GB 전체를 RAM(메모리)에 올리지 않습니다! 절대 OOM(메모리 부족)이 나지 않습니다.**
+  * Hugging Face가 최초 실행 시 전체 60GB 데이터셋을 로컬 디스크(`~/.cache/huggingface/datasets`)에 고속 Arrow/Parquet 바이너리 포맷으로 안전하게 다운로드합니다.
+  * 이후 파이프라인에서 읽어들일 때는, 전체를 메모리에 올리는 대신 **OS 레벨의 메모리 매핑(Memory-mapping)** 기술을 사용하여 모델이 요청하는 배치(Batch) 만큼만 순식간에 RAM으로 퍼올립니다. 속도가 압도적으로 빠르고 매우 안정적입니다.
+
+---
+
 ## 🚀 실행 순서 (Quick Start Guide)
 
-### Step 0: 리눅스/GPU 서버 초기 세팅 (Linux/Ubuntu 사용자 전용)
-만약 비어있는 GPU 서버 인스턴스를 처음 발급받으셨다면, 인메모리 오디오 스트리밍에 필요한 `ffmpeg`와 파이썬 패키지 매니저 `uv` 설치를 자동화해주는 쉘 스크립트를 가장 먼저 실행하세요. (이미 세팅된 로컬 Mac/PC라면 건너뛰시면 됩니다.)
+### Step 0: 리눅스/GPU 서버 초기 세팅 및 동기화 (`uv sync`)
+이 파이프라인은 엄격하고 빠른 패키지 의존성 관리 환경인 `uv`를 사용합니다. PyTorch, Torchaudio, Transformers, HuggingFace Datasets 모듈을 동기화합니다. 비어있는 GPU 인스턴스라면 환경부터 구성합니다.
 ```bash
 ./scripts/setup_server.sh
-```
-> 내부적으로 `apt-get install ffmpeg`, `pip install uv`, 그리고 `uv sync`까지 자동으로 모두 진행됩니다.
-
-### Step 1: 파이썬 패키지 의존성 동기화 (`uv sync`)
-(앞선 Step 0을 실행했다면 이 과정은 생략해도 됩니다)
-`pyproject.toml`에 명시된 라이브러리(PyTorch, Torchaudio, Transformers, Accelerate, yt-dlp 등)를 설치하고 현재 패키지를 인식시킵니다.
-```bash
 uv sync
 ```
 
-### Step 2: MGA & M2D 모델 소스 및 가중치 자동 다운로드
-허깅페이스 공식 지원에 없는 `M2D` 및 `MGA-CLAP` 모델의 오픈소스 환경을 구성하고, 지정된 프라이빗 허깅페이스 데이터셋(`wjm9765/clap_weights`)에서 가중치를 다운로드합니다. 프라이빗 레포이므로 반드시 환경변수에 `HF_TOKEN`을 등록해야 합니다.
+### Step 1: MGA & M2D 모델 소스 및 가중치 자동 다운로드
+허깅페이스 공식 지원에 없는 `M2D` 및 `MGA-CLAP` 모델의 오픈소스 환경을 구성하고, 지정된 프라이빗 허깅페이스 데이터셋(`wjm9765/clap_weights`)에서 가중치를 다운로드합니다. 
 ```bash
 export HF_TOKEN="본인의_허깅페이스_토큰"
 ./scripts/setup_models.py
 ```
-> 실행 완료 시 `checkpoints/` 폴더 내에 `mga-clap.pt`와 `m2d_clap_vit_base-80x1001p.../checkpoint-30.pth`가 자동 저장됩니다.
+> 실행 완료 시 모델 깃허브 코드가 Clone되고, `checkpoints/` 폴더 내에 가중치 모델링 파일들이 자동 저장됩니다.
 
-### Step 3: 메타데이터 CSV 다운로드 
-`vggsound.csv` 구조를 분석하고 샘플링을 진행하려면 원본 CSV가 필요합니다. 스크립트를 실행해 `input/vggsound.csv` 를 생성합니다.
-```bash
-./scripts/setup_vggsound.py
+### Step 2: 설정 파일 수정 (`config.yaml`)
+현재 환경에 맞게 `config.yaml`을 튜닝합니다. 실제 프로덕션 서버로 옮길 땐 데이터셋 파라미터만 바꾸시면 가장 안전하고 오작동 없는 환경이 구성됩니다.
+```yaml
+dataset:
+  name: "VGGSound"
+  hf_repo: "txya900619/vggsound-16k"
+  streaming: true          # 개발/테스트 시 true, 1TB 프로덕션 서버에서는 반드시 false로 변경 (가장 빠름!)
+  samples_per_class: 100   # 실제 실험 시 100, 수량 확인 및 테스트 시 2등의 값으로 조절
 ```
 
-### Step 4: (Option) Local Model Wrapper 코드 완성
-가중치 배치가 완료되었다면 `src/clap_eval/models/mga.py` 와 `m2d.py`의 `_load_model()` 메서드 안에, **실제 깃허브 내 모델 Class를 Import하는 로직**을 알맞게 매핑해줍니다. (이미 `sys.path` 설정 로직은 뼈대에 짜여져 있습니다)
-
-### Step 5: 모델 평가 및 임베딩 추출 실행
-모든 준비가 끝나면 파이프라인을 실행합니다. 카테고리당 뽑을 샘플 수, 작동할 모델 목록은 `config.yaml` 안에서 직접 켜고(`enabled: true/false`), 수량을 조절할 수 있습니다.
+### Step 3: 메인 평가 파이프라인 실행
+모든 준비가 끝나면 파이프라인을 구동하여 허깅페이스 데이터셋에서 오디오를 48kHz로 가져와 즉시 임베딩을 평가합니다. (더 이상 수동 CSV 다운로드나 유튜브 스크래핑이 작동하지 않습니다).
 ```bash
-./scripts/run_eval.py --config config.yaml
+uv run scripts/run_eval.py --config config.yaml
 ```
 
 * 평가 실행 시 지정된 `output_dir` (기본: `results/eval_outputs/`) 에 `[model_name]_results.jsonl` 형태로 각 라벨에 따른 Audio 임베딩 및 정답, 예측값 정보가 기록됩니다. 이후, 추출된 벡터를 가지고 별도 Metric 분석 코드를 구동시키면 됩니다.
