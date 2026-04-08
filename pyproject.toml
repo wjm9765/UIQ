@@ -15,8 +15,18 @@ dependencies = [
     "librosa",
     "numpy",
     "huggingface_hub",
-    "datasets",
+    "datasets<4.0.0",
     "resampy",
+    "timm",
+    "einops",
+    "nnAudio",
+    "sentence_transformers",
+    "ruamel.yaml",
+    "torchlibrosa",
+    "wandb",
+    "loguru",
+    "sed_scores_eval==0.0.0",
+    "setuptools<70.0.0"
 ]
 
 [tool.uv.sources]

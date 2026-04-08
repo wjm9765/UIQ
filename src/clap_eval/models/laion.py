@@ -9,16 +9,23 @@ class LaionClapModel(BaseClapModel):
         print(f"Loading '{self.name}' from HuggingFace Hub: {self.hf_model_id} on {self.device}")
         self.model = ClapModel.from_pretrained(self.hf_model_id).to(self.device).eval()
         self.processor = ClapProcessor.from_pretrained(self.hf_model_id)
-
+        self.resampler_cache = {}
+        
     @torch.no_grad()
     def get_audio_embedding(self, audio_data: np.ndarray, sr: int) -> np.ndarray:
         if len(audio_data.shape) > 1 and audio_data.shape[0] > 1:
-            audio_data = librosa.to_mono(audio_data)
+            audio_data = audio_data.mean(axis=0)
 
         # Standard LAION CLAP sample rate is mostly 48kHz
         target_sr = self.processor.feature_extractor.sampling_rate
         if sr != target_sr:
-            audio_data = librosa.resample(audio_data, orig_sr=sr, target_sr=target_sr)
+            import torch
+            import torchaudio.transforms as T
+            if sr not in self.resampler_cache:
+                self.resampler_cache[sr] = T.Resample(orig_freq=sr, new_freq=target_sr).to(self.device)
+            audio_tensor = torch.from_numpy(audio_data).float().to(self.device)
+            audio_tensor = self.resampler_cache[sr](audio_tensor)
+            audio_data = audio_tensor.cpu().numpy()
         
         inputs = self.processor(audio=audio_data, sampling_rate=target_sr, return_tensors="pt")
         inputs = {k: v.to(self.device) for k, v in inputs.items() if hasattr(v, 'to')}

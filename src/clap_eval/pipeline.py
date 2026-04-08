@@ -58,12 +58,31 @@ class EvaluationPipeline:
         if audio_array is None:
             return None, None
             
-        # CLAP models generally expect 48kHz audio. 
-        # If the input is different, we resample it.
-        target_sr = 48000
+        # Dataset is 16kHz. Keep it as 16kHz here, and let the model wrappers upsample if needed.
+        target_sr = 16000
         if orig_sr != target_sr:
-            import resampy
-            audio_array = resampy.resample(audio_array, orig_sr, target_sr)
+            import torch
+            import torchaudio.transforms as T
+            
+            device = self.device if hasattr(self, 'device') else "cuda" if torch.cuda.is_available() else "cpu"
+            
+            # Cache the resampler instance to avoid memory leak / hanging by creating thousands of torchaudio resamplers
+            if getattr(self, '_resampler', None) is None or self._resampler.orig_freq != orig_sr:
+                self._resampler = T.Resample(orig_freq=orig_sr, new_freq=target_sr).to(device)
+            
+            audio_tensor = torch.from_numpy(audio_array).float().to(device)
+            
+            is_1d = (audio_tensor.ndim == 1)
+            if is_1d: 
+                audio_tensor = audio_tensor.unsqueeze(0)
+                
+            with torch.no_grad():
+                audio_tensor = self._resampler(audio_tensor)
+            
+            if is_1d:
+                audio_tensor = audio_tensor.squeeze(0)
+                
+            audio_array = audio_tensor.cpu().numpy()
             
         return audio_array, target_sr
 
@@ -71,7 +90,7 @@ class EvaluationPipeline:
         # We don't convert the streaming dataset to a list because 31,000 samples 
         # would consume ~50GB of RAM (Out of Memory). Instead, we will iterate 
         # the dataset generator for each model.
-        print(f"Dataset streaming limit set to {self.dataset.samples_per_class} per class.")
+        print("Dataset will process items sequentially...")
 
         if self.strategy == "simultaneous":
             # Load all at once
@@ -98,7 +117,7 @@ class EvaluationPipeline:
             
             with open(output_file, 'w', encoding='utf-8') as f:
                 batch = []
-                for item in tqdm(current_dataset_iter, desc=f"Evaluating {model_name}"):
+                for item in tqdm(current_dataset_iter, desc=f"Evaluating {model_name}", total=len(self.dataset)):
                     batch.append(item)
                     
                     if len(batch) == self.batch_size:
@@ -129,11 +148,19 @@ class EvaluationPipeline:
                 embed_arr = model.get_audio_embedding(aud, sr)
                 embed = embed_arr.flatten().tolist()
                 
+            text_val = item.get("label") or item.get("caption") or item.get("text") or ""
+            if text_val:
+                text_embed_arr = model.get_text_embedding([str(text_val)])
+                text_embed = text_embed_arr.flatten().tolist()
+            else:
+                text_embed = None
+                
             result = {
                 "youtube_id": item["youtube_id"],
                 "start_time": item["start_time"],
-                "label": item["label"],
-                "embedding": embed
+                "label": text_val,
+                "embedding": embed,
+                "text_embedding": text_embed
             }
             results.append(result)
             
