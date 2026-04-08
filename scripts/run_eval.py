@@ -3,8 +3,13 @@ import sys
 from pathlib import Path
 import argparse
 
+
+import os
+
 # Add src to the path
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+os.environ["HF_HOME"] = str(Path(__file__).parent.parent / "input")
+os.environ["HF_DATASETS_CACHE"] = str(Path(__file__).parent.parent / "input" / "datasets")
 
 from clap_eval.config import Config
 from clap_eval.pipeline import EvaluationPipeline
