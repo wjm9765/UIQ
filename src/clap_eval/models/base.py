@@ -6,15 +6,20 @@ class BaseClapModel(abc.ABC):
     Abstract base class for CLAP wrappers (LAION, MGA, M2D).
     All models should implement this interface to be integrated into the test pipeline.
     """
-    def __init__(self, name: str, hf_model_id: str, device: str):
+    def __init__(self, name: str, config: dict, device: str):
         self.name = name
-        self.hf_model_id = hf_model_id
+        self.config = config
         self.device = device
+
+        self.hf_model_id = config.get("hf_model_id")
+        self.repo_path = config.get("repo_path")
+        self.checkpoint_path = config.get("checkpoint_path")
+        
         self._load_model()
 
     @abc.abstractmethod
     def _load_model(self):
-        """Load model weights and configs from HuggingFace via hf_model_id."""
+        """Load model weights and configs from HuggingFace or locally."""
         pass
 
     @abc.abstractmethod

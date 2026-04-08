@@ -1,29 +1,28 @@
 dataset:
   name: "VGGSound"
   csv_path: "input/vggsound.csv"
-  audio_dir: "input/audio"  # Path to the downloaded/extracted audio files corresponding to the YouTube IDs
-  samples_per_class: 100   # How many samples to run inference per category. Selects 0 to 99.
+  audio_dir: "input/audio" 
+  samples_per_class: 100
 
-# Models are automatically downloaded via HuggingFace's from_pretrained
 models:
   - name: "laion"
-    hf_model_id: "laion/clap-htsat-unfused"  # Native HF Transformers CLAP
+    type: "huggingface" # HF automated load
+    hf_model_id: "laion/clap-htsat-unfused" 
     enabled: true
   - name: "mga"
-    hf_model_id: "microsoft/msclap"         # Example assuming a fictional or unofficial HF port. Use official API if needed.
+    type: "local" # Cloned repo + local checkpoint
+    repo_path: "models_third_party/MGA-CLAP"
+    checkpoint_path: "checkpoints/mga_clap.pt"
     enabled: true
   - name: "m2d"
-    hf_model_id: "m2d/clap-base"            # Example HF tag for M2D model
+    type: "local"
+    repo_path: "models_third_party/m2d"
+    checkpoint_path: "checkpoints/m2d_clap.pth"
     enabled: true
 
 execution:
   batch_size: 8
-  device: "cuda"  # e.g., 'mps' on Mac, 'cpu', 'cuda'
+  device: "cuda"
   output_dir: "results/eval_outputs"
-  
-  # Accelerate config specifies how memory is managed.
-  # Memory Analysis: Loading all 3 models takes roughly 3-5GB of VRAM just for weights. 
-  # Strategy: 'sequential' is most efficient. Load model 1 -> Infer 310 types -> Offload memory -> Load model 2 -> Infer 310 types -> Offload memory. 
-  # This maximizes the batch_size possible for a single GPU.
   strategy: "sequential"
-  use_accelerate: true # Automatically handles mixed precision (fp16) and intelligent device placement.
+  use_accelerate: true

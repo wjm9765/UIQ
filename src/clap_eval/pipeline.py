@@ -65,18 +65,18 @@ class EvaluationPipeline:
 
         if self.strategy == "simultaneous":
             # Load all at once
-            models = {cfg["name"]: get_model(cfg["name"], cfg.get("hf_model_id"), self.device) for cfg in self.model_configs}
+            models = {cfg["name"]: get_model(cfg["name"], cfg, self.device) for cfg in self.model_configs}
         else:
             models = {} # We'll load per loop
 
         for m_cfg in self.model_configs:
             model_name = m_cfg["name"]
-            hf_id = m_cfg.get("hf_model_id")
-            print(f"\n=== Starting evaluation for model: {model_name} ({hf_id}) ===")
+            model_type = m_cfg.get("type", "unknown")
+            print(f"\n=== Starting evaluation for model: {model_name} ({model_type}) ===")
             
             if self.strategy == "sequential":
                 # Load one model to maximize VRAM availability
-                model = get_model(model_name, hf_id, self.device)
+                model = get_model(model_name, m_cfg, self.device)
             else:
                 model = models[model_name]
             
