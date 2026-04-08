@@ -14,11 +14,19 @@ models:
     type: "local" # Cloned repo + local checkpoint
     repo_path: "models_third_party/MGA-CLAP"
     checkpoint_path: "checkpoints/mga-clap.pt"
+    hf_download:
+      repo_id: "wjm9765/clap_weights"
+      repo_type: "dataset"
+      filename: "mga-clap.pt"
     enabled: true
   - name: "m2d"
     type: "local"
     repo_path: "models_third_party/m2d"
-    checkpoint_path: "checkpoints/m2d_clap_vit_base-80x1001p16x16p16kpBpTI-2025/checkpoint-30.pth"
+    checkpoint_path: "checkpoints/checkpoint-30.pth"
+    hf_download:
+      repo_id: "wjm9765/clap_weights"
+      repo_type: "dataset"
+      filename: "checkpoint-30.pth"
     enabled: true
 
 execution:
