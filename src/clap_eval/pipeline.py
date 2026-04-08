@@ -8,6 +8,7 @@ import numpy as np
 from .config import Config
 from .dataset import VGGSoundDataset
 from .models import get_model
+from .utils import stream_youtube_audio_memory
 
 class EvaluationPipeline:
     def __init__(self, config: Config):
@@ -20,6 +21,7 @@ class EvaluationPipeline:
             audio_dir=ds_cfg.get("audio_dir", "input/audio"),
             samples_per_class=ds_cfg.get("samples_per_class", 100),
         )
+        self.stream_audio = ds_cfg.get("stream_audio", True)
         
         self.batch_size = exec_cfg.get("batch_size", 8)
         self.device = exec_cfg.get("device", "cuda")
@@ -49,15 +51,20 @@ class EvaluationPipeline:
             if m_cfg.get("enabled", True):
                 self.model_configs.append(m_cfg)
 
-    def load_audio(self, audio_path: str):
-        # We need a stable mono audio stream with original sample rate, logic can vary by model.
-        if not os.path.exists(audio_path):
-            return None, None
-        try:
-            return librosa.load(audio_path, sr=None, mono=True)
-        except Exception as e:
-            print(f"Error loading {audio_path}: {e}")
-            return None, None
+    def load_audio(self, item: dict):
+        if self.stream_audio:
+            # Memory string logic (Lazy loading)
+            return stream_youtube_audio_memory(item['youtube_id'], item['start_time'])
+        else:
+            # Fallback to local files
+            audio_path = item["audio_path"]
+            if not os.path.exists(audio_path):
+                return None, None
+            try:
+                return librosa.load(audio_path, sr=48000, mono=True)
+            except Exception as e:
+                print(f"Error loading {audio_path}: {e}")
+                return None, None
 
     def run(self):
         print(f"Total samples to execute: {len(self.dataset)}")
@@ -88,9 +95,10 @@ class EvaluationPipeline:
 
                     results = []
                     for item in batch:
-                        aud, sr = self.load_audio(item["audio_path"])
+                        aud, sr = self.load_audio(item)
                         
                         if aud is None:
+                            # Not available or taken down on youtube
                             embed = None
                         else:
                             embed_arr = model.get_audio_embedding(aud, sr)

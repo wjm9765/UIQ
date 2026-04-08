@@ -24,6 +24,7 @@ UIQ/
 │   └── m2d/                # M2D 모델 소스 코드
 ├── checkpoints/            # 깃허브에서 개별 다운로드한 가중치 파일(.pt, .pth) 보관 폴더
 ├── scripts/                # 파이프라인 실행 스크립트 (실행 엔트리포인트)
+│   ├── setup_server.sh     # GPU 리눅스 서버 초기 구축용 bash 스크립트 (ffmpeg 및 uv 설치)
 │   ├── setup_vggsound.py   # 초기 VGGSound CSV 메타데이터 파일 구조 생성 및 다운로드
 │   ├── setup_models.py     # 외부 딥러닝 깃허브 리포지토리 Clone 및 환경 준비
 │   └── run_eval.py         # 실제 모델 평가를 실행하는 메인 루프 스크립트
@@ -44,13 +45,18 @@ UIQ/
 
 ## 🚀 실행 순서 (Quick Start Guide)
 
-> 모든 스크립트는 `uv` 런타임 위에서 동작하도록 최상단에 (Shebang) 설정되어 있습니다. 따라서 가상환경 진입 여부와 관계없이 스크립트를 독립 실행만 하시면 의존성을 자동 인식합니다.
+### Step 0: 리눅스/GPU 서버 초기 세팅 (Linux/Ubuntu 사용자 전용)
+만약 비어있는 GPU 서버 인스턴스를 처음 발급받으셨다면, 인메모리 오디오 스트리밍에 필요한 `ffmpeg`와 파이썬 패키지 매니저 `uv` 설치를 자동화해주는 쉘 스크립트를 가장 먼저 실행하세요. (이미 세팅된 로컬 Mac/PC라면 건너뛰시면 됩니다.)
+```bash
+./scripts/setup_server.sh
+```
+> 내부적으로 `apt-get install ffmpeg`, `pip install uv`, 그리고 `uv sync`까지 자동으로 모두 진행됩니다.
 
-### Step 1: 환경 동기화 (`uv sync`)
-가장 먼저 `pyproject.toml`에 명시된 라이브러리(PyTorch, Torchaudio, Transformers, Accelerate 등)를 설치하고 현재 패키지를 인식시켜야 합니다.
+### Step 1: 파이썬 패키지 의존성 동기화 (`uv sync`)
+(앞선 Step 0을 실행했다면 이 과정은 생략해도 됩니다)
+`pyproject.toml`에 명시된 라이브러리(PyTorch, Torchaudio, Transformers, Accelerate, yt-dlp 등)를 설치하고 현재 패키지를 인식시킵니다.
 ```bash
 uv sync
-# 혹은 (uv pip install -e .)
 ```
 
 ### Step 2: MGA & M2D 모델 소스 다운로드
