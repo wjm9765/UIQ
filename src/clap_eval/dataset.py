@@ -4,14 +4,21 @@ from datasets import load_dataset
 import resampy
 
 class VGGSoundDataset:
-    def __init__(self, hf_repo: str = "txya900619/vggsound-16k", split: str = "test", samples_per_class: int = 100, streaming: bool = True, cache_dir: str = "input"):
+    def __init__(self, hf_repo: str = "txya900619/vggsound-16k", split: str = "train+test", samples_per_class: int = 100, streaming: bool = True, cache_dir: str = "input"):
         self.hf_repo = hf_repo
         self.split = split
         self.samples_per_class = samples_per_class
         self.streaming = streaming
         self.cache_dir = cache_dir
-        # Load dataset
-        self.dataset = load_dataset(self.hf_repo, split=self.split, streaming=self.streaming, cache_dir=self.cache_dir, trust_remote_code=True)
+        
+        # Hugging Face datasets streaming 모드에서는 'train+test' 문자열을 split으로 직접 받지 못할 수 있으므로
+        # 전체 데이터 사용을 위해 train과 test split을 각각 불러와서 하나로 묶어 처리합니다.
+        ds_train = load_dataset(self.hf_repo, split='train', streaming=self.streaming, cache_dir=self.cache_dir, trust_remote_code=True)
+        ds_test = load_dataset(self.hf_repo, split='test', streaming=self.streaming, cache_dir=self.cache_dir, trust_remote_code=True)
+        
+        # itertools.chain을 통해 두 데이터셋을 연결해서 사용할 수 있도록 합니다.
+        from itertools import chain
+        self.dataset = chain(ds_train, ds_test)
 
     
     def __len__(self):
