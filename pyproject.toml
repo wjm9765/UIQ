@@ -16,6 +16,7 @@ dependencies = [
     "numpy",
     "yt-dlp",
     "ffmpeg-python",
+    "huggingface_hub",
 ]
 
 [build-system]

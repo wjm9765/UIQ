@@ -59,29 +59,24 @@ UIQ/
 uv sync
 ```
 
-### Step 2: MGA & M2D 모델 소스 다운로드
-허깅페이스 공식 지원에 없는 `M2D` 및 `MGA-CLAP` 모델의 오픈소스 환경을 구성합니다.
-스크립트를 실행하면 `models_third_party` 폴더 안에 GitHub 프로젝트가 클론되고, 가중치를 넣을 `checkpoints` 폴더가 생성됩니다.
+### Step 2: MGA & M2D 모델 소스 및 가중치 자동 다운로드
+허깅페이스 공식 지원에 없는 `M2D` 및 `MGA-CLAP` 모델의 오픈소스 환경을 구성하고, 지정된 프라이빗 허깅페이스 데이터셋(`wjm9765/clap_weights`)에서 가중치를 다운로드합니다. 프라이빗 레포이므로 반드시 환경변수에 `HF_TOKEN`을 등록해야 합니다.
 ```bash
+export HF_TOKEN="본인의_허깅페이스_토큰"
 ./scripts/setup_models.py
 ```
+> 실행 완료 시 `checkpoints/` 폴더 내에 `mga-clap.pt`와 `m2d_clap_vit_base-80x1001p.../checkpoint-30.pth`가 자동 저장됩니다.
 
-### Step 3: 체크포인트 가중치 및 오디오 원본 수동 이동
-> **이 단계는 수동으로 진행해야 합니다.** 파일 사이즈 문제로 자동화에 한계가 있습니다.
-
-1. `MGA` 및 `M2D` 오픈소스 개발자들의 구글 드라이브, 홈페이지에서 공개된 오리지널 **가중치 파일(`.pt`, `.pth` 등)** 을 다운받아 `checkpoints/` 안에 넣습니다.
-2. 다운로드 완료된 `.wav` 파일들을 `input/audio/` 안에 규칙에 맞게 (`{youtube_id}_{start_time:06d}.wav`) 집어넣습니다.
-
-### Step 4: 메타데이터 CSV 다운로드 
+### Step 3: 메타데이터 CSV 다운로드 
 `vggsound.csv` 구조를 분석하고 샘플링을 진행하려면 원본 CSV가 필요합니다. 스크립트를 실행해 `input/vggsound.csv` 를 생성합니다.
 ```bash
 ./scripts/setup_vggsound.py
 ```
 
-### Step 5: (Option) Local Model Wrapper 코드 완성
+### Step 4: (Option) Local Model Wrapper 코드 완성
 가중치 배치가 완료되었다면 `src/clap_eval/models/mga.py` 와 `m2d.py`의 `_load_model()` 메서드 안에, **실제 깃허브 내 모델 Class를 Import하는 로직**을 알맞게 매핑해줍니다. (이미 `sys.path` 설정 로직은 뼈대에 짜여져 있습니다)
 
-### Step 6: 모델 평가 및 임베딩 추출 실행
+### Step 5: 모델 평가 및 임베딩 추출 실행
 모든 준비가 끝나면 파이프라인을 실행합니다. 카테고리당 뽑을 샘플 수, 작동할 모델 목록은 `config.yaml` 안에서 직접 켜고(`enabled: true/false`), 수량을 조절할 수 있습니다.
 ```bash
 ./scripts/run_eval.py --config config.yaml
