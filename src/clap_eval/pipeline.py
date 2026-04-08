@@ -19,7 +19,8 @@ class EvaluationPipeline:
             hf_repo=ds_cfg.get("hf_repo", "txya900619/vggsound-16k"),
             split="test",
             samples_per_class=ds_cfg.get("samples_per_class", 1),
-            streaming=ds_cfg.get("streaming", True)
+            streaming=ds_cfg.get("streaming", True),
+            cache_dir=ds_cfg.get("cache_dir", "input")
         )
         
         self.batch_size = exec_cfg.get("batch_size", 8)

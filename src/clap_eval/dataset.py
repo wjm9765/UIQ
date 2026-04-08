@@ -4,13 +4,15 @@ from datasets import load_dataset
 import resampy
 
 class VGGSoundDataset:
-    def __init__(self, hf_repo: str = "txya900619/vggsound-16k", split: str = "test", samples_per_class: int = 100, streaming: bool = True):
+    def __init__(self, hf_repo: str = "txya900619/vggsound-16k", split: str = "test", samples_per_class: int = 100, streaming: bool = True, cache_dir: str = "input"):
         self.hf_repo = hf_repo
         self.split = split
         self.samples_per_class = samples_per_class
         self.streaming = streaming
+        self.cache_dir = cache_dir
         # Load dataset
-        self.dataset = load_dataset(self.hf_repo, split=self.split, streaming=self.streaming, trust_remote_code=True)
+        self.dataset = load_dataset(self.hf_repo, split=self.split, streaming=self.streaming, cache_dir=self.cache_dir, trust_remote_code=True)
+
     
     def __len__(self):
         # We don't know the exact length upfront due to dynamic streaming & class limits.

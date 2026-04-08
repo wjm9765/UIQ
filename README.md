@@ -51,7 +51,7 @@ UIQ/
   * Hugging Face 서버에서 오디오 배열(Array)을 실시간으로 가져와 바로 GPU로 던집니다. 디스크 공간을 사용하지 않지만, 네트워크 속도에 따라 조금 느릴 수 있습니다.
 * **`streaming: false` (실제 1TB 프로덕션 환경용 - 강력 권장 🚀)**
   * **60GB 전체를 RAM(메모리)에 올리지 않습니다! 절대 OOM(메모리 부족)이 나지 않습니다.**
-  * Hugging Face가 최초 실행 시 전체 60GB 데이터셋을 로컬 디스크(`~/.cache/huggingface/datasets`)에 고속 Arrow/Parquet 바이너리 포맷으로 안전하게 다운로드합니다.
+  * Hugging Face가 최초 실행 시 전체 60GB 데이터셋을 `config.yaml`에 지정해 둔 로컬 경로(`input/`)에 고속 Arrow/Parquet 바이너리 포맷으로 안전하게 다운로드하여 보관합니다.
   * 이후 파이프라인에서 읽어들일 때는, 전체를 메모리에 올리는 대신 **OS 레벨의 메모리 매핑(Memory-mapping)** 기술을 사용하여 모델이 요청하는 배치(Batch) 만큼만 순식간에 RAM으로 퍼올립니다. 속도가 압도적으로 빠르고 매우 안정적입니다.
 
 ---
@@ -79,6 +79,7 @@ export HF_TOKEN="본인의_허깅페이스_토큰"
 dataset:
   name: "VGGSound"
   hf_repo: "txya900619/vggsound-16k"
+  cache_dir: "input"       # 전체 다운로드 시 저장될 로컬 캐시 폴더 경로 (기본값)
   streaming: true          # 개발/테스트 시 true, 1TB 프로덕션 서버에서는 반드시 false로 변경 (가장 빠름!)
   samples_per_class: 100   # 실제 실험 시 100, 수량 확인 및 테스트 시 2등의 값으로 조절
 ```
