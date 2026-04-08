@@ -6,30 +6,40 @@ from .base import BaseClapModel
 
 class M2DClapModel(BaseClapModel):
     def _load_model(self):
-        print(f"Loading '{self.name}' from local path: {self.checkpoint_path} on {self.device}")
+        import sys
+        from transformers import RobertaTokenizer, RobertaModel
         
-        # Add the external repository to Python's sys.path dynamically
+        print(f"Loading M2D-CLAP from: {self.checkpoint_path}")
+        
+        # 1. 외부 Repo 경로 추가
         if self.repo_path:
             repo_abs_path = str(Path(self.repo_path).resolve())
             if repo_abs_path not in sys.path:
                 sys.path.insert(0, repo_abs_path)
-                print(f"Added {repo_abs_path} to sys.path")
-            
-        # Example loading for M2D model
+
         try:
-            # Note: Replace `models` with the exact module name or inference class 
-            # provided by the m2d repository.
-            # Example:
-            # import models
-            # self.model = models.build_model(...)
-            # state_dict = torch.load(self.checkpoint_path, map_location='cpu')
-            # self.model.load_state_dict(state_dict)
-            # self.model.to(self.device).eval()
-            print("[INFO] Please update M2DClapModel._load_model() in m2d.py with the exact import paths from the m2d repository.")
-            pass
-        except ImportError as e:
-            print(f"Failed to import M2D model code: {e}")
-        self.model = None
+            # 2. 텍스트 인코더 및 토크나이저 준비
+            self.tokenizer = RobertaTokenizer.from_pretrained("roberta-base")
+            self.text_encoder = RobertaModel.from_pretrained("roberta-base").to(self.device)
+            
+            # 3. 오디오 인코더 준비 (M2D 레포지토리의 build_model 함수 호출 필요)
+            # ⚠️ 아래 import는 m2d 레포 구조에 따라 'from model import m2d_vit' 등으로 바뀔 수 있습니다.
+            from m2d_model import m2d_vit_base as m2d_model 
+            self.audio_model = m2d_model().to(self.device)
+
+            # 4. 가중치 로드 (checkpoint-30.pth)
+            ckpt = torch.load(self.checkpoint_path, map_location=self.device)
+            
+            # 가중치 파일 내의 state_dict 키 명칭을 확인해야 합니다. ('model' 또는 'state_dict')
+            state_dict = ckpt['model'] if 'model' in ckpt else ckpt
+            self.audio_model.load_state_dict(state_dict, strict=False)
+            
+            self.audio_model.eval()
+            self.text_encoder.eval()
+            print("✅ M2D-CLAP 모델 및 RoBERTa 인코더 로드 완료!")
+            
+        except Exception as e:
+            print(f"❌ M2D 로드 실패: {e}")
 
     @torch.no_grad()
     def get_audio_embedding(self, audio_data: np.ndarray, sr: int) -> np.ndarray:
@@ -48,7 +58,21 @@ class M2DClapModel(BaseClapModel):
 
     @torch.no_grad()
     def get_text_embedding(self, texts: list[str]) -> np.ndarray:
-        return np.zeros((len(texts), 512)) # dummy shape
+        # 1. 토크나이징 (프롬프트 추가 권장)
+        prompts = [f"This is a sound of {t}" for t in texts]
+        inputs = self.tokenizer(prompts, padding=True, return_tensors="pt").to(self.device)
+        
+        # 2. RoBERTa 추론
+        outputs = self.text_encoder(**inputs)
+        
+        # 3. 보통 [CLS] 토큰의 임베딩이나 평균값을 사용합니다.
+        # M2D-CLAP 설정에 따라 pooler_output 또는 last_hidden_state[:, 0] 사용
+        embeddings = outputs.pooler_output 
+        
+        # 4. L2 정규화 (유사도 계산을 위해 필수!)
+        embeddings = embeddings / torch.norm(embeddings, p=2, dim=-1, keepdim=True)
+        
+        return embeddings.cpu().numpy()
 
     @torch.no_grad()
     def get_audio_embedding(self, audio_data: np.ndarray, sr: int) -> np.ndarray:

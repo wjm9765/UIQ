@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/data/kyongminkong/Cap/UIQ/scripts/evaluate_all_claps.py", line 8, in <module>
+    from src.clap_eval.models.laion import LaionClapModel
+  File "/data/kyongminkong/Cap/UIQ/src/clap_eval/models/__init__.py", line 2, in <module>
+    from .laion import LaionClapModel
+  File "/data/kyongminkong/Cap/UIQ/src/clap_eval/models/laion.py", line 3, in <module>
+    from transformers import ClapModel, ClapProcessor
+ModuleNotFoundError: No module named 'transformers'
