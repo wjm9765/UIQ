@@ -117,7 +117,8 @@ class EvaluationPipeline:
             
             with open(output_file, 'w', encoding='utf-8') as f:
                 batch = []
-                for item in tqdm(current_dataset_iter, desc=f"Evaluating {model_name}", total=len(self.dataset)):
+                for idx, item in enumerate(tqdm(current_dataset_iter, desc=f"Evaluating {model_name}", total=len(self.dataset))):
+                    item["dataset_index"] = idx  # 원본 데이터셋의 인덱스 저장
                     batch.append(item)
                     
                     if len(batch) == self.batch_size:
@@ -156,6 +157,7 @@ class EvaluationPipeline:
                 text_embed = None
                 
             result = {
+                "index": item.get("dataset_index"),  # 데이터셋의 원본 인덱스
                 "youtube_id": item["youtube_id"],
                 "start_time": item["start_time"],
                 "label": text_val,
