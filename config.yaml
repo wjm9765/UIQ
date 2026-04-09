@@ -1,9 +1,10 @@
 dataset:
   name: "VGGSound"
   hf_repo: "txya900619/vggsound-16k"
+  split: "train"            # 사용할 데이터셋 split ("train" 또는 "test")
   cache_dir: "input"       # 전체 다운로드(streaming: false) 시 저장될 로컬 경로
   streaming: false         # true: 실시간 스트리밍(테스트) / false: 로컬 다운로드 후 매핑(실전용)
-  samples_per_class: 10
+  samples_per_class: 100
 
 models:
   - name: "laion"
@@ -37,5 +38,5 @@ execution:
   use_accelerate: true
 
 evaluation:
-  results_dir: "eval_outputs_sample"
+  results_dir: "results/eval_outputs"
   top_k_list: [1, 5, 10]

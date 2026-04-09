@@ -17,7 +17,7 @@ class EvaluationPipeline:
         
         self.dataset = VGGSoundDataset(
             hf_repo=ds_cfg.get("hf_repo", "txya900619/vggsound-16k"),
-            split="test",
+            split=ds_cfg.get("split", "train"),  # config.yaml의 split 설정을 따름 (기본값 test)
             samples_per_class=ds_cfg.get("samples_per_class", 1),
             streaming=ds_cfg.get("streaming", True),
             cache_dir=ds_cfg.get("cache_dir", "input")

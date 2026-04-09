@@ -2,8 +2,15 @@ dataset:
   cache_dir: input
   hf_repo: txya900619/vggsound-16k
   name: VGGSound
-  samples_per_class: 10
+  samples_per_class: 100
+  split: train
   streaming: false
+evaluation:
+  results_dir: results/eval_outputs
+  top_k_list:
+  - 1
+  - 5
+  - 10
 execution:
   batch_size: 16
   device: cuda

@@ -1,3 +1,4 @@
+#!/usr/bin/env -S uv run python
 import sys
 from ruamel.yaml import YAML
 
