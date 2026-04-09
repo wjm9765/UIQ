@@ -35,3 +35,7 @@ execution:
   output_dir: "results/eval_outputs"
   strategy: "sequential"
   use_accelerate: true
+
+evaluation:
+  results_dir: "eval_outputs_sample"
+  top_k_list: [1, 5, 10]
