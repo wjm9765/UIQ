@@ -1,70 +1,94 @@
-# CLAP Models Evaluation Pipeline on VGGSound
+# CLAP Evaluation Pipeline (UIQ)
 
-VGGSound 데이터셋을 기반으로 다양한 **CLAP 모델(LAION, MGA, M2D)** 의 성능(예: 제로샷 성능 저하 및 카테고리별 차이)을 평가하기 위한 통합 파이프라인입니다.
+오디오-텍스트 대조 학습 모델(CLAP류)의 Zero-shot 성능 평가 및 표현 붕괴(Representation Collapse) 분석을 위한 파이프라인입니다. LAION-CLAP, MGA-CLAP, M2D-CLAP 등의 모델을 VGGSound 등의 데이터셋을 활용해 빠르고 메모리 효율적으로 평가할 수 있도록 구성되어 있습니다.
 
----
+## 🌟 주요 기능
 
-## 📁 디렉토리 구조 (Directory Structure)
-
-```text
-UIQ/
-├── .gitignore              # 외부 데이터(체크포인트, 다운로드 리포지토리, 임시결과 등) 무시 설정
-├── config.yaml             # 전체 파이프라인 제어 파일
-├── config_laion.yaml       # 개별 독립 실행용 제어 파일
-├── config_m2d.yaml         # 개별 독립 실행용 제어 파일
-├── config_mga.yaml         # 개별 독립 실행용 제어 파일
-├── pyproject.toml          # uv 설정 및 패키지 의존성 파일
-├── README.md               # 프로젝트 개요 및 실행 가이드
-├── input/                  # 다운로드된 데이터 보관 폴더
-├── results/
-│   └── eval_outputs/       # 모델별 Inference(임베딩 결과) JSONL 저장소
-├── models_third_party/     # 허깅페이스에 없는 3rd-party 모델 레포지토리
-│   ├── MGA-CLAP/           # MGA 모델 소스 코드
-│   └── m2d/                # M2D 모델 소스 코드
-├── checkpoints/            # 깃허브에서 개별 다운로드한 다운로드 가중치 파일(.pt, .pth)
-├── scripts/                # 파이프라인 보조 스크립트
-├── run_laion.sh            # 단일 모델 병렬 평가 실행 스크립트 (LAION)
-├── run_m2d.sh              # 단일 모델 병렬 평가 실행 스크립트 (M2D)
-├── run_mga.sh              # 단일 모델 병렬 평가 실행 스크립트 (MGA)
-└── src/
-    └── clap_eval/
-        ├── pipeline.py     # 16kHz 단위의 순수 원본 오디오 단일 Dataloader
-        └── models/         # 추상화된 모델 평가 래퍼 (Wrapper)
-            ├── laion.py    # LAION CLAP (HuggingFace Native - 48kHz GPU 자체 리샘플링) 
-            ├── mga.py      # MGA CLAP (Local Codebase - 32kHz GPU 리샘플링, 10초 잘라내기 적용)
-            └── m2d.py      # M2D CLAP (Local Codebase - 16kHz 원본 크기 유지, 10초 패딩/잘라내기 적용)
-```
+- **다중 모델 단일 파이프라인 평가**: LAION, MGA, M2D 등 다양한 구조의 CLAP 모델을 동일한 환경(VGGSound)에서 일관되게 평가합니다.
+- **메모리 효율적 처리 (OOM 방지)**: 데이터셋 전체를 메모리에 올리지 않고 Generator 기반으로 순차적 인퍼런스를 수행하여 OOM을 방지합니다.
+- **OS 호환 환경 구축**: 초고속 패키지 매니저 `uv`를 통해 `pyproject.toml`에 명시된 의존성을 동기화하며, Linux용 CUDA 패키지와 MacOS용 패키지를 자동으로 분기하여 설치합니다.
+- **다목적 분석 리포트 제공**:
+  1. 검색 정확도 메트릭 (R@1, R@5, R@10, MRR)
+  2. 임베딩 분리력 / 붕괴도 분석 (Intra vs Inter Similarity, Margin)
+  3. 모델별 최약점 클래스 도출 (Vulnerable Categories Top-5)
 
 ---
 
-## 🔧 파이프라인 주요 변경 및 최적화 사항
+## 📂 프로젝트 구조
 
-* **독립된 16kHz 고정 Dataloader Pipeline:** 공통 오디오 파이프라인이 여러 모델에게 연이어 데이터를 평가하더라도 앞선 48kHz 리샘플링이 다음 모델에게 강요되지 않습니다. Dataloader는 언제나 원본 16kHz 오디오만을 전달하며, 리샘플링(`torchaudio.transforms.Resample`)은 각 모델 래퍼(`laion.py`, `mga.py`, `m2d.py`) 내부에서 GPU 위에서 1회만 단독 수행되어 성능 병목을 예방합니다.
-* **배치 단위 오디오 제어(Tansform & Truncate):** 모델 구조의 한계(예: MGA HTSAT 모델의 Swin 아키텍처)에 의한 고정 버퍼 길이 초과 오류(`AssertionError: the wav size should less than or equal to the swin input size`)를 미연에 방지하고자, 10초를 초과하거나 모자라는 길이의 오디오는 모델 래퍼가 스스로 자르거나(Truncate) 부족하면 0으로 채우도록(Padding) 패치되었습니다.
-* **완벽한 GPU 이전 최적화(Device transfer):** 기존 외부 소스코드의 파편화로 인해 자체 스펙트로그램 레이어 등의 객체가 CPU 메모리에 도태되어 남아있으면서 발생하던 텐서 기종 충돌(`Input type and weight type should be the same`) 문제가 해결되어 전체 서브 모델 모듈 트리들이 `cuda`에 정상적으로 통째로 로드됩니다.
-* **신규 의존성 충돌 무결점 완화:** 구버전 API 호환성 유지를 위해 `datasets<4.0.0` 등은 물론이고 `sed_scores_eval==0.0.0`, `setuptools<70.0.0` 제약을 걸어 두었으며 API가 폐기된 `ruamel.yaml`의 함수(`safe_load()`) 사용 로직을 `YAML(typ='safe')` 구문 및 `strict=False` 체크 무효화 등으로 강제 우회하여 구동되도록 모든 최신 의존성 에러 악재를 걷어냈습니다.
+```plaintext
+├── config.yaml               # 전체 실행/평가 설정 파일 (수정 시 최우선)
+├── pyproject.toml            # Python 패키지 및 환경 설정 파일 (uv 지원)
+├── README.md                 # 프로젝트 가이드
+├── results/                  # 모델 추론 결과물(jsonl) 기본 저장 디렉토리
+├── input/                    # HF 모델/데이터셋 캐시 저장소
+├── src/
+│   └── clap_eval/            # 핵심 파이프라인 모듈 패키지
+│       ├── config.py         # Config 파싱 로직
+│       ├── dataset.py        # HF VGGSound 등 데이터셋 로더
+│       ├── pipeline.py       # 인퍼런스 파이프라인 전개
+│       └── models/           # 각 CLAP 모델별 Wrapper (laion, mga, m2d)
+└── scripts/
+    ├── setup_models.py       # 로컬 가중치 파일 등 다운로드
+    ├── run_eval.py           # 파이프라인 실행, 인퍼런스 후 JSONL 결과 생성
+    └── evaluate_all_claps.py # 생성된 JSONL을 분석하여 평가 리포트 출력
+```
 
 ---
 
-## 🚀 멀티 터미널을 활용한 3-Way 단일 서버 병렬 실행 (속도 3배 증가)
+## 🚀 시작하기 (Getting Started)
 
-기본적으로 `config.yaml` 1개로 3개의 모델을 직렬(`sequential`)로 돌릴 수 있으나, VRAM 용량이 크더라도 단일 프로세스가 처리하는 CPU 병목(Data I/O Bottleneck)으로 인해 A100 등 대형 GPU의 점유율이 20% 수준에 머무는 문제가 있습니다. 
+### 1. 환경 설정 (Dependencies)
+초고속 패키지 매니저 [`uv`](https://github.com/astral-sh/uv)를 사용합니다.
 
-이를 해결하기 위해 모델별로 설정 파일을 3개로 분할하였으므로, VS Code 터미널 탭을 **3개로 나란히 여신 뒤 아래의 개별 스크립트를 하나씩 병렬로 띄우시면** CPU를 훨씬 골고루 쓰면서 단일 서버 안에서 세 모델 평가를 월등한 속도로 마칠 수 있습니다.
-
-### Terminal 1:
 ```bash
-./run_laion.sh
+# 의존성 설치 및 동기화
+# (macOS와 Linux(CUDA)를 자동으로 구분하여 올바른 버전 설치)
+uv sync
+
+
+### 2. 가중치 준비
+MGA, M2D 등 로컬 스토리지에 체크포인트가 필요한 모델들의 파라미터를 허깅페이스에서 스크립트를 통해 다운받습니다.
+```bash
+./scripts/setup_models.py
 ```
 
-### Terminal 2:
-```bash
-./run_m2d.sh
-```
+---
 
-### Terminal 3:
-```bash
-./run_mga.sh
-```
+## 💡 코드 실행 방법
 
-* 위 과정을 통해 단일 프로세스로 인퍼런스 하는 시간 제약을 줄일 수 있으며, 모든 파이프라인의 평가는 `results/eval_outputs/` 폴더 내에 `[model_name]_results.jsonl` 형태로 기록됩니다. (.jsonl 안에는 Audio 임베딩 및 Caption 텍스트 기반 Text 임베딩 값이 모조리 기록되어 있습니다.)
+이 프로젝트의 모든 주 기능 및 구동은 `./scripts/` 디렉토리 내부의 스크립트들을 통해 실행됩니다.
+
+### Step 1. 인퍼런스 파이프라인 수행 (JSONL 생성)
+`config.yaml`에 정의된 데이터셋, 스트리밍 설정, 하이퍼파라미터를 읽고 입력 오디오의 모델 임베딩을 추론합니다. 완료되면 결과를 텍스트 파일(jsonl)로 저장합니다.
+
+```bash
+./scripts/run_eval.py --config config.yaml
+# 또는 python scripts/run_eval.py --config config.yaml
+```
+> **참고:** 실행이 완료되면 `config.yaml` 안의 `execution.output_dir` (기본값: `results/eval_outputs`)에 `[모델이름]_results.jsonl` 형태의 파일이 생성됩니다. 이 파일은 각 데이터의 인덱스, 임베딩, 정답 라벨 등 필요한 모든 정보를 갖습니다.
+
+### Step 2. 결과 평가 및 분석 (리포트 생성)
+도출된 `.jsonl` 파일을 스크립트가 다시 읽어들여 객관식 보기 풀(Pool)을 생성하고, 모델 간 메트릭 비교 평가 및 붕괴 분석을 수행합니다.
+
+```bash
+./scripts/evaluate_all_claps.py
+# 또는 python scripts/evaluate_all_claps.py
+```
+> **참고:** 평가 스크립트는 `config.yaml`의 **`evaluation.results_dir`** 경로를 읽어 자동으로 데이터를 가져옵니다. 경로를 바꿔 평가하고 싶다면 yaml 설정 파일만 변경하시면 됩니다!
+
+---
+
+## ⚙️ Configuration (`config.yaml`)
+직접 코드를 하드코딩할 필요 없이 대부분의 설정 제어는 `config.yaml`로 가능합니다.
+
+- **`dataset:`**
+  - 평가할 HuggingFace 데이터셋, 로컬 다운로드 및 메모리 설정(`streaming` 옵션), 카테고리당 샘플링 수 제어
+- **`models:`**
+  - 개별 모델들의 활성화 스위치(`enabled: true/false`), 로컬 및 원격 가중치 경로 설정
+- **`execution:`**
+  - 하드웨어 리소스 전략 (batch size, device 설정)
+  - `output_dir`: 인퍼런스 완료 파일 생성 폴더 지정
+- **`evaluation:`**
+  - `results_dir`: 평가 시 읽어들일 대상 데이터 폴더 (예: `eval_outputs_sample`)
+  - `top_k_list`: `R@K` 출력 단위 지정
