@@ -20,3 +20,15 @@ checkpoints/
 dist/
 build/
 *.egg-info/
+
+# Jupyter & Caches
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# OS & Editor
+.DS_Store
+.vscode/
+.idea/
