@@ -10,7 +10,7 @@ env/
 # Projects
 input/
 results/
-temp/
+#temp/
 
 # Third party models & checkpoints
 models_third_party/

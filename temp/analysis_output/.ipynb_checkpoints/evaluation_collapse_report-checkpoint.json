@@ -1,0 +1,3358 @@
+{
+    "laion": {
+        "Other": {
+            "count": 42952,
+            "alignment": 1.466125249862671,
+            "uniformity": -2.8363499641418457,
+            "avg_margin": -0.12975849211215973,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 70248,
+                        "split": "train",
+                        "label": "rope skipping",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 110342,
+                        "split": "train",
+                        "label": "people booing",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.6287263035774231,
+                    "pos_sim": -0.14066220819950104,
+                    "neg_sim": 0.48806411027908325
+                },
+                {
+                    "original": {
+                        "index": 1284,
+                        "split": "train",
+                        "label": "strike lighter",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 81824,
+                        "split": "train",
+                        "label": "volcano explosion",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.6112747192382812,
+                    "pos_sim": -0.17009541392326355,
+                    "neg_sim": 0.4411793351173401
+                },
+                {
+                    "original": {
+                        "index": 101734,
+                        "split": "train",
+                        "label": "people crowd",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 131444,
+                        "split": "train",
+                        "label": "yodelling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.5918002128601074,
+                    "pos_sim": -0.13466095924377441,
+                    "neg_sim": 0.457139253616333
+                },
+                {
+                    "original": {
+                        "index": 99661,
+                        "split": "train",
+                        "label": "people shuffling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 7896,
+                        "split": "test",
+                        "label": "whale calling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.5906359553337097,
+                    "pos_sim": -0.23016969859600067,
+                    "neg_sim": 0.36046627163887024
+                },
+                {
+                    "original": {
+                        "index": 122571,
+                        "split": "train",
+                        "label": "donkey, ass braying",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 87075,
+                        "split": "train",
+                        "label": "sailing",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.5815404057502747,
+                    "pos_sim": -0.15483006834983826,
+                    "neg_sim": 0.4267103374004364
+                }
+            ]
+        },
+        "Human": {
+            "count": 23663,
+            "alignment": 1.341026782989502,
+            "uniformity": -2.5807175636291504,
+            "avg_margin": -0.07215934991836548,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 1328,
+                        "split": "test",
+                        "label": "baby babbling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 19002,
+                        "split": "train",
+                        "label": "male speech, man speaking",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.5729869604110718,
+                    "pos_sim": -0.30580371618270874,
+                    "neg_sim": 0.26718324422836304
+                },
+                {
+                    "original": {
+                        "index": 117659,
+                        "split": "train",
+                        "label": "people battle cry",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 26702,
+                        "split": "train",
+                        "label": "female speech, woman speaking",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.5502405166625977,
+                    "pos_sim": -0.12634651362895966,
+                    "neg_sim": 0.4238939881324768
+                },
+                {
+                    "original": {
+                        "index": 38800,
+                        "split": "train",
+                        "label": "child speech, kid speaking",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 22093,
+                        "split": "train",
+                        "label": "male speech, man speaking",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.5418881177902222,
+                    "pos_sim": -0.1353943645954132,
+                    "neg_sim": 0.40649378299713135
+                },
+                {
+                    "original": {
+                        "index": 62675,
+                        "split": "train",
+                        "label": "people babbling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 136269,
+                        "split": "train",
+                        "label": "baby crying",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.5278741717338562,
+                    "pos_sim": 0.025142649188637733,
+                    "neg_sim": 0.5530168414115906
+                },
+                {
+                    "original": {
+                        "index": 41159,
+                        "split": "train",
+                        "label": "male speech, man speaking",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 51904,
+                        "split": "train",
+                        "label": "people cheering",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.5255510210990906,
+                    "pos_sim": 0.006867256015539169,
+                    "neg_sim": 0.5324182510375977
+                }
+            ]
+        },
+        "Music": {
+            "count": 57167,
+            "alignment": 1.14046049118042,
+            "uniformity": -2.173609972000122,
+            "avg_margin": -0.11733171343803406,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 59741,
+                        "split": "train",
+                        "label": "playing drum kit",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 167865,
+                        "split": "train",
+                        "label": "playing djembe",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.6591257452964783,
+                    "pos_sim": -0.007499977946281433,
+                    "neg_sim": 0.6516257524490356
+                },
+                {
+                    "original": {
+                        "index": 3160,
+                        "split": "train",
+                        "label": "playing drum kit",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 32461,
+                        "split": "train",
+                        "label": "playing djembe",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.6543628573417664,
+                    "pos_sim": -0.046657249331474304,
+                    "neg_sim": 0.6077055931091309
+                },
+                {
+                    "original": {
+                        "index": 93532,
+                        "split": "train",
+                        "label": "playing erhu",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 63041,
+                        "split": "train",
+                        "label": "playing shofar",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.6215367317199707,
+                    "pos_sim": -0.0028866101056337357,
+                    "neg_sim": 0.6186501383781433
+                },
+                {
+                    "original": {
+                        "index": 170843,
+                        "split": "train",
+                        "label": "playing drum kit",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 167865,
+                        "split": "train",
+                        "label": "playing djembe",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.5949020385742188,
+                    "pos_sim": 0.036422617733478546,
+                    "neg_sim": 0.6313246488571167
+                },
+                {
+                    "original": {
+                        "index": 74822,
+                        "split": "train",
+                        "label": "playing erhu",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 38333,
+                        "split": "train",
+                        "label": "playing violin, fiddle",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.5771262645721436,
+                    "pos_sim": 0.049114808440208435,
+                    "neg_sim": 0.6262410879135132
+                }
+            ]
+        },
+        "Animal": {
+            "count": 27570,
+            "alignment": 1.2355396747589111,
+            "uniformity": -2.5550882816314697,
+            "avg_margin": -0.0714806541800499,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 41905,
+                        "split": "train",
+                        "label": "otter growling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 125859,
+                        "split": "train",
+                        "label": "chipmunk chirping",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.7108539938926697,
+                    "pos_sim": -0.20092588663101196,
+                    "neg_sim": 0.5099281072616577
+                },
+                {
+                    "original": {
+                        "index": 76054,
+                        "split": "train",
+                        "label": "otter growling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 125859,
+                        "split": "train",
+                        "label": "chipmunk chirping",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.6322847008705139,
+                    "pos_sim": -0.020791932940483093,
+                    "neg_sim": 0.6114927530288696
+                },
+                {
+                    "original": {
+                        "index": 41904,
+                        "split": "train",
+                        "label": "otter growling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 125859,
+                        "split": "train",
+                        "label": "chipmunk chirping",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.6178287267684937,
+                    "pos_sim": -0.15553024411201477,
+                    "neg_sim": 0.4622984826564789
+                },
+                {
+                    "original": {
+                        "index": 5666,
+                        "split": "test",
+                        "label": "otter growling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 125859,
+                        "split": "train",
+                        "label": "chipmunk chirping",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.6039818525314331,
+                    "pos_sim": -0.09267763793468475,
+                    "neg_sim": 0.5113041996955872
+                },
+                {
+                    "original": {
+                        "index": 128213,
+                        "split": "train",
+                        "label": "mosquito buzzing",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 51803,
+                        "split": "train",
+                        "label": "horse clip-clop",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.6013829708099365,
+                    "pos_sim": -0.22732999920845032,
+                    "neg_sim": 0.3740529417991638
+                }
+            ]
+        },
+        "Nature": {
+            "count": 12820,
+            "alignment": 1.3327305316925049,
+            "uniformity": -2.6812527179718018,
+            "avg_margin": -0.07475564628839493,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 25962,
+                        "split": "train",
+                        "label": "stream burbling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 155185,
+                        "split": "train",
+                        "label": "lighting firecrackers",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.5329599976539612,
+                    "pos_sim": 0.02358044683933258,
+                    "neg_sim": 0.5565404295921326
+                },
+                {
+                    "original": {
+                        "index": 11359,
+                        "split": "test",
+                        "label": "ocean burbling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 113349,
+                        "split": "train",
+                        "label": "pumping water",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.4590960144996643,
+                    "pos_sim": -0.24267680943012238,
+                    "neg_sim": 0.21641920506954193
+                },
+                {
+                    "original": {
+                        "index": 78879,
+                        "split": "train",
+                        "label": "splashing water",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 22055,
+                        "split": "train",
+                        "label": "fire truck siren",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.43999171257019043,
+                    "pos_sim": -0.27291837334632874,
+                    "neg_sim": 0.1670733392238617
+                },
+                {
+                    "original": {
+                        "index": 79058,
+                        "split": "train",
+                        "label": "railroad car, train wagon",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 113349,
+                        "split": "train",
+                        "label": "pumping water",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.4017321467399597,
+                    "pos_sim": -0.06055383384227753,
+                    "neg_sim": 0.341178297996521
+                },
+                {
+                    "original": {
+                        "index": 168869,
+                        "split": "train",
+                        "label": "splashing water",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 16298,
+                        "split": "train",
+                        "label": "lighting firecrackers",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.4003024101257324,
+                    "pos_sim": -0.12518790364265442,
+                    "neg_sim": 0.275114506483078
+                }
+            ]
+        },
+        "Machine_Vehicle": {
+            "count": 15461,
+            "alignment": 1.2809439897537231,
+            "uniformity": -2.548229217529297,
+            "avg_margin": -0.06444548070430756,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 79392,
+                        "split": "train",
+                        "label": "driving motorcycle",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 147395,
+                        "split": "train",
+                        "label": "engine accelerating, revving, vroom",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.5884840488433838,
+                    "pos_sim": 0.06764306873083115,
+                    "neg_sim": 0.6561270952224731
+                },
+                {
+                    "original": {
+                        "index": 3421,
+                        "split": "test",
+                        "label": "motorboat, speedboat acceleration",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 153008,
+                        "split": "train",
+                        "label": "driving buses",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.5762854218482971,
+                    "pos_sim": -0.26264137029647827,
+                    "neg_sim": 0.31364405155181885
+                },
+                {
+                    "original": {
+                        "index": 38749,
+                        "split": "train",
+                        "label": "driving motorcycle",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 41255,
+                        "split": "train",
+                        "label": "engine accelerating, revving, vroom",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.5451862812042236,
+                    "pos_sim": 0.06837661564350128,
+                    "neg_sim": 0.6135628819465637
+                },
+                {
+                    "original": {
+                        "index": 151292,
+                        "split": "train",
+                        "label": "driving motorcycle",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 147395,
+                        "split": "train",
+                        "label": "engine accelerating, revving, vroom",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.5322505235671997,
+                    "pos_sim": 0.07990209758281708,
+                    "neg_sim": 0.612152636051178
+                },
+                {
+                    "original": {
+                        "index": 14135,
+                        "split": "train",
+                        "label": "driving motorcycle",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 41255,
+                        "split": "train",
+                        "label": "engine accelerating, revving, vroom",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.5250016450881958,
+                    "pos_sim": 0.09597036242485046,
+                    "neg_sim": 0.6209720373153687
+                }
+            ]
+        },
+        "Tool_Mechanism": {
+            "count": 7416,
+            "alignment": 1.2807728052139282,
+            "uniformity": -2.6278820037841797,
+            "avg_margin": -0.023717734962701797,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 134967,
+                        "split": "train",
+                        "label": "eating with cutlery",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 146704,
+                        "split": "train",
+                        "label": "electric grinder grinding",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.6176365613937378,
+                    "pos_sim": -0.013100401498377323,
+                    "neg_sim": 0.6045361757278442
+                },
+                {
+                    "original": {
+                        "index": 71485,
+                        "split": "train",
+                        "label": "arc welding",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 590,
+                        "split": "train",
+                        "label": "hammering nails",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.4271143972873688,
+                    "pos_sim": 0.07591316103935242,
+                    "neg_sim": 0.5030275583267212
+                },
+                {
+                    "original": {
+                        "index": 96698,
+                        "split": "train",
+                        "label": "electric grinder grinding",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 13721,
+                        "split": "train",
+                        "label": "slot machine",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.4091129004955292,
+                    "pos_sim": -0.1733667254447937,
+                    "neg_sim": 0.23574617505073547
+                },
+                {
+                    "original": {
+                        "index": 34578,
+                        "split": "train",
+                        "label": "hammering nails",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 13721,
+                        "split": "train",
+                        "label": "slot machine",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.38523370027542114,
+                    "pos_sim": -0.2654687762260437,
+                    "neg_sim": 0.11976490914821625
+                },
+                {
+                    "original": {
+                        "index": 138934,
+                        "split": "train",
+                        "label": "eating with cutlery",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 590,
+                        "split": "train",
+                        "label": "hammering nails",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.35869958996772766,
+                    "pos_sim": 0.12675908207893372,
+                    "neg_sim": 0.4854586720466614
+                }
+            ]
+        },
+        "Sports_Action": {
+            "count": 4924,
+            "alignment": 1.4401811361312866,
+            "uniformity": -2.5058324337005615,
+            "avg_margin": -0.060037314891815186,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 46886,
+                        "split": "train",
+                        "label": "running electric fan",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 34386,
+                        "split": "train",
+                        "label": "golf driving",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.5756779909133911,
+                    "pos_sim": -0.19557605683803558,
+                    "neg_sim": 0.3801019489765167
+                },
+                {
+                    "original": {
+                        "index": 77254,
+                        "split": "train",
+                        "label": "golf driving",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 117923,
+                        "split": "train",
+                        "label": "roller coaster running",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.5453057885169983,
+                    "pos_sim": -0.11893004179000854,
+                    "neg_sim": 0.42637574672698975
+                },
+                {
+                    "original": {
+                        "index": 36485,
+                        "split": "train",
+                        "label": "running electric fan",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 34386,
+                        "split": "train",
+                        "label": "golf driving",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.5211647748947144,
+                    "pos_sim": -0.1923993080854416,
+                    "neg_sim": 0.32876548171043396
+                },
+                {
+                    "original": {
+                        "index": 55012,
+                        "split": "train",
+                        "label": "running electric fan",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 530,
+                        "split": "test",
+                        "label": "shot football",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.49881020188331604,
+                    "pos_sim": -0.22165003418922424,
+                    "neg_sim": 0.2771601676940918
+                },
+                {
+                    "original": {
+                        "index": 72809,
+                        "split": "train",
+                        "label": "swimming",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 130839,
+                        "split": "train",
+                        "label": "roller coaster running",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.4682040214538574,
+                    "pos_sim": -0.007126978598535061,
+                    "neg_sim": 0.4610770344734192
+                }
+            ]
+        },
+        "Home_Everyday": {
+            "count": 7121,
+            "alignment": 1.4023585319519043,
+            "uniformity": -2.7012064456939697,
+            "avg_margin": -0.05424986407160759,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 106253,
+                        "split": "train",
+                        "label": "eletric blender running",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 51088,
+                        "split": "train",
+                        "label": "chopping wood",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.5389145612716675,
+                    "pos_sim": -0.01962132751941681,
+                    "neg_sim": 0.5192932486534119
+                },
+                {
+                    "original": {
+                        "index": 1606,
+                        "split": "test",
+                        "label": "eletric blender running",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 51088,
+                        "split": "train",
+                        "label": "chopping wood",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.46155327558517456,
+                    "pos_sim": 0.024033479392528534,
+                    "neg_sim": 0.4855867624282837
+                },
+                {
+                    "original": {
+                        "index": 7204,
+                        "split": "test",
+                        "label": "mouse pattering",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 36169,
+                        "split": "train",
+                        "label": "firing muskets",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.45476657152175903,
+                    "pos_sim": -0.11985574662685394,
+                    "neg_sim": 0.3349108397960663
+                },
+                {
+                    "original": {
+                        "index": 57368,
+                        "split": "train",
+                        "label": "mouse pattering",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 66029,
+                        "split": "train",
+                        "label": "chopping wood",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.4379793405532837,
+                    "pos_sim": 0.1260174661874771,
+                    "neg_sim": 0.5639967918395996
+                },
+                {
+                    "original": {
+                        "index": 161784,
+                        "split": "train",
+                        "label": "eletric blender running",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 51088,
+                        "split": "train",
+                        "label": "chopping wood",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.4336312711238861,
+                    "pos_sim": -0.053427718579769135,
+                    "neg_sim": 0.3802035450935364
+                }
+            ]
+        }
+    },
+    "m2d": {
+        "Other": {
+            "count": 42952,
+            "alignment": 1.3746370077133179,
+            "uniformity": -2.068483352661133,
+            "avg_margin": -0.009740268811583519,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 141014,
+                        "split": "train",
+                        "label": "skiing",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 138527,
+                        "split": "train",
+                        "label": "bouncing on trampoline",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.15569639205932617,
+                    "pos_sim": 0.1175946593284607,
+                    "neg_sim": 0.27329105138778687
+                },
+                {
+                    "original": {
+                        "index": 7632,
+                        "split": "test",
+                        "label": "people sneezing",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 140385,
+                        "split": "train",
+                        "label": "mouse clicking",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.1319521814584732,
+                    "pos_sim": 0.12606476247310638,
+                    "neg_sim": 0.2580169439315796
+                },
+                {
+                    "original": {
+                        "index": 154073,
+                        "split": "train",
+                        "label": "air horn",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 108603,
+                        "split": "train",
+                        "label": "subway, metro, underground",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.12940047681331635,
+                    "pos_sim": 0.2268831878900528,
+                    "neg_sim": 0.35628366470336914
+                },
+                {
+                    "original": {
+                        "index": 47315,
+                        "split": "train",
+                        "label": "cheetah chirrup",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 29686,
+                        "split": "train",
+                        "label": "people eating",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.1258390247821808,
+                    "pos_sim": 0.16446742415428162,
+                    "neg_sim": 0.2903064489364624
+                },
+                {
+                    "original": {
+                        "index": 183580,
+                        "split": "train",
+                        "label": "forging swords",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 90463,
+                        "split": "train",
+                        "label": "chimpanzee pant-hooting",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.12526342272758484,
+                    "pos_sim": 0.24028077721595764,
+                    "neg_sim": 0.3655441999435425
+                }
+            ]
+        },
+        "Human": {
+            "count": 23663,
+            "alignment": 1.3796828985214233,
+            "uniformity": -2.049288749694824,
+            "avg_margin": -0.010456408374011517,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 5010,
+                        "split": "test",
+                        "label": "baby babbling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 29287,
+                        "split": "train",
+                        "label": "people screaming",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.23619970679283142,
+                    "pos_sim": 0.0839088186621666,
+                    "neg_sim": 0.3201085329055786
+                },
+                {
+                    "original": {
+                        "index": 60530,
+                        "split": "train",
+                        "label": "people coughing",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 79341,
+                        "split": "train",
+                        "label": "child speech, kid speaking",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.19627141952514648,
+                    "pos_sim": 0.14965710043907166,
+                    "neg_sim": 0.34592851996421814
+                },
+                {
+                    "original": {
+                        "index": 179211,
+                        "split": "train",
+                        "label": "reversing beeps",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 44668,
+                        "split": "train",
+                        "label": "opening or closing car doors",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.1753910928964615,
+                    "pos_sim": 0.13158158957958221,
+                    "neg_sim": 0.3069726824760437
+                },
+                {
+                    "original": {
+                        "index": 50586,
+                        "split": "train",
+                        "label": "people battle cry",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 2786,
+                        "split": "train",
+                        "label": "alligators, crocodiles hissing",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.17179884016513824,
+                    "pos_sim": 0.17370347678661346,
+                    "neg_sim": 0.3455023169517517
+                },
+                {
+                    "original": {
+                        "index": 1357,
+                        "split": "test",
+                        "label": "people battle cry",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 117797,
+                        "split": "train",
+                        "label": "baby crying",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.15356174111366272,
+                    "pos_sim": 0.1873023808002472,
+                    "neg_sim": 0.3408641219139099
+                }
+            ]
+        },
+        "Music": {
+            "count": 57167,
+            "alignment": 1.3241008520126343,
+            "uniformity": -1.8190398216247559,
+            "avg_margin": -0.00698979152366519,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 126792,
+                        "split": "train",
+                        "label": "playing double bass",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 125273,
+                        "split": "train",
+                        "label": "playing cymbal",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.12451411783695221,
+                    "pos_sim": 0.19512085616588593,
+                    "neg_sim": 0.31963497400283813
+                },
+                {
+                    "original": {
+                        "index": 4451,
+                        "split": "test",
+                        "label": "playing theremin",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 328,
+                        "split": "test",
+                        "label": "playing zither",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.11717447638511658,
+                    "pos_sim": 0.21712884306907654,
+                    "neg_sim": 0.3343033194541931
+                },
+                {
+                    "original": {
+                        "index": 115051,
+                        "split": "train",
+                        "label": "playing glockenspiel",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 133265,
+                        "split": "train",
+                        "label": "playing piano",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.11296948790550232,
+                    "pos_sim": 0.19912967085838318,
+                    "neg_sim": 0.3120991587638855
+                },
+                {
+                    "original": {
+                        "index": 19252,
+                        "split": "train",
+                        "label": "playing bugle",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 122393,
+                        "split": "train",
+                        "label": "orchestra",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.11179153621196747,
+                    "pos_sim": 0.22490759193897247,
+                    "neg_sim": 0.33669912815093994
+                },
+                {
+                    "original": {
+                        "index": 15187,
+                        "split": "test",
+                        "label": "playing steelpan",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 123035,
+                        "split": "train",
+                        "label": "playing djembe",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.10401354730129242,
+                    "pos_sim": 0.21823547780513763,
+                    "neg_sim": 0.32224902510643005
+                }
+            ]
+        },
+        "Animal": {
+            "count": 27570,
+            "alignment": 1.3515377044677734,
+            "uniformity": -1.9142361879348755,
+            "avg_margin": -0.007893122732639313,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 158196,
+                        "split": "train",
+                        "label": "chipmunk chirping",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 68044,
+                        "split": "train",
+                        "label": "sea lion barking",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.19372870028018951,
+                    "pos_sim": 0.07649756968021393,
+                    "neg_sim": 0.27022626996040344
+                },
+                {
+                    "original": {
+                        "index": 23581,
+                        "split": "train",
+                        "label": "cuckoo bird calling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 24333,
+                        "split": "train",
+                        "label": "snake rattling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.16082632541656494,
+                    "pos_sim": 0.16351830959320068,
+                    "neg_sim": 0.3243446350097656
+                },
+                {
+                    "original": {
+                        "index": 10741,
+                        "split": "test",
+                        "label": "dog growling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 3832,
+                        "split": "test",
+                        "label": "sheep bleating",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.16037780046463013,
+                    "pos_sim": 0.18763840198516846,
+                    "neg_sim": 0.3480162024497986
+                },
+                {
+                    "original": {
+                        "index": 70847,
+                        "split": "train",
+                        "label": "mosquito buzzing",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 139821,
+                        "split": "train",
+                        "label": "frog croaking",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.10899084806442261,
+                    "pos_sim": 0.22670698165893555,
+                    "neg_sim": 0.33569782972335815
+                },
+                {
+                    "original": {
+                        "index": 52684,
+                        "split": "train",
+                        "label": "elephant trumpeting",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 2173,
+                        "split": "test",
+                        "label": "striking bowling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.10834109783172607,
+                    "pos_sim": 0.10221414268016815,
+                    "neg_sim": 0.21055524051189423
+                }
+            ]
+        },
+        "Nature": {
+            "count": 12820,
+            "alignment": 1.3731213808059692,
+            "uniformity": -1.8220529556274414,
+            "avg_margin": -0.007859422825276852,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 852,
+                        "split": "test",
+                        "label": "wind rustling leaves",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 13397,
+                        "split": "train",
+                        "label": "fireworks banging",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.1364777833223343,
+                    "pos_sim": 0.1724938601255417,
+                    "neg_sim": 0.308971643447876
+                },
+                {
+                    "original": {
+                        "index": 90947,
+                        "split": "train",
+                        "label": "wind chime",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 1746,
+                        "split": "train",
+                        "label": "splashing water",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.11281904578208923,
+                    "pos_sim": 0.12121593952178955,
+                    "neg_sim": 0.23403498530387878
+                },
+                {
+                    "original": {
+                        "index": 94962,
+                        "split": "train",
+                        "label": "wind rustling leaves",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 73431,
+                        "split": "train",
+                        "label": "waterfall burbling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.1043565571308136,
+                    "pos_sim": 0.22987100481987,
+                    "neg_sim": 0.3342275619506836
+                },
+                {
+                    "original": {
+                        "index": 109253,
+                        "split": "train",
+                        "label": "railroad car, train wagon",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 5188,
+                        "split": "test",
+                        "label": "spraying water",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.10171198844909668,
+                    "pos_sim": 0.227071613073349,
+                    "neg_sim": 0.3287836015224457
+                },
+                {
+                    "original": {
+                        "index": 49160,
+                        "split": "train",
+                        "label": "wind rustling leaves",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 17968,
+                        "split": "train",
+                        "label": "pumping water",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.09947066009044647,
+                    "pos_sim": 0.17707164585590363,
+                    "neg_sim": 0.2765423059463501
+                }
+            ]
+        },
+        "Machine_Vehicle": {
+            "count": 15461,
+            "alignment": 1.3657511472702026,
+            "uniformity": -1.7158594131469727,
+            "avg_margin": -0.0060828980058431625,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 40242,
+                        "split": "train",
+                        "label": "rowboat, canoe, kayak rowing",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 181279,
+                        "split": "train",
+                        "label": "driving motorcycle",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.11131736636161804,
+                    "pos_sim": 0.18533435463905334,
+                    "neg_sim": 0.2966517210006714
+                },
+                {
+                    "original": {
+                        "index": 2801,
+                        "split": "test",
+                        "label": "engine accelerating, revving, vroom",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 9573,
+                        "split": "test",
+                        "label": "car engine starting",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.1054200530052185,
+                    "pos_sim": 0.24614834785461426,
+                    "neg_sim": 0.35156840085983276
+                },
+                {
+                    "original": {
+                        "index": 47187,
+                        "split": "train",
+                        "label": "tractor digging",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 3929,
+                        "split": "train",
+                        "label": "vehicle horn, car horn, honking",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.10498717427253723,
+                    "pos_sim": 0.21500489115715027,
+                    "neg_sim": 0.3199920654296875
+                },
+                {
+                    "original": {
+                        "index": 26823,
+                        "split": "train",
+                        "label": "civil defense siren",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 81997,
+                        "split": "train",
+                        "label": "airplane",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.10274362564086914,
+                    "pos_sim": 0.11710642278194427,
+                    "neg_sim": 0.21985004842281342
+                },
+                {
+                    "original": {
+                        "index": 120378,
+                        "split": "train",
+                        "label": "rowboat, canoe, kayak rowing",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 23138,
+                        "split": "train",
+                        "label": "motorboat, speedboat acceleration",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.10258591175079346,
+                    "pos_sim": 0.2535916268825531,
+                    "neg_sim": 0.35617753863334656
+                }
+            ]
+        },
+        "Tool_Mechanism": {
+            "count": 7416,
+            "alignment": 1.3657958507537842,
+            "uniformity": -1.9129172563552856,
+            "avg_margin": -0.002689624670892954,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 121030,
+                        "split": "train",
+                        "label": "printer printing",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 130322,
+                        "split": "train",
+                        "label": "typing on typewriter",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.10710260272026062,
+                    "pos_sim": 0.2534805238246918,
+                    "neg_sim": 0.3605831265449524
+                },
+                {
+                    "original": {
+                        "index": 67278,
+                        "split": "train",
+                        "label": "hammering nails",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 38681,
+                        "split": "train",
+                        "label": "cutting hair with electric trimmers",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.09313929080963135,
+                    "pos_sim": 0.18494519591331482,
+                    "neg_sim": 0.27808448672294617
+                },
+                {
+                    "original": {
+                        "index": 141215,
+                        "split": "train",
+                        "label": "arc welding",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 42531,
+                        "split": "train",
+                        "label": "cutting hair with electric trimmers",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.08525249361991882,
+                    "pos_sim": 0.13680803775787354,
+                    "neg_sim": 0.22206053137779236
+                },
+                {
+                    "original": {
+                        "index": 170848,
+                        "split": "train",
+                        "label": "electric grinder grinding",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 42531,
+                        "split": "train",
+                        "label": "cutting hair with electric trimmers",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.07759542763233185,
+                    "pos_sim": 0.19740848243236542,
+                    "neg_sim": 0.27500391006469727
+                },
+                {
+                    "original": {
+                        "index": 135198,
+                        "split": "train",
+                        "label": "arc welding",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 99674,
+                        "split": "train",
+                        "label": "hammering nails",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.0763915479183197,
+                    "pos_sim": 0.23112958669662476,
+                    "neg_sim": 0.30752113461494446
+                }
+            ]
+        },
+        "Sports_Action": {
+            "count": 4924,
+            "alignment": 1.3881938457489014,
+            "uniformity": -1.8279210329055786,
+            "avg_margin": -0.0031624638941138983,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 4635,
+                        "split": "test",
+                        "label": "roller coaster running",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 163309,
+                        "split": "train",
+                        "label": "hedge trimmer running",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.14206433296203613,
+                    "pos_sim": 0.1971752941608429,
+                    "neg_sim": 0.33923962712287903
+                },
+                {
+                    "original": {
+                        "index": 84349,
+                        "split": "train",
+                        "label": "golf driving",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 34102,
+                        "split": "train",
+                        "label": "running electric fan",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.10204504430294037,
+                    "pos_sim": 0.19764815270900726,
+                    "neg_sim": 0.29969319701194763
+                },
+                {
+                    "original": {
+                        "index": 88973,
+                        "split": "train",
+                        "label": "roller coaster running",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 56701,
+                        "split": "train",
+                        "label": "people running",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.09863463044166565,
+                    "pos_sim": 0.2538524270057678,
+                    "neg_sim": 0.35248705744743347
+                },
+                {
+                    "original": {
+                        "index": 11161,
+                        "split": "test",
+                        "label": "basketball bounce",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 4720,
+                        "split": "train",
+                        "label": "shot football",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.09862461686134338,
+                    "pos_sim": 0.17746976017951965,
+                    "neg_sim": 0.27609437704086304
+                },
+                {
+                    "original": {
+                        "index": 35913,
+                        "split": "train",
+                        "label": "running electric fan",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 143,
+                        "split": "test",
+                        "label": "swimming",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.08713233470916748,
+                    "pos_sim": 0.18627578020095825,
+                    "neg_sim": 0.27340811491012573
+                }
+            ]
+        },
+        "Home_Everyday": {
+            "count": 7121,
+            "alignment": 1.3826781511306763,
+            "uniformity": -1.9655503034591675,
+            "avg_margin": -0.004244357813149691,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 75738,
+                        "split": "train",
+                        "label": "firing muskets",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 57413,
+                        "split": "train",
+                        "label": "cell phone buzzing",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.13596545159816742,
+                    "pos_sim": 0.19470836222171783,
+                    "neg_sim": 0.33067381381988525
+                },
+                {
+                    "original": {
+                        "index": 13357,
+                        "split": "test",
+                        "label": "sliding door",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 96783,
+                        "split": "train",
+                        "label": "chopping wood",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.13190433382987976,
+                    "pos_sim": 0.1775663197040558,
+                    "neg_sim": 0.30947065353393555
+                },
+                {
+                    "original": {
+                        "index": 963,
+                        "split": "test",
+                        "label": "sliding door",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 96783,
+                        "split": "train",
+                        "label": "chopping wood",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.11420139670372009,
+                    "pos_sim": 0.23858103156089783,
+                    "neg_sim": 0.3527824282646179
+                },
+                {
+                    "original": {
+                        "index": 13552,
+                        "split": "test",
+                        "label": "cell phone buzzing",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 148480,
+                        "split": "train",
+                        "label": "plastic bottle crushing",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.10656064748764038,
+                    "pos_sim": 0.18085938692092896,
+                    "neg_sim": 0.28742003440856934
+                },
+                {
+                    "original": {
+                        "index": 133893,
+                        "split": "train",
+                        "label": "firing muskets",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 103337,
+                        "split": "train",
+                        "label": "chopping food",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.10432404279708862,
+                    "pos_sim": 0.16450649499893188,
+                    "neg_sim": 0.2688305377960205
+                }
+            ]
+        }
+    },
+    "mga": {
+        "Other": {
+            "count": 42952,
+            "alignment": 1.3656188249588013,
+            "uniformity": -3.2225120067596436,
+            "avg_margin": -0.04839678108692169,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 34327,
+                        "split": "train",
+                        "label": "forging swords",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 158300,
+                        "split": "train",
+                        "label": "hair dryer drying",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.4197908043861389,
+                    "pos_sim": 0.07287965714931488,
+                    "neg_sim": 0.4926704466342926
+                },
+                {
+                    "original": {
+                        "index": 180525,
+                        "split": "train",
+                        "label": "writing on blackboard with chalk",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 104102,
+                        "split": "train",
+                        "label": "people eating noodle",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.41524460911750793,
+                    "pos_sim": -0.02274598367512226,
+                    "neg_sim": 0.39249861240386963
+                },
+                {
+                    "original": {
+                        "index": 97359,
+                        "split": "train",
+                        "label": "penguins braying",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 154997,
+                        "split": "train",
+                        "label": "children shouting",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.38937216997146606,
+                    "pos_sim": 0.028944246470928192,
+                    "neg_sim": 0.41831642389297485
+                },
+                {
+                    "original": {
+                        "index": 51881,
+                        "split": "train",
+                        "label": "elk bugling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 176753,
+                        "split": "train",
+                        "label": "air conditioning noise",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.38809075951576233,
+                    "pos_sim": 0.07273313403129578,
+                    "neg_sim": 0.4608238935470581
+                },
+                {
+                    "original": {
+                        "index": 181180,
+                        "split": "train",
+                        "label": "elk bugling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 165055,
+                        "split": "train",
+                        "label": "people shuffling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.37359941005706787,
+                    "pos_sim": -0.005499090068042278,
+                    "neg_sim": 0.3681003153324127
+                }
+            ]
+        },
+        "Human": {
+            "count": 23663,
+            "alignment": 1.2838599681854248,
+            "uniformity": -3.0899698734283447,
+            "avg_margin": -0.03795230761170387,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 119558,
+                        "split": "train",
+                        "label": "singing choir",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 3820,
+                        "split": "train",
+                        "label": "people cheering",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.4392127990722656,
+                    "pos_sim": 0.0022570365108549595,
+                    "neg_sim": 0.44146984815597534
+                },
+                {
+                    "original": {
+                        "index": 27091,
+                        "split": "train",
+                        "label": "singing choir",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 78490,
+                        "split": "train",
+                        "label": "people cheering",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.41281139850616455,
+                    "pos_sim": -0.0037726424634456635,
+                    "neg_sim": 0.4090387523174286
+                },
+                {
+                    "original": {
+                        "index": 75176,
+                        "split": "train",
+                        "label": "singing choir",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 132689,
+                        "split": "train",
+                        "label": "people cheering",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.3697320818901062,
+                    "pos_sim": 0.03154658526182175,
+                    "neg_sim": 0.40127867460250854
+                },
+                {
+                    "original": {
+                        "index": 106169,
+                        "split": "train",
+                        "label": "alligators, crocodiles hissing",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 29983,
+                        "split": "train",
+                        "label": "male speech, man speaking",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.36204198002815247,
+                    "pos_sim": -0.01889640837907791,
+                    "neg_sim": 0.34314557909965515
+                },
+                {
+                    "original": {
+                        "index": 15881,
+                        "split": "train",
+                        "label": "eagle screaming",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 142306,
+                        "split": "train",
+                        "label": "baby babbling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.35827040672302246,
+                    "pos_sim": 0.1039811223745346,
+                    "neg_sim": 0.46225154399871826
+                }
+            ]
+        },
+        "Music": {
+            "count": 57167,
+            "alignment": 1.2593023777008057,
+            "uniformity": -2.362025737762451,
+            "avg_margin": -0.04279737547039986,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 234,
+                        "split": "train",
+                        "label": "playing castanets",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 3343,
+                        "split": "train",
+                        "label": "playing piano",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.4167706370353699,
+                    "pos_sim": 0.11065006256103516,
+                    "neg_sim": 0.527420699596405
+                },
+                {
+                    "original": {
+                        "index": 73,
+                        "split": "test",
+                        "label": "playing castanets",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 92644,
+                        "split": "train",
+                        "label": "playing piano",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.401604562997818,
+                    "pos_sim": 0.08698336035013199,
+                    "neg_sim": 0.4885879158973694
+                },
+                {
+                    "original": {
+                        "index": 5159,
+                        "split": "test",
+                        "label": "playing lacrosse",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 123279,
+                        "split": "train",
+                        "label": "playing volleyball",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.3630654811859131,
+                    "pos_sim": 0.12299270182847977,
+                    "neg_sim": 0.48605817556381226
+                },
+                {
+                    "original": {
+                        "index": 183065,
+                        "split": "train",
+                        "label": "playing table tennis",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 123279,
+                        "split": "train",
+                        "label": "playing volleyball",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.3174431324005127,
+                    "pos_sim": 0.1281246691942215,
+                    "neg_sim": 0.4455678164958954
+                },
+                {
+                    "original": {
+                        "index": 94204,
+                        "split": "train",
+                        "label": "playing glockenspiel",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 3343,
+                        "split": "train",
+                        "label": "playing piano",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.31214457750320435,
+                    "pos_sim": 0.12234330177307129,
+                    "neg_sim": 0.43448787927627563
+                }
+            ]
+        },
+        "Animal": {
+            "count": 27570,
+            "alignment": 1.2506457567214966,
+            "uniformity": -3.004521369934082,
+            "avg_margin": -0.035338278859853745,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 4487,
+                        "split": "test",
+                        "label": "goose honking",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 151982,
+                        "split": "train",
+                        "label": "horse clip-clop",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.3841656744480133,
+                    "pos_sim": 0.06448333710432053,
+                    "neg_sim": 0.44864901900291443
+                },
+                {
+                    "original": {
+                        "index": 143495,
+                        "split": "train",
+                        "label": "otter growling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 148233,
+                        "split": "train",
+                        "label": "chipmunk chirping",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.38291919231414795,
+                    "pos_sim": 0.09271584451198578,
+                    "neg_sim": 0.4756350517272949
+                },
+                {
+                    "original": {
+                        "index": 45787,
+                        "split": "train",
+                        "label": "horse neighing",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 104046,
+                        "split": "train",
+                        "label": "chicken clucking",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.38009682297706604,
+                    "pos_sim": 0.11624947935342789,
+                    "neg_sim": 0.49634629487991333
+                },
+                {
+                    "original": {
+                        "index": 25518,
+                        "split": "train",
+                        "label": "chinchilla barking",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 148233,
+                        "split": "train",
+                        "label": "chipmunk chirping",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.3308942914009094,
+                    "pos_sim": 0.08502932637929916,
+                    "neg_sim": 0.4159236252307892
+                },
+                {
+                    "original": {
+                        "index": 141396,
+                        "split": "train",
+                        "label": "chinchilla barking",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 182575,
+                        "split": "train",
+                        "label": "chipmunk chirping",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.31471943855285645,
+                    "pos_sim": 0.14825953543186188,
+                    "neg_sim": 0.46297895908355713
+                }
+            ]
+        },
+        "Nature": {
+            "count": 12820,
+            "alignment": 1.2972153425216675,
+            "uniformity": -2.7690513134002686,
+            "avg_margin": -0.029809650033712387,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 84761,
+                        "split": "train",
+                        "label": "train horning",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 989,
+                        "split": "test",
+                        "label": "train wheels squealing",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.3277689814567566,
+                    "pos_sim": 0.1794307827949524,
+                    "neg_sim": 0.507199764251709
+                },
+                {
+                    "original": {
+                        "index": 63803,
+                        "split": "train",
+                        "label": "fire crackling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 40901,
+                        "split": "train",
+                        "label": "lighting firecrackers",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.3035382032394409,
+                    "pos_sim": 0.18988366425037384,
+                    "neg_sim": 0.49342188239097595
+                },
+                {
+                    "original": {
+                        "index": 141007,
+                        "split": "train",
+                        "label": "wind noise",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 162216,
+                        "split": "train",
+                        "label": "train wheels squealing",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.2909817695617676,
+                    "pos_sim": 0.22200053930282593,
+                    "neg_sim": 0.5129823088645935
+                },
+                {
+                    "original": {
+                        "index": 72271,
+                        "split": "train",
+                        "label": "railroad car, train wagon",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 124884,
+                        "split": "train",
+                        "label": "train horning",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.284954696893692,
+                    "pos_sim": 0.2729808986186981,
+                    "neg_sim": 0.5579355955123901
+                },
+                {
+                    "original": {
+                        "index": 43476,
+                        "split": "train",
+                        "label": "squishing water",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 14856,
+                        "split": "test",
+                        "label": "fire crackling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.2736593782901764,
+                    "pos_sim": 0.14427021145820618,
+                    "neg_sim": 0.41792958974838257
+                }
+            ]
+        },
+        "Machine_Vehicle": {
+            "count": 15461,
+            "alignment": 1.2524752616882324,
+            "uniformity": -2.5063414573669434,
+            "avg_margin": -0.023200608789920807,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 1284,
+                        "split": "test",
+                        "label": "driving motorcycle",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 77063,
+                        "split": "train",
+                        "label": "vehicle horn, car horn, honking",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.32059183716773987,
+                    "pos_sim": 0.23810741305351257,
+                    "neg_sim": 0.5586992502212524
+                },
+                {
+                    "original": {
+                        "index": 33300,
+                        "split": "train",
+                        "label": "vehicle horn, car horn, honking",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 52953,
+                        "split": "train",
+                        "label": "ambulance siren",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.29668575525283813,
+                    "pos_sim": 0.19873398542404175,
+                    "neg_sim": 0.4954197406768799
+                },
+                {
+                    "original": {
+                        "index": 2196,
+                        "split": "test",
+                        "label": "car engine starting",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 170371,
+                        "split": "train",
+                        "label": "car engine knocking",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.2809586524963379,
+                    "pos_sim": 0.1686537116765976,
+                    "neg_sim": 0.4496123790740967
+                },
+                {
+                    "original": {
+                        "index": 31576,
+                        "split": "train",
+                        "label": "civil defense siren",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 52953,
+                        "split": "train",
+                        "label": "ambulance siren",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.2762411832809448,
+                    "pos_sim": 0.2076946645975113,
+                    "neg_sim": 0.4839358329772949
+                },
+                {
+                    "original": {
+                        "index": 1480,
+                        "split": "train",
+                        "label": "car engine starting",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 174942,
+                        "split": "train",
+                        "label": "motorboat, speedboat acceleration",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.27589067816734314,
+                    "pos_sim": 0.17230963706970215,
+                    "neg_sim": 0.4482003152370453
+                }
+            ]
+        },
+        "Tool_Mechanism": {
+            "count": 7416,
+            "alignment": 1.3149644136428833,
+            "uniformity": -2.840993642807007,
+            "avg_margin": -0.012631747871637344,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 67388,
+                        "split": "train",
+                        "label": "hammering nails",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 134299,
+                        "split": "train",
+                        "label": "slot machine",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.33701497316360474,
+                    "pos_sim": 0.0381440669298172,
+                    "neg_sim": 0.37515905499458313
+                },
+                {
+                    "original": {
+                        "index": 70427,
+                        "split": "train",
+                        "label": "arc welding",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 151597,
+                        "split": "train",
+                        "label": "hammering nails",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.32451626658439636,
+                    "pos_sim": 0.08212283253669739,
+                    "neg_sim": 0.40663909912109375
+                },
+                {
+                    "original": {
+                        "index": 96924,
+                        "split": "train",
+                        "label": "hammering nails",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 126931,
+                        "split": "train",
+                        "label": "slot machine",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.29134535789489746,
+                    "pos_sim": 0.16060753166675568,
+                    "neg_sim": 0.45195287466049194
+                },
+                {
+                    "original": {
+                        "index": 110252,
+                        "split": "train",
+                        "label": "printer printing",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 141849,
+                        "split": "train",
+                        "label": "typing on typewriter",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.26888397336006165,
+                    "pos_sim": 0.2618383467197418,
+                    "neg_sim": 0.5307223200798035
+                },
+                {
+                    "original": {
+                        "index": 76538,
+                        "split": "train",
+                        "label": "hammering nails",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 171764,
+                        "split": "train",
+                        "label": "machine gun shooting",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.26729366183280945,
+                    "pos_sim": 0.10243312269449234,
+                    "neg_sim": 0.3697267770767212
+                }
+            ]
+        },
+        "Sports_Action": {
+            "count": 4924,
+            "alignment": 1.3714215755462646,
+            "uniformity": -2.900689125061035,
+            "avg_margin": -0.024145526811480522,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 4591,
+                        "split": "test",
+                        "label": "shot football",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 142769,
+                        "split": "train",
+                        "label": "roller coaster running",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.3310786485671997,
+                    "pos_sim": -0.03929596394300461,
+                    "neg_sim": 0.2917826771736145
+                },
+                {
+                    "original": {
+                        "index": 2194,
+                        "split": "test",
+                        "label": "shot football",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 142769,
+                        "split": "train",
+                        "label": "roller coaster running",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.30613720417022705,
+                    "pos_sim": 0.04387296363711357,
+                    "neg_sim": 0.3500101566314697
+                },
+                {
+                    "original": {
+                        "index": 637,
+                        "split": "test",
+                        "label": "shot football",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 142769,
+                        "split": "train",
+                        "label": "roller coaster running",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.3016519844532013,
+                    "pos_sim": -0.05601131543517113,
+                    "neg_sim": 0.24564066529273987
+                },
+                {
+                    "original": {
+                        "index": 112482,
+                        "split": "train",
+                        "label": "golf driving",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 127741,
+                        "split": "train",
+                        "label": "basketball bounce",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.2979832887649536,
+                    "pos_sim": -0.010944698937237263,
+                    "neg_sim": 0.2870385944843292
+                },
+                {
+                    "original": {
+                        "index": 37184,
+                        "split": "train",
+                        "label": "people running",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 137431,
+                        "split": "train",
+                        "label": "roller coaster running",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.29096829891204834,
+                    "pos_sim": 0.21184945106506348,
+                    "neg_sim": 0.5028177499771118
+                }
+            ]
+        },
+        "Home_Everyday": {
+            "count": 7121,
+            "alignment": 1.3168458938598633,
+            "uniformity": -3.032212972640991,
+            "avg_margin": -0.017643654718995094,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 96495,
+                        "split": "train",
+                        "label": "mouse pattering",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 109764,
+                        "split": "train",
+                        "label": "toilet flushing",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.384632408618927,
+                    "pos_sim": -0.1303127259016037,
+                    "neg_sim": 0.2543196678161621
+                },
+                {
+                    "original": {
+                        "index": 153388,
+                        "split": "train",
+                        "label": "mouse pattering",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 94362,
+                        "split": "train",
+                        "label": "people whispering",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.35757774114608765,
+                    "pos_sim": 0.131412073969841,
+                    "neg_sim": 0.48898983001708984
+                },
+                {
+                    "original": {
+                        "index": 32265,
+                        "split": "train",
+                        "label": "door slamming",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 176738,
+                        "split": "train",
+                        "label": "people sniggering",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.3233495354652405,
+                    "pos_sim": 0.142227441072464,
+                    "neg_sim": 0.46557697653770447
+                },
+                {
+                    "original": {
+                        "index": 159941,
+                        "split": "train",
+                        "label": "vacuum cleaner cleaning floors",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 108918,
+                        "split": "train",
+                        "label": "door slamming",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.29011303186416626,
+                    "pos_sim": 0.16545172035694122,
+                    "neg_sim": 0.4555647373199463
+                },
+                {
+                    "original": {
+                        "index": 71330,
+                        "split": "train",
+                        "label": "firing muskets",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 108918,
+                        "split": "train",
+                        "label": "door slamming",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.2745038866996765,
+                    "pos_sim": 0.10157414525747299,
+                    "neg_sim": 0.3760780394077301
+                }
+            ]
+        }
+    },
+    "msclap": {
+        "Nature": {
+            "count": 12820,
+            "alignment": 0.9462800025939941,
+            "uniformity": -1.9810893535614014,
+            "avg_margin": -0.027115939185023308,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 2399,
+                        "split": "test",
+                        "label": "stream burbling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 16136,
+                        "split": "train",
+                        "label": "train horning",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.3322308659553528,
+                    "pos_sim": 0.2509019374847412,
+                    "neg_sim": 0.583132803440094
+                },
+                {
+                    "original": {
+                        "index": 11359,
+                        "split": "test",
+                        "label": "ocean burbling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 41806,
+                        "split": "train",
+                        "label": "railroad car, train wagon",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.28593355417251587,
+                    "pos_sim": 0.3141223192214966,
+                    "neg_sim": 0.6000558733940125
+                },
+                {
+                    "original": {
+                        "index": 40919,
+                        "split": "train",
+                        "label": "squishing water",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 116956,
+                        "split": "train",
+                        "label": "fireworks banging",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.26915597915649414,
+                    "pos_sim": 0.3526642322540283,
+                    "neg_sim": 0.6218202114105225
+                },
+                {
+                    "original": {
+                        "index": 41623,
+                        "split": "train",
+                        "label": "ocean burbling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 4688,
+                        "split": "test",
+                        "label": "wind rustling leaves",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.24973732233047485,
+                    "pos_sim": 0.33647435903549194,
+                    "neg_sim": 0.5862116813659668
+                },
+                {
+                    "original": {
+                        "index": 167946,
+                        "split": "train",
+                        "label": "train horning",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 4688,
+                        "split": "test",
+                        "label": "wind rustling leaves",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.23592236638069153,
+                    "pos_sim": 0.24599066376686096,
+                    "neg_sim": 0.4819130301475525
+                }
+            ]
+        },
+        "Music": {
+            "count": 57167,
+            "alignment": 0.9134758114814758,
+            "uniformity": -2.0848636627197266,
+            "avg_margin": -0.034074630588293076,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 10768,
+                        "split": "train",
+                        "label": "playing guiro",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 73955,
+                        "split": "train",
+                        "label": "playing steelpan",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.39777663350105286,
+                    "pos_sim": 0.18207398056983948,
+                    "neg_sim": 0.5798506140708923
+                },
+                {
+                    "original": {
+                        "index": 61936,
+                        "split": "train",
+                        "label": "playing cornet",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 11063,
+                        "split": "train",
+                        "label": "playing trumpet",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.32493001222610474,
+                    "pos_sim": 0.26359522342681885,
+                    "neg_sim": 0.5885252356529236
+                },
+                {
+                    "original": {
+                        "index": 51742,
+                        "split": "train",
+                        "label": "playing cornet",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 11063,
+                        "split": "train",
+                        "label": "playing trumpet",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.3230900168418884,
+                    "pos_sim": 0.19066482782363892,
+                    "neg_sim": 0.5137548446655273
+                },
+                {
+                    "original": {
+                        "index": 155275,
+                        "split": "train",
+                        "label": "playing bass drum",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 3631,
+                        "split": "test",
+                        "label": "playing cymbal",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.3203396797180176,
+                    "pos_sim": 0.19248785078525543,
+                    "neg_sim": 0.5128275156021118
+                },
+                {
+                    "original": {
+                        "index": 167382,
+                        "split": "train",
+                        "label": "playing cornet",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 11063,
+                        "split": "train",
+                        "label": "playing trumpet",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.2959957718849182,
+                    "pos_sim": 0.17502780258655548,
+                    "neg_sim": 0.4710235595703125
+                }
+            ]
+        },
+        "Human": {
+            "count": 23663,
+            "alignment": 0.9695080518722534,
+            "uniformity": -2.4265363216400146,
+            "avg_margin": -0.03097282536327839,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 4598,
+                        "split": "train",
+                        "label": "reversing beeps",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 4323,
+                        "split": "test",
+                        "label": "male speech, man speaking",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.4080505967140198,
+                    "pos_sim": 0.17457371950149536,
+                    "neg_sim": 0.5826243162155151
+                },
+                {
+                    "original": {
+                        "index": 102835,
+                        "split": "train",
+                        "label": "eagle screaming",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 45753,
+                        "split": "train",
+                        "label": "male singing",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.4046878218650818,
+                    "pos_sim": 0.15264290571212769,
+                    "neg_sim": 0.5573307275772095
+                },
+                {
+                    "original": {
+                        "index": 12950,
+                        "split": "test",
+                        "label": "baby babbling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 116671,
+                        "split": "train",
+                        "label": "people cheering",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.39930564165115356,
+                    "pos_sim": 0.13488902151584625,
+                    "neg_sim": 0.5341946482658386
+                },
+                {
+                    "original": {
+                        "index": 133975,
+                        "split": "train",
+                        "label": "people battle cry",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 4323,
+                        "split": "test",
+                        "label": "male speech, man speaking",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.39872288703918457,
+                    "pos_sim": 0.1543039232492447,
+                    "neg_sim": 0.5530267953872681
+                },
+                {
+                    "original": {
+                        "index": 107912,
+                        "split": "train",
+                        "label": "reversing beeps",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 4323,
+                        "split": "test",
+                        "label": "male speech, man speaking",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.36853641271591187,
+                    "pos_sim": 0.2073604315519333,
+                    "neg_sim": 0.5758968591690063
+                }
+            ]
+        },
+        "Machine_Vehicle": {
+            "count": 15461,
+            "alignment": 0.9232929944992065,
+            "uniformity": -1.7864351272583008,
+            "avg_margin": -0.026300765573978424,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 14258,
+                        "split": "train",
+                        "label": "rowboat, canoe, kayak rowing",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 519,
+                        "split": "train",
+                        "label": "airplane",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.3648468255996704,
+                    "pos_sim": 0.17989219725131989,
+                    "neg_sim": 0.5447390079498291
+                },
+                {
+                    "original": {
+                        "index": 111334,
+                        "split": "train",
+                        "label": "civil defense siren",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 42296,
+                        "split": "train",
+                        "label": "ambulance siren",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.32647162675857544,
+                    "pos_sim": 0.22310180962085724,
+                    "neg_sim": 0.5495734214782715
+                },
+                {
+                    "original": {
+                        "index": 152414,
+                        "split": "train",
+                        "label": "ice cream truck, ice cream van",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 3781,
+                        "split": "test",
+                        "label": "car engine idling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.3223969340324402,
+                    "pos_sim": 0.22408567368984222,
+                    "neg_sim": 0.5464826226234436
+                },
+                {
+                    "original": {
+                        "index": 181431,
+                        "split": "train",
+                        "label": "rowboat, canoe, kayak rowing",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 67005,
+                        "split": "train",
+                        "label": "engine accelerating, revving, vroom",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.30122846364974976,
+                    "pos_sim": 0.2560550570487976,
+                    "neg_sim": 0.5572835206985474
+                },
+                {
+                    "original": {
+                        "index": 25855,
+                        "split": "train",
+                        "label": "tractor digging",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 67005,
+                        "split": "train",
+                        "label": "engine accelerating, revving, vroom",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.2949797213077545,
+                    "pos_sim": 0.303443044424057,
+                    "neg_sim": 0.5984227657318115
+                }
+            ]
+        },
+        "Home_Everyday": {
+            "count": 7121,
+            "alignment": 1.041272521018982,
+            "uniformity": -2.3237733840942383,
+            "avg_margin": -0.019851237535476685,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 700,
+                        "split": "train",
+                        "label": "mouse pattering",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 13687,
+                        "split": "test",
+                        "label": "door slamming",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.3007791042327881,
+                    "pos_sim": 0.1748782992362976,
+                    "neg_sim": 0.4756574034690857
+                },
+                {
+                    "original": {
+                        "index": 170235,
+                        "split": "train",
+                        "label": "sliding door",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 41224,
+                        "split": "train",
+                        "label": "mouse pattering",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.28465914726257324,
+                    "pos_sim": 0.23283208906650543,
+                    "neg_sim": 0.5174912214279175
+                },
+                {
+                    "original": {
+                        "index": 31424,
+                        "split": "train",
+                        "label": "toilet flushing",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 41224,
+                        "split": "train",
+                        "label": "mouse pattering",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.2757752239704132,
+                    "pos_sim": 0.08022523671388626,
+                    "neg_sim": 0.35600045323371887
+                },
+                {
+                    "original": {
+                        "index": 92829,
+                        "split": "train",
+                        "label": "sliding door",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 12509,
+                        "split": "test",
+                        "label": "chopping wood",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.2645806074142456,
+                    "pos_sim": 0.21879695355892181,
+                    "neg_sim": 0.4833775758743286
+                },
+                {
+                    "original": {
+                        "index": 144136,
+                        "split": "train",
+                        "label": "mouse pattering",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 35243,
+                        "split": "train",
+                        "label": "people sniggering",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.26352882385253906,
+                    "pos_sim": 0.3304722309112549,
+                    "neg_sim": 0.594001054763794
+                }
+            ]
+        },
+        "Animal": {
+            "count": 27570,
+            "alignment": 0.953924834728241,
+            "uniformity": -2.307326316833496,
+            "avg_margin": -0.030868155881762505,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 6691,
+                        "split": "test",
+                        "label": "otter growling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 21953,
+                        "split": "train",
+                        "label": "chipmunk chirping",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.39041057229042053,
+                    "pos_sim": 0.02342131733894348,
+                    "neg_sim": 0.413831889629364
+                },
+                {
+                    "original": {
+                        "index": 17641,
+                        "split": "train",
+                        "label": "gibbon howling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 102222,
+                        "split": "train",
+                        "label": "mosquito buzzing",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.32354605197906494,
+                    "pos_sim": 0.3357125520706177,
+                    "neg_sim": 0.6592586040496826
+                },
+                {
+                    "original": {
+                        "index": 63281,
+                        "split": "train",
+                        "label": "gibbon howling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 88334,
+                        "split": "train",
+                        "label": "lions roaring",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.2982221245765686,
+                    "pos_sim": 0.19452674686908722,
+                    "neg_sim": 0.49274885654449463
+                },
+                {
+                    "original": {
+                        "index": 173732,
+                        "split": "train",
+                        "label": "dog bow-wow",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 60168,
+                        "split": "train",
+                        "label": "chicken crowing",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.2925871014595032,
+                    "pos_sim": 0.20911653339862823,
+                    "neg_sim": 0.5017036199569702
+                },
+                {
+                    "original": {
+                        "index": 2040,
+                        "split": "test",
+                        "label": "coyote howling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 144161,
+                        "split": "train",
+                        "label": "dog growling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.28649306297302246,
+                    "pos_sim": 0.3364561200141907,
+                    "neg_sim": 0.6229491829872131
+                }
+            ]
+        },
+        "Other": {
+            "count": 42952,
+            "alignment": 1.0577110052108765,
+            "uniformity": -2.566089391708374,
+            "avg_margin": -0.04323441535234451,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 171696,
+                        "split": "train",
+                        "label": "donkey, ass braying",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 12332,
+                        "split": "train",
+                        "label": "rope skipping",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.4092123806476593,
+                    "pos_sim": 0.18627771735191345,
+                    "neg_sim": 0.5954900979995728
+                },
+                {
+                    "original": {
+                        "index": 34327,
+                        "split": "train",
+                        "label": "forging swords",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 26548,
+                        "split": "train",
+                        "label": "hair dryer drying",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.37067022919654846,
+                    "pos_sim": 0.1772134006023407,
+                    "neg_sim": 0.5478836297988892
+                },
+                {
+                    "original": {
+                        "index": 113586,
+                        "split": "train",
+                        "label": "bouncing on trampoline",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 22590,
+                        "split": "train",
+                        "label": "people giggling",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.34870851039886475,
+                    "pos_sim": 0.21112962067127228,
+                    "neg_sim": 0.5598381161689758
+                },
+                {
+                    "original": {
+                        "index": 20244,
+                        "split": "train",
+                        "label": "chimpanzee pant-hooting",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 145717,
+                        "split": "train",
+                        "label": "electric shaver, electric razor shaving",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.33345773816108704,
+                    "pos_sim": 0.20221516489982605,
+                    "neg_sim": 0.5356729030609131
+                },
+                {
+                    "original": {
+                        "index": 129141,
+                        "split": "train",
+                        "label": "metronome",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 93059,
+                        "split": "train",
+                        "label": "hail",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.30054140090942383,
+                    "pos_sim": 0.15469446778297424,
+                    "neg_sim": 0.45523586869239807
+                }
+            ]
+        },
+        "Tool_Mechanism": {
+            "count": 7416,
+            "alignment": 0.9900436401367188,
+            "uniformity": -2.129995822906494,
+            "avg_margin": -0.013906133361160755,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 20510,
+                        "split": "train",
+                        "label": "typing on typewriter",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 62857,
+                        "split": "train",
+                        "label": "printer printing",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.25015097856521606,
+                    "pos_sim": 0.15692348778247833,
+                    "neg_sim": 0.4070744812488556
+                },
+                {
+                    "original": {
+                        "index": 63580,
+                        "split": "train",
+                        "label": "arc welding",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 11788,
+                        "split": "test",
+                        "label": "eating with cutlery",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.2409573495388031,
+                    "pos_sim": 0.2297445833683014,
+                    "neg_sim": 0.4707019329071045
+                },
+                {
+                    "original": {
+                        "index": 90247,
+                        "split": "train",
+                        "label": "cutting hair with electric trimmers",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 9895,
+                        "split": "train",
+                        "label": "hammering nails",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.23483410477638245,
+                    "pos_sim": 0.2384302318096161,
+                    "neg_sim": 0.47326433658599854
+                },
+                {
+                    "original": {
+                        "index": 160495,
+                        "split": "train",
+                        "label": "eating with cutlery",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 9895,
+                        "split": "train",
+                        "label": "hammering nails",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.23440545797348022,
+                    "pos_sim": 0.34682178497314453,
+                    "neg_sim": 0.5812272429466248
+                },
+                {
+                    "original": {
+                        "index": 71485,
+                        "split": "train",
+                        "label": "arc welding",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 9895,
+                        "split": "train",
+                        "label": "hammering nails",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.22886070609092712,
+                    "pos_sim": 0.3253101408481598,
+                    "neg_sim": 0.5541708469390869
+                }
+            ]
+        },
+        "Sports_Action": {
+            "count": 4924,
+            "alignment": 1.0192561149597168,
+            "uniformity": -2.176011800765991,
+            "avg_margin": -0.012411956675350666,
+            "worst_samples": [
+                {
+                    "original": {
+                        "index": 102742,
+                        "split": "train",
+                        "label": "bathroom ventilation fan running",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 168334,
+                        "split": "train",
+                        "label": "golf driving",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.2667390704154968,
+                    "pos_sim": 0.10106204450130463,
+                    "neg_sim": 0.36780110001564026
+                },
+                {
+                    "original": {
+                        "index": 77255,
+                        "split": "train",
+                        "label": "basketball bounce",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 181851,
+                        "split": "train",
+                        "label": "roller coaster running",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.2604404091835022,
+                    "pos_sim": 0.23422543704509735,
+                    "neg_sim": 0.49466586112976074
+                },
+                {
+                    "original": {
+                        "index": 156986,
+                        "split": "train",
+                        "label": "basketball bounce",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 168334,
+                        "split": "train",
+                        "label": "golf driving",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.224678635597229,
+                    "pos_sim": 0.2533254623413086,
+                    "neg_sim": 0.4780040979385376
+                },
+                {
+                    "original": {
+                        "index": 10664,
+                        "split": "train",
+                        "label": "skateboarding",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 39853,
+                        "split": "train",
+                        "label": "shot football",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.1928383708000183,
+                    "pos_sim": 0.2919084429740906,
+                    "neg_sim": 0.4847468137741089
+                },
+                {
+                    "original": {
+                        "index": 4762,
+                        "split": "test",
+                        "label": "running electric fan",
+                        "youtube_id": "unknown_id"
+                    },
+                    "confused_with": {
+                        "index": 153722,
+                        "split": "train",
+                        "label": "skateboarding",
+                        "youtube_id": "unknown_id"
+                    },
+                    "margin": -0.1843971610069275,
+                    "pos_sim": 0.24432504177093506,
+                    "neg_sim": 0.42872220277786255
+                }
+            ]
+        }
+    }
+}
