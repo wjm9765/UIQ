@@ -23,10 +23,10 @@ class BaseClapModel(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def get_audio_embedding(self, audio_data: np.ndarray, sr: int) -> np.ndarray:
+    def get_audio_embedding(self, audio_data: list[np.ndarray], sr: int) -> np.ndarray:
         """
-        Takes raw audio signal (numpy array) and sample rate, and outputs the audio embedding.
-        Must handle its own required sequence length, resampling, or padding.
+        Takes a list of raw audio signals (numpy arrays) and sample rate, and outputs the audio embeddings.
+        Must handle its own required sequence length, resampling, or padding across the batch.
         """
         pass
 

@@ -2,8 +2,8 @@ dataset:
   cache_dir: input
   hf_repo: txya900619/vggsound-16k
   name: VGGSound
-  samples_per_class: 100
-  split: train
+  samples_per_class: all
+  split: all
   streaming: false
 evaluation:
   results_dir: results/eval_outputs

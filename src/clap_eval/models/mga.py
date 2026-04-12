@@ -49,17 +49,22 @@ class MGAClapModel(BaseClapModel):
             raise e
 
     @torch.no_grad()
-    def get_audio_embedding(self, audio_data: np.ndarray, sr: int) -> np.ndarray:
+    def get_audio_embedding(self, audio_data: list[np.ndarray], sr: int) -> np.ndarray:
         if self.model is None:
-            return np.zeros((1, 512))
+            return np.zeros((len(audio_data), 512))
 
-        # Expected to be (mono) and float32. Numpy array [len] -> Torch [1, len]
-        if len(audio_data.shape) > 1 and audio_data.shape[0] > 1:
-            # We assume it's shape (channels, length) -> simply average them
-            audio_data = audio_data.mean(axis=0)
+        processed_audios = []
+        for arr in audio_data:
+            if len(arr.shape) > 1 and arr.shape[0] > 1:
+                arr = arr.mean(axis=0)
+            processed_audios.append(arr)
 
-        # Convert to torch tensor
-        audio_tensor = torch.from_numpy(audio_data).float()
+        max_len = max(len(a) for a in processed_audios) if processed_audios else 0
+        padded = np.zeros((len(processed_audios), max_len), dtype=np.float32)
+        for i, a in enumerate(processed_audios):
+            padded[i, :len(a)] = a
+
+        audio_tensor = torch.from_numpy(padded).float()
 
         if sr != self.target_sr:
             if sr not in self.resampler_cache:
@@ -67,19 +72,15 @@ class MGAClapModel(BaseClapModel):
                 self.resampler_cache[sr] = T.Resample(orig_freq=sr, new_freq=self.target_sr)
             audio_tensor = self.resampler_cache[sr](audio_tensor)
             
-        # MGA-CLAP (HTSAT 기반)은 고정된 최대 버퍼 크기를 갖습니다.
-        # inference_example.yaml 설정 기준 최대 10초(10 * 32000 = 320000 샘플)
         max_length = 10 * self.target_sr
         if audio_tensor.shape[-1] > max_length:
-            audio_tensor = audio_tensor[:max_length]
+            audio_tensor = audio_tensor[:, :max_length]
         
-        # Add batch dimension: [1, seq_len]
-        audio_tensor = audio_tensor.unsqueeze(0).to(self.device, non_blocking=True)
+        audio_tensor = audio_tensor.to(self.device, non_blocking=True)
 
         _, frame_embeds = self.model.encode_audio(audio_tensor)
         audio_embeds = self.model.msc(frame_embeds, self.model.codebook)
         
-        # Return numpy array
         return audio_embeds.cpu().numpy()
 
     @torch.no_grad()

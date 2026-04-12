@@ -12,22 +12,33 @@ class LaionClapModel(BaseClapModel):
         self.resampler_cache = {}
         
     @torch.no_grad()
-    def get_audio_embedding(self, audio_data: np.ndarray, sr: int) -> np.ndarray:
-        if len(audio_data.shape) > 1 and audio_data.shape[0] > 1:
-            audio_data = audio_data.mean(axis=0)
+    def get_audio_embedding(self, audio_data: list[np.ndarray], sr: int) -> np.ndarray:
+        processed_audios = []
+        for arr in audio_data:
+            if len(arr.shape) > 1 and arr.shape[0] > 1:
+                arr = arr.mean(axis=0)
+            processed_audios.append(arr)
 
         # Standard LAION CLAP sample rate is mostly 48kHz
         target_sr = self.processor.feature_extractor.sampling_rate
+        
         if sr != target_sr:
-            import torch
             import torchaudio.transforms as T
             if sr not in self.resampler_cache:
                 self.resampler_cache[sr] = T.Resample(orig_freq=sr, new_freq=target_sr).to(self.device)
-            audio_tensor = torch.from_numpy(audio_data).float().to(self.device)
+                
+            max_len = max(len(a) for a in processed_audios) if processed_audios else 0
+            padded = np.zeros((len(processed_audios), max_len), dtype=np.float32)
+            for i, a in enumerate(processed_audios):
+                padded[i, :len(a)] = a
+                
+            audio_tensor = torch.from_numpy(padded).float().to(self.device)
             audio_tensor = self.resampler_cache[sr](audio_tensor)
-            audio_data = audio_tensor.cpu().numpy()
+            audio_batch = list(audio_tensor.cpu().numpy())
+            inputs = self.processor(audio=audio_batch, sampling_rate=target_sr, return_tensors="pt")
+        else:
+            inputs = self.processor(audio=processed_audios, sampling_rate=target_sr, return_tensors="pt")
         
-        inputs = self.processor(audio=audio_data, sampling_rate=target_sr, return_tensors="pt")
         inputs = {k: v.to(self.device) for k, v in inputs.items() if hasattr(v, 'to')}
         
         outputs = self.model.get_audio_features(**inputs)

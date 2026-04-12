@@ -19,6 +19,6 @@ execution:
   use_accelerate: true
 models:
 - enabled: true
-  hf_model_id: laion/clap-htsat-unfused
-  name: laion
-  type: huggingface
+  name: msclap
+  type: pypi
+  version: '2023'

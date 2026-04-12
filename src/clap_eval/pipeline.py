@@ -15,14 +15,13 @@ class EvaluationPipeline:
         ds_cfg = self.config.dataset
         exec_cfg = self.config.execution
         
-        self.dataset = VGGSoundDataset(
-            hf_repo=ds_cfg.get("hf_repo", "txya900619/vggsound-16k"),
-            split=ds_cfg.get("split", "train"),  # config.yaml의 split 설정을 따름 (기본값 test)
-            samples_per_class=ds_cfg.get("samples_per_class", 1),
-            streaming=ds_cfg.get("streaming", True),
-            cache_dir=ds_cfg.get("cache_dir", "input")
-        )
-        
+        self.dataset_config = ds_cfg
+        requested_split = ds_cfg.get("split", "train")
+        if requested_split.lower() == "all":
+            self.splits_to_run = ["train", "test"]
+        else:
+            self.splits_to_run = [requested_split]
+            
         self.batch_size = exec_cfg.get("batch_size", 8)
         self.device = exec_cfg.get("device", "cuda")
         self.output_dir = Path(exec_cfg.get("output_dir", "results"))
@@ -87,85 +86,106 @@ class EvaluationPipeline:
         return audio_array, target_sr
 
     def run(self):
-        # We don't convert the streaming dataset to a list because 31,000 samples 
-        # would consume ~50GB of RAM (Out of Memory). Instead, we will iterate 
-        # the dataset generator for each model.
-        print("Dataset will process items sequentially...")
-
-        if self.strategy == "simultaneous":
-            # Load all at once
-            models = {cfg["name"]: get_model(cfg["name"], cfg, self.device) for cfg in self.model_configs}
-        else:
-            models = {} # We'll load per loop
-
-        for m_cfg in self.model_configs:
-            model_name = m_cfg["name"]
-            model_type = m_cfg.get("type", "unknown")
-            print(f"\n=== Starting evaluation for model: {model_name} ({model_type}) ===")
+        for split in self.splits_to_run:
+            print(f"\n===========================================")
+            print(f"   STARTING EVALUATION FOR SPLIT: {split.upper()}")
+            print(f"===========================================")
             
-            if self.strategy == "sequential":
-                # Load one model to maximize VRAM availability
-                model = get_model(model_name, m_cfg, self.device)
+            # Load dataset for the current split
+            self.dataset = VGGSoundDataset(
+                hf_repo=self.dataset_config.get("hf_repo", "txya900619/vggsound-16k"),
+                split=split,
+                samples_per_class=self.dataset_config.get("samples_per_class", 1),
+                streaming=self.dataset_config.get("streaming", True),
+                cache_dir=self.dataset_config.get("cache_dir", "input")
+            )
+            
+            print("Dataset will process items sequentially...")
+
+            if self.strategy == "simultaneous":
+                # Load all at once
+                models = {cfg["name"]: get_model(cfg["name"], cfg, self.device) for cfg in self.model_configs}
             else:
-                model = models[model_name]
-            
-            output_file = self.output_dir / f"{model_name}_results.jsonl"
-            
-            # Since dataset is an iterator that stops, we need to rebuild the iterator 
-            # for each model if we do sequential looping!
-            current_dataset_iter = iter(self.dataset)
-            
-            with open(output_file, 'w', encoding='utf-8') as f:
-                batch = []
-                for idx, item in enumerate(tqdm(current_dataset_iter, desc=f"Evaluating {model_name}", total=len(self.dataset))):
-                    item["dataset_index"] = idx  # 원본 데이터셋의 인덱스 저장
-                    batch.append(item)
+                models = {} # We'll load per loop
+
+            for m_cfg in self.model_configs:
+                model_name = m_cfg["name"]
+                model_type = m_cfg.get("type", "unknown")
+                print(f"\n=== Starting evaluation for model: {model_name} ({model_type}) on split: {split} ===")
+                
+                if self.strategy == "sequential":
+                    # Load one model to maximize VRAM availability
+                    model = get_model(model_name, m_cfg, self.device)
+                else:
+                    model = models[model_name]
+                
+                output_file = self.output_dir / f"{model_name}_{split}_results.jsonl"
+                
+                # Since dataset is an iterator that stops, we need to rebuild the iterator 
+                # for each model if we do sequential looping!
+                current_dataset_iter = iter(self.dataset)
+                
+                with open(output_file, 'w', encoding='utf-8') as f:
+                    batch = []
+                    for idx, item in enumerate(tqdm(current_dataset_iter, desc=f"Evaluating {model_name}", total=len(self.dataset))):
+                        item["dataset_index"] = idx  # 원본 데이터셋의 인덱스 저장
+                        batch.append(item)
+                        
+                        if len(batch) == self.batch_size:
+                            self.process_batch(batch, model, f, split)
+                            batch = []
                     
-                    if len(batch) == self.batch_size:
-                        self.process_batch(batch, model, f)
-                        batch = []
+                    # Process remaining
+                    if len(batch) > 0:
+                        self.process_batch(batch, model, f, split)
                 
-                # Process remaining
-                if len(batch) > 0:
-                    self.process_batch(batch, model, f)
-            
-            print(f"[{model_name}] Finished writing outputs to {output_file}")
-            
-            if self.strategy == "sequential":
-                # Free memory
-                del model
-                import torch
-                if torch.cuda.is_available():
-                    torch.cuda.empty_cache()
+                print(f"[{model_name}] Finished writing outputs to {output_file}")
+                
+                if self.strategy == "sequential":
+                    # Free memory
+                    del model
+                    import torch
+                    if torch.cuda.is_available():
+                        torch.cuda.empty_cache()
 
-    def process_batch(self, batch, model, f):
-        results = []
-        for item in batch:
-            aud, sr = self.load_audio(item)
-            
-            if aud is None:
-                embed = None
-            else:
-                embed_arr = model.get_audio_embedding(aud, sr)
-                embed = embed_arr.flatten().tolist()
-                
-            text_val = item.get("label") or item.get("caption") or item.get("text") or ""
-            if text_val:
-                text_embed_arr = model.get_text_embedding([str(text_val)])
-                text_embed = text_embed_arr.flatten().tolist()
-            else:
-                text_embed = None
-                
-            result = {
-                "index": item.get("dataset_index"),  # 데이터셋의 원본 인덱스
-                "youtube_id": item["youtube_id"],
-                "start_time": item["start_time"],
-                "label": text_val,
-                "embedding": embed,
-                "text_embedding": text_embed
-            }
-            results.append(result)
-            
+    def process_batch(self, batch, model, f, split_name):
         import json
-        for res in results:
-            f.write(json.dumps(res) + "\n")
+        auds = []
+        texts = []
+        valid_indices = []
+        sr_batch = 16000 # default
+        
+        for idx, item in enumerate(batch):
+            aud, sr = self.load_audio(item)
+            if aud is not None:
+                auds.append(aud)
+                valid_indices.append(idx)
+                sr_batch = sr
+            
+            text_val = item.get("label") or item.get("caption") or item.get("text") or ""
+            texts.append(str(text_val))
+            
+        audio_embeds = [None] * len(batch)
+        if auds:
+            batch_audio_embeds = model.get_audio_embedding(auds, sr_batch)
+            for val_idx, embed in zip(valid_indices, batch_audio_embeds):
+                audio_embeds[val_idx] = embed.flatten().tolist()
+                
+        text_embeds = [None] * len(batch)
+        if any(texts):
+            batch_text_embeds = model.get_text_embedding(texts)
+            for i, embed in enumerate(batch_text_embeds):
+                text_embeds[i] = embed.flatten().tolist()
+                
+        for i, item in enumerate(batch):
+            text_val = texts[i]
+            result = {
+                "index": item.get("dataset_index"),
+                "split": split_name,
+                "youtube_id": item.get("youtube_id", ""),
+                "start_time": item.get("start_time", 0.0),
+                "label": text_val,
+                "embedding": audio_embeds[i],
+                "text_embedding": text_embeds[i] if text_val else None
+            }
+            f.write(json.dumps(result) + "\n")

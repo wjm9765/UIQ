@@ -1,7 +1,7 @@
 [project]
 name = "clap_eval"
 version = "0.1.0"
-description = "Evaluation Pipeline for CLAP Models (LAION, MGA, M2D)"
+description = "Evaluation Pipeline for CLAP Models (LAION, MGA, M2D, MSCLAP)"
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
@@ -26,7 +26,8 @@ dependencies = [
     "wandb",
     "loguru",
     "sed_scores_eval==0.0.0",
-    "setuptools<70.0.0"
+    "setuptools<70.0.0",
+    "msclap>=1.3.4",
 ]
 
 [tool.uv.sources]

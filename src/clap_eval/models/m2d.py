@@ -51,28 +51,36 @@ class M2DClapModel(BaseClapModel):
             raise e
 
     @torch.no_grad()
-    def get_audio_embedding(self, audio_data: np.ndarray, sr: int) -> np.ndarray:
-        # M2D models typically use 16kHz input
+    def get_audio_embedding(self, audio_data: list[np.ndarray], sr: int) -> np.ndarray:
         target_sr = 16000
-        import librosa
+        target_length = 16000 * 10
         
-        if len(audio_data.shape) > 1 and audio_data.shape[0] > 1:
-            audio_data = librosa.to_mono(audio_data)
+        processed_audios = []
+        for arr in audio_data:
+            if len(arr.shape) > 1 and arr.shape[0] > 1:
+                arr = arr.mean(axis=0)
+            processed_audios.append(arr)
+
+        max_len = max(len(a) for a in processed_audios) if processed_audios else 0
+        padded = np.zeros((len(processed_audios), max_len), dtype=np.float32)
+        for i, a in enumerate(processed_audios):
+            padded[i, :len(a)] = a
             
+        audio_tensor = torch.from_numpy(padded).float()
+
         if sr != target_sr:
-            audio_data = librosa.resample(audio_data, orig_sr=sr, target_sr=target_sr)
+            import torchaudio.transforms as T
+            resampler = T.Resample(orig_freq=sr, new_freq=target_sr)
+            audio_tensor = resampler(audio_tensor)
             
         # Ensure it's 10-seconds (160000 samples) as M2D CLAP usually expects exactly 10s audio
-        target_length = 16000 * 10
-        if audio_data.shape[-1] > target_length:
-            audio_data = audio_data[:target_length]
-        elif audio_data.shape[-1] < target_length:
-            audio_data = np.pad(audio_data, (0, target_length - audio_data.shape[-1]))
+        if audio_tensor.shape[-1] > target_length:
+            audio_tensor = audio_tensor[:, :target_length]
+        elif audio_tensor.shape[-1] < target_length:
+            import torch.nn.functional as F
+            audio_tensor = F.pad(audio_tensor, (0, target_length - audio_tensor.shape[-1]))
             
-        # Convert to tensor and add batch dim if needed
-        audio_tensor = torch.from_numpy(audio_data).float().to(self.device)
-        if audio_tensor.ndim == 1:
-            audio_tensor = audio_tensor.unsqueeze(0)
+        audio_tensor = audio_tensor.to(self.device, non_blocking=True)
             
         embs = self.model.encode_clap_audio(audio_tensor)
         return embs.cpu().numpy()
