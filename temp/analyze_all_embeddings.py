@@ -3,8 +3,6 @@ import os
 import glob
 import json
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
 from collections import defaultdict
 from tqdm import tqdm
 
@@ -32,159 +30,131 @@ def get_domain(label):
         return "Sports_Action"
     return "Other"
 
-def calculate_alignment(features_a, features_b):
-    return float(np.mean(np.linalg.norm(features_a - features_b, axis=1)**2))
-
-def calculate_uniformity(features, t=2):
-    if len(features) > 2000:
-        idx = np.random.choice(len(features), 2000, replace=False)
-        features = features[idx]
-    sq_pdist = np.sum((features[:, None, :] - features[None, :, :])**2, axis=-1)
-    return float(np.log(np.mean(np.exp(-t * sq_pdist))))
-
 def analyze_all(input_dir, output_dir):
     os.makedirs(output_dir, exist_ok=True)
     model_results = {}
     
-    # Track cross-model comparison stats
-    model_uniformities = defaultdict(dict)
-
     for model in MODELS:
         print(f"\n======================================")
         print(f"📊 Analyzing Model: {model.upper()}")
         print(f"======================================")
         
-        data_by_domain = defaultdict(list)
         files_to_load = glob.glob(f"{input_dir}/{model}_*_results.jsonl")
         
         if not files_to_load:
             print(f"⚠️ No files found for {model}. Skipping.")
             continue
             
+        all_items = []
         for filepath in files_to_load:
             print(f"  -> Loading {filepath}...")
             with open(filepath, 'r') as f:
                 for line in tqdm(f, desc="Reading JSONL"):
                     try:
                         item = json.loads(line)
+                        label = item.get("label", "")
+                        audio_emb = item.get("embedding")
+                        text_emb = item.get("text_embedding")
+                        
+                        if audio_emb is not None and text_emb is not None:
+                            all_items.append({
+                                "label": label,
+                                "audio_emb": np.array(audio_emb, dtype=np.float32),
+                                "text_emb": np.array(text_emb, dtype=np.float32)
+                            })
                     except: continue
-                    label = item.get("label", "")
-                    domain = get_domain(label)
-                    audio_emb = item.get("embedding")
-                    text_emb = item.get("text_embedding")
-                    
-                    if audio_emb is not None and text_emb is not None:
-                        data_by_domain[domain].append({
-                            "index": item.get("index"),
-                            "split": item.get("split", "train"),
-                            "youtube_id": item.get("youtube_id", ""),
-                            "label": label,
-                            "audio_emb": np.array(audio_emb, dtype=np.float32),
-                            "text_emb": np.array(text_emb, dtype=np.float32)
-                        })
         
-        model_results[model] = {}
-        print("  -> Calculating Embedding Collapse Metrics per Domain...")
+        if not all_items:
+            continue
+            
+        print("  -> Processing embeddings...")
         
-        for domain, items in data_by_domain.items():
-            n_samples = len(items)
-            if n_samples < 2: continue
-            
-            audio_embs = np.stack([x["audio_emb"] for x in items])
-            text_embs = np.stack([x["text_emb"] for x in items])
-            
-            audio_embs_norm = audio_embs / (np.linalg.norm(audio_embs, axis=1, keepdims=True) + 1e-8)
-            text_embs_norm = text_embs / (np.linalg.norm(text_embs, axis=1, keepdims=True) + 1e-8)
-            
-            alignment_val = calculate_alignment(audio_embs_norm, text_embs_norm)
-            audio_uniformity = calculate_uniformity(audio_embs_norm)
-            
-            model_uniformities[domain][model] = audio_uniformity
-            
-            # Use max 2000 for similarity matrix to prevent OOM
-            n_sim_samples = min(n_samples, 2000)
-            sim_indices = np.random.choice(n_samples, n_sim_samples, replace=False)
-            
-            sub_audio = audio_embs_norm[sim_indices]
-            sub_text = text_embs_norm[sim_indices]
-            
-            sim_matrix = np.dot(sub_audio, sub_text.T)
-            pos_sims = np.diag(sim_matrix)
-            
-            sim_matrix_masked = sim_matrix.copy()
-            np.fill_diagonal(sim_matrix_masked, -np.inf)
-            
-            # Find the most confused instance correctly
-            max_neg_idx_sub = np.argmax(sim_matrix_masked, axis=1)
-            max_neg_sims = sim_matrix_masked[np.arange(n_sim_samples), max_neg_idx_sub]
-            
-            margins = pos_sims - max_neg_sims
-            worst_idx_local = np.argsort(margins)[:5]
-            
-            worst_samples = []
-            for idx in worst_idx_local:
-                global_idx = sim_indices[idx]
-                conflicting_global_idx = sim_indices[max_neg_idx_sub[idx]]
+        labels = np.array([x["label"] for x in all_items])
+        unique_labels = np.unique(labels)
+        print(f"  -> Found {len(unique_labels)} unique domains/captions")
+        
+        audio_embs = np.stack([x["audio_emb"] for x in all_items])
+        audio_embs = audio_embs / (np.linalg.norm(audio_embs, axis=1, keepdims=True) + 1e-8)
+        
+        label_to_text_emb = {}
+        for x in all_items:
+            if x["label"] not in label_to_text_emb:
+                tb = x["text_emb"]
+                label_to_text_emb[x["label"]] = tb / (np.linalg.norm(tb) + 1e-8)
                 
-                orig_item = items[global_idx]
-                conflicting_item = items[conflicting_global_idx]
-                
-                worst_samples.append({
-                    "original": {
-                        "index": orig_item["index"],
-                        "split": orig_item["split"],
-                        "label": orig_item["label"],
-                        "youtube_id": orig_item["youtube_id"]
-                    },
-                    "confused_with": {
-                        "index": conflicting_item["index"],
-                        "split": conflicting_item["split"],
-                        "label": conflicting_item["label"],
-                        "youtube_id": conflicting_item["youtube_id"]
-                    },
-                    "margin": float(margins[idx]),
-                    "pos_sim": float(pos_sims[idx]),
-                    "neg_sim": float(max_neg_sims[idx])
-                })
-                
-            model_results[model][domain] = {
-                "count": n_samples,
-                "alignment": alignment_val,
-                "uniformity": audio_uniformity,
-                "avg_margin": float(np.mean(margins)),
-                "worst_samples": worst_samples
+        text_embs_unique = np.stack([label_to_text_emb[lbl] for lbl in unique_labels])
+        
+        print("  -> Computing Audio->Caption (A->T) Metrics...")
+        sim_a2t = np.dot(audio_embs, text_embs_unique.T)
+        label_to_idx = {lbl: i for i, lbl in enumerate(unique_labels)}
+        true_indices_a2t = np.array([label_to_idx[lbl] for lbl in labels])
+        
+        sorted_indices_a2t = np.argsort(-sim_a2t, axis=1)
+        ranks_a2t = np.where(sorted_indices_a2t == true_indices_a2t[:, None])[1] + 1
+        
+        print("  -> Computing Caption->Audio (T->A) Metrics...")
+        sim_t2a = sim_a2t.T
+        sorted_indices_t2a = np.argsort(-sim_t2a, axis=1)
+        
+        domain_metrics = {}
+        
+        for i, lbl in enumerate(unique_labels):
+            true_mask = (labels == lbl)
+            num_correct = np.sum(true_mask)
+            if num_correct == 0: continue
+            
+            label_ranks = ranks_a2t[true_mask]
+            a2t_r1 = float(np.mean(label_ranks == 1))
+            a2t_mrr = float(np.mean(1.0 / label_ranks))
+            
+            binary_hits = true_mask[sorted_indices_t2a[i]]
+            precisions = np.cumsum(binary_hits) / np.arange(1, len(binary_hits) + 1)
+            map_score = float(np.sum(precisions * binary_hits) / num_correct)
+            
+            t2a_r10 = float(np.sum(binary_hits[:10]) / num_correct)
+            t2a_r50 = float(np.sum(binary_hits[:50]) / num_correct)
+            t2a_r100 = float(np.sum(binary_hits[:100]) / num_correct)
+            
+            intra_sims = sim_t2a[i][true_mask]
+            inter_sims = sim_t2a[i][~true_mask]
+            
+            intra_mean = float(np.mean(intra_sims)) if len(intra_sims) > 0 else 0.0
+            inter_mean = float(np.mean(inter_sims)) if len(inter_sims) > 0 else 0.0
+            intra_inter_ratio = float(intra_mean / (inter_mean + 1e-8)) if inter_mean > -1e-8 else 0.0
+            
+            domain_metrics[lbl] = {
+                "Macro_Condition": get_domain(lbl),
+                "Count": int(num_correct),
+                "A2T_Recall@1": a2t_r1,
+                "A2T_MRR": a2t_mrr,
+                "T2A_MAP": map_score,
+                "T2A_Recall@10": t2a_r10,
+                "T2A_Recall@50": t2a_r50,
+                "T2A_Recall@100": t2a_r100,
+                "Intra_Sim": intra_mean,
+                "Inter_Sim": inter_mean,
+                "Intra_Inter_Ratio": intra_inter_ratio
             }
             
-    # Save Joint Report
-    report_path = os.path.join(output_dir, "evaluation_collapse_report.json")
+        overall_a2t_r1 = float(np.mean(ranks_a2t == 1))
+        overall_a2t_mrr = float(np.mean(1.0 / ranks_a2t))
+        overall_t2a_map = float(np.mean([m["T2A_MAP"] for m in domain_metrics.values()]))
+        
+        model_results[model] = {
+            "Overall": {
+                "Count": len(all_items),
+                "A2T_Recall@1": overall_a2t_r1,
+                "A2T_MRR": overall_a2t_mrr,
+                "T2A_MAP": overall_t2a_map
+            },
+            "Domains": domain_metrics
+        }
+            
+    report_path = os.path.join(output_dir, "evaluation_retrieval_report.json")
     with open(report_path, "w", encoding="utf-8") as f:
         json.dump(model_results, f, indent=4)
         
-    print(f"\n✅ All Models Collapse Report saved to {report_path}")
-
-    # Plot Multi-Model Uniformity Comparison
-    print("🎨 Generating Cross-Model Collapsing Charts...")
-    plt.figure(figsize=(14, 8))
-    
-    domains_plot = list(model_uniformities.keys())
-    x = np.arange(len(domains_plot))
-    width = 0.2
-    
-    for i, model in enumerate(MODELS):
-        if model not in model_results: continue
-        y_vals = [model_uniformities[d].get(model, 0) for d in domains_plot]
-        plt.bar(x + (i * width) - (width * len(MODELS)/2.0) + width/2., y_vals, width, label=model.upper())
-        
-    plt.axhline(0, color='black', linewidth=0.8)
-    plt.ylabel('Uniformity Score (Closer to 0 / Positive = Severe Collapse)')
-    plt.title('Embedding Space Collapse Comparison by Model & Domain')
-    plt.xticks(x, domains_plot, rotation=45, ha='right')
-    plt.legend()
-    plt.tight_layout()
-    plt.savefig(os.path.join(output_dir, "models_uniformity_comparison.png"))
-    plt.close()
-    
-    print(f"✅ Charts saved in {output_dir}/models_uniformity_comparison.png")
+    print(f"\n✅ All Models Evaluation Report saved to {report_path}")
 
 if __name__ == "__main__":
     import argparse
