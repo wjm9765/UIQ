@@ -21,3 +21,11 @@ class Config:
     @property
     def execution(self) -> dict:
         return self._config.get("execution", {})
+
+    @property
+    def evaluation(self) -> dict:
+        return self._config.get("evaluation", {})
+
+    @property
+    def analysis(self) -> dict:
+        return self._config.get("analysis", {})

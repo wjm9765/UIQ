@@ -1,94 +1,188 @@
-# CLAP Evaluation Pipeline (UIQ)
+# CLAP Evaluation And Analysis Pipeline (UIQ)
 
-오디오-텍스트 대조 학습 모델(CLAP류)의 Zero-shot 성능 평가 및 표현 붕괴(Representation Collapse) 분석을 위한 파이프라인입니다. LAION-CLAP, MGA-CLAP, M2D-CLAP 등의 모델을 VGGSound 등의 데이터셋을 활용해 빠르고 메모리 효율적으로 평가할 수 있도록 구성되어 있습니다.
+본 프로젝트는 CLAP 계열 모델의 추론 결과를 일관된 방식으로 분석하기 위한 파이프라인입니다.
 
-## 🌟 주요 기능
+현재 워크플로는 아래처럼 고정됩니다.
 
-- **다중 모델 단일 파이프라인 평가**: LAION, MGA, M2D 등 다양한 구조의 CLAP 모델을 동일한 환경(VGGSound)에서 일관되게 평가합니다.
-- **메모리 효율적 처리 (OOM 방지)**: 데이터셋 전체를 메모리에 올리지 않고 Generator 기반으로 순차적 인퍼런스를 수행하여 OOM을 방지합니다.
-- **OS 호환 환경 구축**: 초고속 패키지 매니저 `uv`를 통해 `pyproject.toml`에 명시된 의존성을 동기화하며, Linux용 CUDA 패키지와 MacOS용 패키지를 자동으로 분기하여 설치합니다.
-- **다목적 분석 리포트 제공**:
-  1. 검색 정확도 메트릭 (R@1, R@5, R@10, MRR)
-  2. 임베딩 분리력 / 붕괴도 분석 (Intra vs Inter Similarity, Margin)
-  3. 모델별 최약점 클래스 도출 (Vulnerable Categories Top-5)
+1. run_eval 단계: 모델 추론 수행, raw 결과 JSONL 저장
+2. eval 단계: raw 결과를 하나의 중간 캐시 eval.jsonl로 병합
+3. analysis 단계: 모든 분석을 중간 캐시 기반으로 수행하고 analysis_output에 저장
 
----
+즉, 분석은 temp 리포트나 수동 요약 파일이 아니라, 항상 results의 순수 모델 출력(JSONL)에서 시작합니다.
 
-## 📂 프로젝트 구조
+## 핵심 특징
 
-```plaintext
-├── config.yaml               # 전체 실행/평가 설정 파일 (수정 시 최우선)
-├── pyproject.toml            # Python 패키지 및 환경 설정 파일 (uv 지원)
-├── README.md                 # 프로젝트 가이드
-├── results/                  # 모델 추론 결과물(jsonl) 기본 저장 디렉토리
-├── input/                    # HF 모델/데이터셋 캐시 저장소
-├── src/
-│   └── clap_eval/            # 핵심 파이프라인 모듈 패키지
-│       ├── config.py         # Config 파싱 로직
-│       ├── dataset.py        # HF VGGSound 등 데이터셋 로더
-│       ├── pipeline.py       # 인퍼런스 파이프라인 전개
-│       └── models/           # 각 CLAP 모델별 Wrapper (laion, mga, m2d)
-└── scripts/
-    ├── setup_models.py       # 로컬 가중치 파일 등 다운로드
-    ├── run_eval.py           # 파이프라인 실행, 인퍼런스 후 JSONL 결과 생성
-    └── evaluate_all_claps.py # 생성된 JSONL을 분석하여 평가 리포트 출력
+- 모델별 raw 출력 스키마 일관 사용
+- 중간 캐시 eval.jsonl 재사용으로 반복 분석 속도 향상
+- 분석 설정을 config.yaml의 analysis 섹션으로 통합
+- level 1, level 2, heatmap, disagreement, uniformity를 단일 엔트리에서 재현 가능
+
+## 프로젝트 구조
+
+```text
+.
+├── config.yaml
+├── pyproject.toml
+├── scripts/
+│   ├── run_eval.py
+│   └── eval.py
+├── results/
+│   └── eval_outputs/
+│       ├── laion_train_results.jsonl
+│       ├── laion_test_results.jsonl
+│       ├── m2d_train_results.jsonl
+│       ├── m2d_test_results.jsonl
+│       ├── mga_train_results.jsonl
+│       ├── mga_test_results.jsonl
+│       ├── msclap_train_results.jsonl
+│       └── msclap_test_results.jsonl
+├── analysis_output/
+│   ├── eval.jsonl
+│   ├── category_uniformity_*.csv
+│   ├── margin_heatmap_*.png
+│   ├── margin_heatmap_tables.json
+│   ├── disagreement_matrix_*.png
+│   └── disagreement_matrix_tables.json
+└── src/clap_eval/
+    ├── pipeline.py
+    ├── config.py
+    └── analysis/
+        ├── result_io.py
+        ├── category_uniformity.py
+        ├── margin_heatmap.py
+        └── disagreement_matrix.py
 ```
 
----
+## 실행 순서
 
-## 🚀 시작하기 (Getting Started)
-
-### 1. 환경 설정 (Dependencies)
-초고속 패키지 매니저 [`uv`](https://github.com/astral-sh/uv)를 사용합니다.
+### 1) 환경 동기화
 
 ```bash
-# 의존성 설치 및 동기화
-# (macOS와 Linux(CUDA)를 자동으로 구분하여 올바른 버전 설치)
 uv sync
-
-
-### 2. 가중치 준비
-MGA, M2D 등 로컬 스토리지에 체크포인트가 필요한 모델들의 파라미터를 허깅페이스에서 스크립트를 통해 다운받습니다.
-```bash
-./scripts/setup_models.py
 ```
 
----
-
-## 💡 코드 실행 방법
-
-이 프로젝트의 모든 주 기능 및 구동은 `./scripts/` 디렉토리 내부의 스크립트들을 통해 실행됩니다.
-
-### Step 1. 인퍼런스 파이프라인 수행 (JSONL 생성)
-`config.yaml`에 정의된 데이터셋, 스트리밍 설정, 하이퍼파라미터를 읽고 입력 오디오의 모델 임베딩을 추론합니다. 완료되면 결과를 텍스트 파일(jsonl)로 저장합니다.
+### 2) 모델 추론
 
 ```bash
-./scripts/run_eval.py --config config.yaml
-# 또는 python scripts/run_eval.py --config config.yaml
+uv run python scripts/run_eval.py --config config.yaml
 ```
-> **참고:** 실행이 완료되면 `config.yaml` 안의 `execution.output_dir` (기본값: `results/eval_outputs`)에 `[모델이름]_results.jsonl` 형태의 파일이 생성됩니다. 이 파일은 각 데이터의 인덱스, 임베딩, 정답 라벨 등 필요한 모든 정보를 갖습니다.
 
-### Step 2. 결과 평가 및 분석 (리포트 생성)
-도출된 `.jsonl` 파일을 스크립트가 다시 읽어들여 객관식 보기 풀(Pool)을 생성하고, 모델 간 메트릭 비교 평가 및 붕괴 분석을 수행합니다.
+이 단계 결과는 results/eval_outputs 폴더에 모델별 split별 JSONL로 저장됩니다.
+
+### 3) 분석 전체 실행
 
 ```bash
-./scripts/evaluate_all_claps.py
-# 또는 python scripts/evaluate_all_claps.py
+uv run python scripts/eval.py --config config.yaml
 ```
-> **참고:** 평가 스크립트는 `config.yaml`의 **`evaluation.results_dir`** 경로를 읽어 자동으로 데이터를 가져옵니다. 경로를 바꿔 평가하고 싶다면 yaml 설정 파일만 변경하시면 됩니다!
 
----
+mode를 명시하면 개별 분석만 실행할 수 있습니다.
 
-## ⚙️ Configuration (`config.yaml`)
-직접 코드를 하드코딩할 필요 없이 대부분의 설정 제어는 `config.yaml`로 가능합니다.
+```bash
+uv run python scripts/eval.py uniformity --config config.yaml
+uv run python scripts/eval.py margin-heatmap --config config.yaml
+uv run python scripts/eval.py disagreement --config config.yaml
+```
 
-- **`dataset:`**
-  - 평가할 HuggingFace 데이터셋, 로컬 다운로드 및 메모리 설정(`streaming` 옵션), 카테고리당 샘플링 수 제어
-- **`models:`**
-  - 개별 모델들의 활성화 스위치(`enabled: true/false`), 로컬 및 원격 가중치 경로 설정
-- **`execution:`**
-  - 하드웨어 리소스 전략 (batch size, device 설정)
-  - `output_dir`: 인퍼런스 완료 파일 생성 폴더 지정
-- **`evaluation:`**
-  - `results_dir`: 평가 시 읽어들일 대상 데이터 폴더 (예: `eval_outputs_sample`)
-  - `top_k_list`: `R@K` 출력 단위 지정
+## config.yaml 설정
+
+자주 바꾸는 분석 설정은 analysis 섹션에서 관리합니다.
+
+```yaml
+analysis:
+  input_dir: results/eval_outputs
+  output_dir: analysis_output
+  cache_filename: eval.jsonl
+  cmap: RdBu
+  max_samples_per_category: 2000
+  model_order: [laion, m2d, mga, msclap]
+  force_rebuild_cache: false
+```
+
+설명:
+
+- input_dir: 모델 raw JSONL 위치
+- output_dir: 분석 결과 저장 위치
+- cache_filename: 병합 캐시 파일명
+- cmap: heatmap 색상맵
+- max_samples_per_category: uniformity 계산 시 카테고리 샘플 상한
+- model_order: 시각화 열 순서
+- force_rebuild_cache: true면 캐시를 항상 재생성
+
+## 레벨 정의
+
+- level 1: 메타 도메인 레벨
+  - Human, Animal, Nature, Music, Machine_Vehicle, Tool_Mechanism, Home_Everyday, Sports_Action, Other
+- level 2: 세부 캡션 레벨
+  - VGGSound 세부 클래스 단위
+
+## 분석 파일별 의미 (논문 작성용)
+
+### 중간 캐시
+
+- analysis_output/eval.jsonl
+  - 원본 raw 결과를 병합한 단일 분석 입력
+  - 필드 예시: model, split, index, youtube_id, start_time, label, embedding, text_embedding, meta_domain, sample_id
+  - 목적: 반복 분석 시 디스크 탐색과 파싱 비용 절감
+
+### Uniformity 분해
+
+- analysis_output/category_uniformity_full.csv
+  - 모델 x 레벨 x 카테고리 단위 uniformity 전체 결과
+  - 핵심 수식:
+    - Uniformity = log E[exp(-t ||f(x)-f(y)||^2)]
+    - 각 카테고리 내부 샘플 쌍에 대해 계산
+  - 컬럼:
+    - model, level, category, sample_count, uniformity, rank_within_model
+
+- analysis_output/category_uniformity_top20_level1.csv
+- analysis_output/category_uniformity_top20_level2.csv
+  - 모델별로 붕괴 가능성이 큰 카테고리 상위 20개 요약
+  - 기본 정렬은 uniformity 값 기준
+
+### Margin Heatmap
+
+- analysis_output/margin_heatmap_level1.png
+- analysis_output/margin_heatmap_level2_all.png
+- analysis_output/margin_heatmap_level2_negative_only.png
+- analysis_output/margin_heatmap_tables.json
+
+계산 맥락:
+
+1. 카테고리 내부에서 오디오 임베딩과 텍스트 임베딩 cosine similarity 행렬 구성
+2. positive similarity는 대각 성분
+3. max negative similarity는 같은 행에서 대각 제외 최대값
+4. margin = positive - max_negative
+5. 카테고리별 평균 margin을 모델별로 집계하여 heatmap 생성
+
+해석 가이드:
+
+- 평균 margin < 0: negative가 positive를 이긴 구간, semantic collapse 가능성 증가
+- 평균 margin > 0: 상대적으로 구분이 유지된 구간
+
+### Disagreement Matrix
+
+- analysis_output/disagreement_matrix_level1.png
+- analysis_output/disagreement_matrix_level2.png
+- analysis_output/unique_success_matrix_level1.png
+- analysis_output/disagreement_matrix_tables.json
+
+계산 맥락:
+
+1. sample_id 기준으로 모델 간 같은 샘플 정렬
+2. 각 모델의 sample margin 부호를 비교
+3. pairwise disagreement 카운트
+   - 예: A fail and B pass = count(margin_A < 0 and margin_B > 0)
+4. unique success 카운트
+   - only A pass = count(margin_A > 0 and others <= 0)
+
+해석 가이드:
+
+- 특정 도메인에서 A fail and B pass가 크면 B가 해당 도메인을 더 방어
+- unique success가 0이어도 이상은 아님
+  - 조건이 매우 엄격해서 pairwise disagreement는 존재하되 unique는 0일 수 있음
+
+## 재현성 참고
+
+- run_eval output 스키마는 pipeline.py 기준으로 유지됩니다.
+- 분석은 항상 raw output에서 시작하므로 temp 중간 파일 의존이 없습니다.
+- cache는 force_rebuild_cache false일 때 최신 raw 파일보다 오래된 경우에만 재생성됩니다.

@@ -44,3 +44,12 @@ execution:
 evaluation:
   results_dir: "results/eval_outputs"
   top_k_list: [1, 5, 10]
+
+analysis:
+  input_dir: "results/eval_outputs"
+  output_dir: "analysis_output"
+  cache_filename: "eval.jsonl"
+  cmap: "RdBu"
+  max_samples_per_category: 2000
+  model_order: ["laion", "m2d", "mga", "msclap"]
+  force_rebuild_cache: false
