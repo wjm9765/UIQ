@@ -217,41 +217,60 @@ def build_sample_id(row: pd.Series | dict) -> str:
 def compute_group_margins(samples: pd.DataFrame, category_col: str) -> pd.DataFrame:
     rows: List[dict] = []
 
-    grouped = samples.groupby(["model", category_col], dropna=False)
-    for (model_name, category), group in tqdm(grouped, desc=f"Margin groups[{category_col}]", unit="group"):
-        group = group.copy()
-        if len(group) < 2:
-            for _, row in group.iterrows():
+    for model_name, model_df in tqdm(samples.groupby("model", dropna=False), desc="Margin models", unit="model"):
+        model_df = model_df.copy()
+
+        # Build a model-global unique text embedding table keyed by class label.
+        text_source = model_df[model_df["text_embedding"].notna()]
+        label_to_text: Dict[str, np.ndarray] = {}
+        for label, label_group in text_source.groupby("label", dropna=False):
+            text_vec = label_group["text_embedding"].iloc[0]
+            text_arr = np.asarray(text_vec, dtype=np.float32)
+            text_arr = text_arr / (np.linalg.norm(text_arr) + 1e-8)
+            label_to_text[str(label)] = text_arr
+
+        if len(label_to_text) < 2:
+            # Cannot define a meaningful max-negative similarity with fewer than 2 classes.
+            for row in model_df.to_dict("records"):
                 rows.append(
                     {
                         "model": model_name,
-                        "category": category,
-                        "sample_id": build_sample_id(row),
+                        "category": row.get(category_col),
+                        "sample_id": str(row.get("sample_id", build_sample_id(row))),
                         "margin": np.nan,
                     }
                 )
             continue
 
-        audio = np.stack(group["audio_embedding"].tolist())
-        text = np.stack(group["text_embedding"].tolist()) if group["text_embedding"].notna().all() else None
-        if text is None:
-            continue
+        class_labels = sorted(label_to_text.keys())
+        text_matrix = np.stack([label_to_text[label] for label in class_labels])
+        label_to_idx = {label: idx for idx, label in enumerate(class_labels)}
 
-        audio = audio / (np.linalg.norm(audio, axis=1, keepdims=True) + 1e-8)
-        text = text / (np.linalg.norm(text, axis=1, keepdims=True) + 1e-8)
-        sim_matrix = audio @ text.T
-        positive = np.diag(sim_matrix)
-        neg_matrix = sim_matrix.copy()
-        np.fill_diagonal(neg_matrix, -np.inf)
-        max_negative = np.max(neg_matrix, axis=1)
-        margins = positive - max_negative
+        audio_matrix = np.stack(model_df["audio_embedding"].tolist())
+        audio_matrix = audio_matrix / (np.linalg.norm(audio_matrix, axis=1, keepdims=True) + 1e-8)
+        sim_matrix = audio_matrix @ text_matrix.T  # [N, C]
 
-        for row, margin in zip(group.to_dict("records"), margins):
+        row_labels = model_df["label"].astype(str).tolist()
+        pos_indices = np.array([label_to_idx.get(label, -1) for label in row_labels], dtype=np.int64)
+        margins = np.full(len(model_df), np.nan, dtype=np.float32)
+
+        valid_mask = pos_indices >= 0
+        if np.any(valid_mask):
+            valid_rows = np.where(valid_mask)[0]
+            valid_pos = pos_indices[valid_mask]
+
+            valid_sims = sim_matrix[valid_mask].copy()
+            positive = valid_sims[np.arange(len(valid_rows)), valid_pos]
+            valid_sims[np.arange(len(valid_rows)), valid_pos] = -np.inf
+            max_negative = np.max(valid_sims, axis=1)
+            margins[valid_rows] = positive - max_negative
+
+        for row, margin in zip(model_df.to_dict("records"), margins):
             rows.append(
                 {
                     "model": model_name,
-                    "category": category,
-                    "sample_id": build_sample_id(row),
+                    "category": row.get(category_col),
+                    "sample_id": str(row.get("sample_id", build_sample_id(row))),
                     "margin": float(margin),
                 }
             )
