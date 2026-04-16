@@ -1,0 +1,1277 @@
+model,level,category,sample_count,uniformity,rank_within_model
+LAION,meta_domain,Music,43139,-2.2127418518066406,1
+LAION,meta_domain,Sports_Action,3747,-2.52097749710083,2
+LAION,meta_domain,Machine_Vehicle,11728,-2.5336661338806152,3
+LAION,meta_domain,Animal,21325,-2.5521039962768555,4
+LAION,meta_domain,Human,18694,-2.5593135356903076,5
+LAION,meta_domain,Tool_Mechanism,5651,-2.6167209148406982,6
+LAION,meta_domain,Nature,9919,-2.687143564224243,7
+LAION,meta_domain,Home_Everyday,5448,-2.693310022354126,8
+LAION,meta_domain,Other,32852,-2.828853130340576,9
+M2D,meta_domain,Machine_Vehicle,15461,-1.7285287380218506,1
+M2D,meta_domain,Nature,12820,-1.8076519966125488,2
+M2D,meta_domain,Sports_Action,4924,-1.8217693567276,3
+M2D,meta_domain,Music,57167,-1.8306622505187988,4
+M2D,meta_domain,Tool_Mechanism,7416,-1.9015772342681885,5
+M2D,meta_domain,Animal,27570,-1.9204025268554688,6
+M2D,meta_domain,Home_Everyday,7121,-1.9661953449249268,7
+M2D,meta_domain,Human,23663,-2.0437684059143066,8
+M2D,meta_domain,Other,42952,-2.069422721862793,9
+MGA,meta_domain,Music,57167,-2.395749092102051,1
+MGA,meta_domain,Machine_Vehicle,15461,-2.514331579208374,2
+MGA,meta_domain,Nature,12820,-2.795954704284668,3
+MGA,meta_domain,Tool_Mechanism,7416,-2.832064151763916,4
+MGA,meta_domain,Sports_Action,4924,-2.90350604057312,5
+MGA,meta_domain,Animal,27570,-3.011192798614502,6
+MGA,meta_domain,Home_Everyday,7121,-3.0400047302246094,7
+MGA,meta_domain,Human,23663,-3.100156307220459,8
+MGA,meta_domain,Other,42952,-3.241546154022217,9
+MSCLAP,meta_domain,Machine_Vehicle,6982,-1.7772421836853027,1
+MSCLAP,meta_domain,Nature,6091,-1.991249918937683,2
+MSCLAP,meta_domain,Music,25136,-2.071709394454956,3
+MSCLAP,meta_domain,Tool_Mechanism,3295,-2.1486523151397705,4
+MSCLAP,meta_domain,Sports_Action,2371,-2.234820604324341,5
+MSCLAP,meta_domain,Animal,13166,-2.308210611343384,6
+MSCLAP,meta_domain,Home_Everyday,3386,-2.3607378005981445,7
+MSCLAP,meta_domain,Human,12227,-2.3720390796661377,8
+MSCLAP,meta_domain,Other,19601,-2.578286647796631,9
+LAION,fine_category,cupboard opening or closing,247,-0.015132260508835316,1
+LAION,fine_category,extending ladders,169,-0.4933311641216278,2
+LAION,fine_category,chicken crowing,816,-0.7310552597045898,3
+LAION,fine_category,scuba diving,711,-0.813987135887146,4
+LAION,fine_category,playing banjo,802,-0.8236885070800781,5
+LAION,fine_category,playing trombone,770,-0.8312309980392456,6
+LAION,fine_category,playing accordion,787,-0.8572421669960022,7
+LAION,fine_category,playing harp,748,-0.8600091934204102,8
+LAION,fine_category,playing acoustic guitar,861,-0.8732507824897766,9
+LAION,fine_category,playing french horn,643,-0.8840939402580261,10
+LAION,fine_category,"pigeon, dove cooing",768,-0.8908165693283081,11
+LAION,fine_category,"playing steel guitar, slide guitar",663,-0.9038192629814148,12
+LAION,fine_category,playing cello,782,-0.9040539264678955,13
+LAION,fine_category,playing mandolin,623,-0.9114255905151367,14
+LAION,fine_category,people whispering,574,-0.9631991386413574,15
+LAION,fine_category,cat purring,619,-0.965387225151062,16
+LAION,fine_category,playing flute,778,-0.9713517427444458,17
+LAION,fine_category,playing saxophone,790,-0.9714894890785217,18
+LAION,fine_category,playing trumpet,630,-0.9850808382034302,19
+LAION,fine_category,dog howling,705,-0.9981605410575867,20
+LAION,fine_category,playing cornet,677,-1.0024861097335815,21
+LAION,fine_category,ambulance siren,789,-1.0039215087890625,22
+LAION,fine_category,typing on computer keyboard,431,-1.006974220275879,23
+LAION,fine_category,playing tabla,790,-1.0152506828308105,24
+LAION,fine_category,chainsawing trees,792,-1.015424132347107,25
+LAION,fine_category,female singing,976,-1.0155789852142334,26
+LAION,fine_category,fireworks banging,788,-1.0166199207305908,27
+LAION,fine_category,police car (siren),754,-1.0211960077285767,28
+LAION,fine_category,rapping,466,-1.022351622581482,29
+LAION,fine_category,church bell ringing,611,-1.0249366760253906,30
+LAION,fine_category,"heart sounds, heartbeat",563,-1.030033826828003,31
+LAION,fine_category,playing congas,361,-1.0314083099365234,32
+LAION,fine_category,baltimore oriole calling,160,-1.0331882238388062,33
+LAION,fine_category,playing hammond organ,780,-1.0379326343536377,34
+LAION,fine_category,people slurping,426,-1.041454553604126,35
+LAION,fine_category,baby laughter,660,-1.0458946228027344,36
+LAION,fine_category,playing bagpipes,750,-1.0468169450759888,37
+LAION,fine_category,fire truck siren,732,-1.0490984916687012,38
+LAION,fine_category,playing djembe,341,-1.0612431764602661,39
+LAION,fine_category,people whistling,676,-1.0684137344360352,40
+LAION,fine_category,playing vibraphone,671,-1.0712965726852417,41
+LAION,fine_category,"playing violin, fiddle",927,-1.0739161968231201,42
+LAION,fine_category,playing bassoon,778,-1.0744950771331787,43
+LAION,fine_category,playing ukulele,606,-1.083345651626587,44
+LAION,fine_category,toilet flushing,797,-1.0880951881408691,45
+LAION,fine_category,male singing,928,-1.0977638959884644,46
+LAION,fine_category,singing choir,560,-1.1066734790802002,47
+LAION,fine_category,playing bongo,686,-1.1069858074188232,48
+LAION,fine_category,playing erhu,717,-1.1097980737686157,49
+LAION,fine_category,chicken clucking,494,-1.1118913888931274,50
+LAION,fine_category,people clapping,673,-1.11895751953125,51
+LAION,fine_category,playing cymbal,765,-1.1233201026916504,52
+LAION,fine_category,playing sitar,642,-1.1345558166503906,53
+LAION,fine_category,playing harpsichord,776,-1.1388906240463257,54
+LAION,fine_category,cat meowing,491,-1.1479778289794922,55
+LAION,fine_category,people eating apple,295,-1.1506651639938354,56
+LAION,fine_category,playing clarinet,736,-1.1548902988433838,57
+LAION,fine_category,underwater bubbling,317,-1.1602312326431274,58
+LAION,fine_category,lions roaring,681,-1.161684274673462,59
+LAION,fine_category,playing bugle,361,-1.1621261835098267,60
+LAION,fine_category,wood thrush calling,474,-1.16372811794281,61
+LAION,fine_category,civil defense siren,745,-1.1654925346374512,62
+LAION,fine_category,skidding,710,-1.1667240858078003,63
+LAION,fine_category,goose honking,588,-1.1686654090881348,64
+LAION,fine_category,playing zither,394,-1.173300862312317,65
+LAION,fine_category,dog barking,574,-1.1736571788787842,66
+LAION,fine_category,people crowd,785,-1.1749662160873413,67
+LAION,fine_category,child singing,781,-1.1810963153839111,68
+LAION,fine_category,baby crying,528,-1.1815922260284424,69
+LAION,fine_category,playing piano,790,-1.1860274076461792,70
+LAION,fine_category,playing oboe,433,-1.19651198387146,71
+LAION,fine_category,people sobbing,368,-1.200105905532837,72
+LAION,fine_category,orchestra,759,-1.2056946754455566,73
+LAION,fine_category,singing bowl,777,-1.2060363292694092,74
+LAION,fine_category,"playing marimba, xylophone",784,-1.208343505859375,75
+LAION,fine_category,people eating crisps,339,-1.211893916130066,76
+LAION,fine_category,cat caterwauling,179,-1.2290704250335693,77
+LAION,fine_category,frog croaking,731,-1.2335957288742065,78
+LAION,fine_category,playing didgeridoo,743,-1.2406034469604492,79
+LAION,fine_category,people cheering,523,-1.2414928674697876,80
+LAION,fine_category,people humming,308,-1.2431668043136597,81
+LAION,fine_category,playing electric guitar,909,-1.2449429035186768,82
+LAION,fine_category,playing harmonica,595,-1.2494229078292847,83
+LAION,fine_category,playing electronic organ,625,-1.2494919300079346,84
+LAION,fine_category,yodelling,739,-1.249943494796753,85
+LAION,fine_category,people babbling,454,-1.2511156797409058,86
+LAION,fine_category,playing glockenspiel,820,-1.2524207830429077,87
+LAION,fine_category,turkey gobbling,538,-1.2544727325439453,88
+LAION,fine_category,people burping,789,-1.2599931955337524,89
+LAION,fine_category,crow cawing,767,-1.2618463039398193,90
+LAION,fine_category,cow lowing,164,-1.2623668909072876,91
+LAION,fine_category,thunder,249,-1.2639000415802002,92
+LAION,fine_category,playing steelpan,405,-1.2645000219345093,93
+LAION,fine_category,baby babbling,459,-1.2656341791152954,94
+LAION,fine_category,beat boxing,752,-1.26728093624115,95
+LAION,fine_category,playing double bass,585,-1.272445559501648,96
+LAION,fine_category,dog growling,638,-1.2767106294631958,97
+LAION,fine_category,"race car, auto racing",780,-1.2875316143035889,98
+LAION,fine_category,mynah bird singing,662,-1.2885832786560059,99
+LAION,fine_category,playing timbales,442,-1.2937110662460327,100
+LAION,fine_category,smoke detector beeping,180,-1.2951014041900635,101
+LAION,fine_category,magpie calling,309,-1.3018442392349243,102
+LAION,fine_category,dog baying,312,-1.3070423603057861,103
+LAION,fine_category,owl hooting,580,-1.3096699714660645,104
+LAION,fine_category,playing snare drum,725,-1.3134312629699707,105
+LAION,fine_category,"bird chirping, tweeting",792,-1.3166102170944214,106
+LAION,fine_category,playing bass guitar,797,-1.316893458366394,107
+LAION,fine_category,playing washboard,153,-1.3175337314605713,108
+LAION,fine_category,warbler chirping,211,-1.3366447687149048,109
+LAION,fine_category,sheep bleating,432,-1.3384753465652466,110
+LAION,fine_category,striking pool,308,-1.3512097597122192,111
+LAION,fine_category,ice cracking,277,-1.3548375368118286,112
+LAION,fine_category,police radio chatter,746,-1.355062484741211,113
+LAION,fine_category,playing drum kit,782,-1.3571057319641113,114
+LAION,fine_category,ripping paper,415,-1.358318567276001,115
+LAION,fine_category,playing gong,423,-1.359720230102539,116
+LAION,fine_category,lip smacking,200,-1.362891674041748,117
+LAION,fine_category,people marching,626,-1.3659682273864746,118
+LAION,fine_category,"cattle, bovinae cowbell",497,-1.366138219833374,119
+LAION,fine_category,tapping guitar,605,-1.3762187957763672,120
+LAION,fine_category,playing tympani,367,-1.3800984621047974,121
+LAION,fine_category,footsteps on snow,195,-1.3993772268295288,122
+LAION,fine_category,train horning,618,-1.4000836610794067,123
+LAION,fine_category,barn swallow calling,334,-1.404098629951477,124
+LAION,fine_category,people belly laughing,371,-1.4062329530715942,125
+LAION,fine_category,airplane flyby,762,-1.4098048210144043,126
+LAION,fine_category,people giggling,210,-1.4116249084472656,127
+LAION,fine_category,duck quacking,459,-1.4118691682815552,128
+LAION,fine_category,"female speech, woman speaking",900,-1.4183952808380127,129
+LAION,fine_category,cat growling,300,-1.4200974702835083,130
+LAION,fine_category,playing timpani,483,-1.4229094982147217,131
+LAION,fine_category,shot football,188,-1.4293674230575562,132
+LAION,fine_category,cattle mooing,539,-1.4445239305496216,133
+LAION,fine_category,canary calling,552,-1.4456593990325928,134
+LAION,fine_category,chopping wood,194,-1.4504780769348145,135
+LAION,fine_category,"ice cream truck, ice cream van",487,-1.45182466506958,136
+LAION,fine_category,dog whimpering,372,-1.462611436843872,137
+LAION,fine_category,machine gun shooting,738,-1.4704853296279907,138
+LAION,fine_category,helicopter,768,-1.4759184122085571,139
+LAION,fine_category,"fly, housefly buzzing",163,-1.4776108264923096,140
+LAION,fine_category,"subway, metro, underground",760,-1.4794995784759521,141
+LAION,fine_category,chinchilla barking,168,-1.481804609298706,142
+LAION,fine_category,"vehicle horn, car horn, honking",800,-1.4830269813537598,143
+LAION,fine_category,fire crackling,361,-1.4832665920257568,144
+LAION,fine_category,dog bow-wow,528,-1.489534854888916,145
+LAION,fine_category,ocean burbling,730,-1.4949272871017456,146
+LAION,fine_category,lawn mowing,646,-1.4950977563858032,147
+LAION,fine_category,playing theremin,722,-1.4981253147125244,148
+LAION,fine_category,playing bass drum,671,-1.4991858005523682,149
+LAION,fine_category,people slapping,171,-1.501644253730774,150
+LAION,fine_category,coyote howling,373,-1.5028928518295288,151
+LAION,fine_category,playing volleyball,744,-1.5117671489715576,152
+LAION,fine_category,francolin calling,491,-1.5124919414520264,153
+LAION,fine_category,cat hissing,253,-1.514272928237915,154
+LAION,fine_category,people nose blowing,185,-1.515192985534668,155
+LAION,fine_category,playing shofar,147,-1.5266833305358887,156
+LAION,fine_category,people eating,175,-1.529889702796936,157
+LAION,fine_category,telephone bell ringing,160,-1.5306177139282227,158
+LAION,fine_category,wind chime,310,-1.531412959098816,159
+LAION,fine_category,car engine knocking,740,-1.5318012237548828,160
+LAION,fine_category,wind noise,770,-1.5366058349609375,161
+LAION,fine_category,waterfall burbling,395,-1.5371737480163574,162
+LAION,fine_category,lions growling,465,-1.5385096073150635,163
+LAION,fine_category,black capped chickadee calling,348,-1.5419209003448486,164
+LAION,fine_category,cuckoo bird calling,167,-1.5477780103683472,165
+LAION,fine_category,playing darts,424,-1.5534162521362305,166
+LAION,fine_category,children shouting,146,-1.5574750900268555,167
+LAION,fine_category,playing badminton,767,-1.5598384141921997,168
+LAION,fine_category,gibbon howling,593,-1.560328483581543,169
+LAION,fine_category,pheasant crowing,722,-1.563485860824585,170
+LAION,fine_category,"engine accelerating, revving, vroom",799,-1.5643028020858765,171
+LAION,fine_category,playing tennis,275,-1.5720760822296143,172
+LAION,fine_category,woodpecker pecking tree,576,-1.578000783920288,173
+LAION,fine_category,cricket chirping,544,-1.58412766456604,174
+LAION,fine_category,parrot talking,470,-1.5857996940612793,175
+LAION,fine_category,people sniggering,670,-1.5865068435668945,176
+LAION,fine_category,people booing,802,-1.5971378087997437,177
+LAION,fine_category,people sneezing,520,-1.599921464920044,178
+LAION,fine_category,hail,549,-1.6086633205413818,179
+LAION,fine_category,train whistling,448,-1.617724895477295,180
+LAION,fine_category,people eating noodle,397,-1.618996262550354,181
+LAION,fine_category,people hiccup,297,-1.619652509689331,182
+LAION,fine_category,"bee, wasp, etc. buzzing",435,-1.619953989982605,183
+LAION,fine_category,people farting,412,-1.622226595878601,184
+LAION,fine_category,sea waves,207,-1.6223781108856201,185
+LAION,fine_category,"railroad car, train wagon",783,-1.6254842281341553,186
+LAION,fine_category,sloshing water,230,-1.625673532485962,187
+LAION,fine_category,skateboarding,651,-1.6260756254196167,188
+LAION,fine_category,chipmunk chirping,208,-1.6289206743240356,189
+LAION,fine_category,dinosaurs bellowing,484,-1.6327868700027466,190
+LAION,fine_category,"male speech, man speaking",1000,-1.6356602907180786,191
+LAION,fine_category,disc scratching,163,-1.6370669603347778,192
+LAION,fine_category,fox barking,279,-1.6390169858932495,193
+LAION,fine_category,sailing,467,-1.642048716545105,194
+LAION,fine_category,opening or closing car electric windows,165,-1.6444004774093628,195
+LAION,fine_category,bull bellowing,256,-1.6514289379119873,196
+LAION,fine_category,slot machine,779,-1.6540253162384033,197
+LAION,fine_category,basketball bounce,770,-1.6563405990600586,198
+LAION,fine_category,people coughing,342,-1.6606125831604004,199
+LAION,fine_category,elk bugling,416,-1.6615926027297974,200
+LAION,fine_category,people gargling,174,-1.6617802381515503,201
+LAION,fine_category,playing tuning fork,165,-1.662764072418213,202
+LAION,fine_category,playing squash,779,-1.6627955436706543,203
+LAION,fine_category,car engine idling,301,-1.6633937358856201,204
+LAION,fine_category,horse clip-clop,820,-1.6767405271530151,205
+LAION,fine_category,goat bleating,199,-1.679349422454834,206
+LAION,fine_category,driving snowmobile,475,-1.6866309642791748,207
+LAION,fine_category,horse neighing,469,-1.6871095895767212,208
+LAION,fine_category,golf driving,236,-1.6896545886993408,209
+LAION,fine_category,tap dancing,810,-1.6959121227264404,210
+LAION,fine_category,playing guiro,372,-1.6971837282180786,211
+LAION,fine_category,eating with cutlery,404,-1.702518105506897,212
+LAION,fine_category,playing table tennis,790,-1.7174055576324463,213
+LAION,fine_category,strike lighter,182,-1.718653917312622,214
+LAION,fine_category,missile launch,757,-1.720215082168579,215
+LAION,fine_category,zebra braying,158,-1.7252259254455566,216
+LAION,fine_category,"donkey, ass braying",340,-1.7268224954605103,217
+LAION,fine_category,striking bowling,247,-1.727712869644165,218
+LAION,fine_category,cap gun shooting,675,-1.7329531908035278,219
+LAION,fine_category,"child speech, kid speaking",765,-1.7351160049438477,220
+LAION,fine_category,alarm clock ringing,269,-1.753251314163208,221
+LAION,fine_category,hammering nails,475,-1.754364013671875,222
+LAION,fine_category,tractor digging,748,-1.7547931671142578,223
+LAION,fine_category,stream burbling,518,-1.7583179473876953,224
+LAION,fine_category,driving motorcycle,759,-1.7596778869628906,225
+LAION,fine_category,splashing water,467,-1.7662296295166016,226
+LAION,fine_category,people screaming,562,-1.779897928237915,227
+LAION,fine_category,driving buses,787,-1.7845866680145264,228
+LAION,fine_category,playing castanets,144,-1.788360834121704,229
+LAION,fine_category,"electric shaver, electric razor shaving",694,-1.7943940162658691,230
+LAION,fine_category,bird squawking,258,-1.798534631729126,231
+LAION,fine_category,typing on typewriter,558,-1.8000296354293823,232
+LAION,fine_category,ferret dooking,190,-1.800715446472168,233
+LAION,fine_category,pig oinking,328,-1.801790475845337,234
+LAION,fine_category,train wheels squealing,263,-1.8041837215423584,235
+LAION,fine_category,bowling impact,723,-1.8049062490463257,236
+LAION,fine_category,blowtorch igniting,197,-1.8143084049224854,237
+LAION,fine_category,firing muskets,326,-1.814978837966919,238
+LAION,fine_category,firing cannon,260,-1.8267183303833008,239
+LAION,fine_category,car passing by,487,-1.8274126052856445,240
+LAION,fine_category,squishing water,320,-1.8293437957763672,241
+LAION,fine_category,playing tambourine,611,-1.830681562423706,242
+LAION,fine_category,using sewing machines,476,-1.837246060371399,243
+LAION,fine_category,cheetah chirrup,314,-1.8580951690673828,244
+LAION,fine_category,playing lacrosse,205,-1.8598361015319824,245
+LAION,fine_category,swimming,419,-1.8662906885147095,246
+LAION,fine_category,mouse clicking,515,-1.8702349662780762,247
+LAION,fine_category,playing hockey,284,-1.8765841722488403,248
+LAION,fine_category,volcano explosion,626,-1.878326177597046,249
+LAION,fine_category,foghorn,176,-1.886338233947754,250
+LAION,fine_category,air horn,155,-1.8865373134613037,251
+LAION,fine_category,bathroom ventilation fan running,160,-1.8945810794830322,252
+LAION,fine_category,cutting hair with electric trimmers,215,-1.895186424255371,253
+LAION,fine_category,"motorboat, speedboat acceleration",917,-1.8953042030334473,254
+LAION,fine_category,"rowboat, canoe, kayak rowing",805,-1.895928978919983,255
+LAION,fine_category,sharpen knife,586,-1.9006253480911255,256
+LAION,fine_category,printer printing,635,-1.9109232425689697,257
+LAION,fine_category,car engine starting,408,-1.9118906259536743,258
+LAION,fine_category,hedge trimmer running,195,-1.9136238098144531,259
+LAION,fine_category,chopping food,152,-1.919970989227295,260
+LAION,fine_category,wind rustling leaves,455,-1.9199886322021484,261
+LAION,fine_category,writing on blackboard with chalk,196,-1.92225980758667,262
+LAION,fine_category,bouncing on trampoline,407,-1.933001160621643,263
+LAION,fine_category,chimpanzee pant-hooting,355,-1.9338897466659546,264
+LAION,fine_category,roller coaster running,520,-1.9344582557678223,265
+LAION,fine_category,plastic bottle crushing,208,-1.937759518623352,266
+LAION,fine_category,opening or closing drawers,361,-1.9403315782546997,267
+LAION,fine_category,people shuffling,504,-1.9461424350738525,268
+LAION,fine_category,snake hissing,222,-1.9497865438461304,269
+LAION,fine_category,whale calling,149,-1.951177716255188,270
+LAION,fine_category,elephant trumpeting,251,-1.9526305198669434,271
+LAION,fine_category,metronome,168,-1.963202953338623,272
+LAION,fine_category,otter growling,275,-1.974016785621643,273
+LAION,fine_category,people running,334,-1.9756793975830078,274
+LAION,fine_category,rope skipping,734,-1.9787784814834595,275
+LAION,fine_category,skiing,754,-1.9818429946899414,276
+LAION,fine_category,lathe spinning,641,-1.9827269315719604,277
+LAION,fine_category,opening or closing car doors,357,-1.9881072044372559,278
+LAION,fine_category,forging swords,201,-1.9903110265731812,279
+LAION,fine_category,penguins braying,241,-1.9964898824691772,280
+LAION,fine_category,lighting firecrackers,664,-2.000208616256714,281
+LAION,fine_category,eletric blender running,154,-2.0050148963928223,282
+LAION,fine_category,vacuum cleaner cleaning floors,734,-2.0099167823791504,283
+LAION,fine_category,tornado roaring,285,-2.0107314586639404,284
+LAION,fine_category,sliding door,460,-2.0175421237945557,285
+LAION,fine_category,planing timber,616,-2.0314416885375977,286
+LAION,fine_category,people finger snapping,157,-2.035261392593384,287
+LAION,fine_category,"alligators, crocodiles hissing",265,-2.0425329208374023,288
+LAION,fine_category,cell phone buzzing,163,-2.0501792430877686,289
+LAION,fine_category,reversing beeps,348,-2.059652090072632,290
+LAION,fine_category,mosquito buzzing,338,-2.0761959552764893,291
+LAION,fine_category,playing synthesizer,651,-2.0774636268615723,292
+LAION,fine_category,bird wings flapping,202,-2.08066725730896,293
+LAION,fine_category,airplane,341,-2.0808677673339844,294
+LAION,fine_category,people battle cry,265,-2.106036424636841,295
+LAION,fine_category,door slamming,164,-2.1258883476257324,296
+LAION,fine_category,raining,372,-2.1367075443267822,297
+LAION,fine_category,running electric fan,274,-2.14397931098938,298
+LAION,fine_category,air conditioning noise,205,-2.156891345977783,299
+LAION,fine_category,eagle screaming,205,-2.1744863986968994,300
+LAION,fine_category,mouse pattering,323,-2.1776695251464844,301
+LAION,fine_category,mouse squeaking,192,-2.1961028575897217,302
+LAION,fine_category,arc welding,720,-2.2303884029388428,303
+LAION,fine_category,snake rattling,150,-2.2368967533111572,304
+LAION,fine_category,electric grinder grinding,335,-2.249605178833008,305
+LAION,fine_category,popping popcorn,187,-2.306840181350708,306
+LAION,fine_category,hair dryer drying,262,-2.3642776012420654,307
+LAION,fine_category,spraying water,212,-2.3869497776031494,308
+LAION,fine_category,sea lion barking,172,-2.511645793914795,309
+LAION,fine_category,pumping water,158,-2.6213300228118896,310
+M2D,fine_category,cupboard opening or closing,330,-0.009679281152784824,1
+M2D,fine_category,extending ladders,224,-0.4055579900741577,2
+M2D,fine_category,scuba diving,963,-0.5793750286102295,3
+M2D,fine_category,people slurping,562,-0.6387253999710083,4
+M2D,fine_category,playing harp,1048,-0.6900275945663452,5
+M2D,fine_category,playing bagpipes,958,-0.6914301514625549,6
+M2D,fine_category,playing harpsichord,1022,-0.6948205232620239,7
+M2D,fine_category,playing hammond organ,1044,-0.7006340026855469,8
+M2D,fine_category,"pigeon, dove cooing",1049,-0.703826367855072,9
+M2D,fine_category,toilet flushing,1049,-0.7263039350509644,10
+M2D,fine_category,playing sitar,858,-0.7401963472366333,11
+M2D,fine_category,playing vibraphone,885,-0.741169810295105,12
+M2D,fine_category,chainsawing trees,1048,-0.7455847859382629,13
+M2D,fine_category,playing accordion,1049,-0.7464411854743958,14
+M2D,fine_category,people eating apple,360,-0.747729480266571,15
+M2D,fine_category,playing steelpan,504,-0.7565768361091614,16
+M2D,fine_category,ambulance siren,1049,-0.7639820575714111,17
+M2D,fine_category,chicken crowing,1048,-0.7659680843353271,18
+M2D,fine_category,thunder,325,-0.7779281139373779,19
+M2D,fine_category,playing acoustic guitar,1050,-0.7914161682128906,20
+M2D,fine_category,people whispering,745,-0.7918351888656616,21
+M2D,fine_category,church bell ringing,804,-0.7951325178146362,22
+M2D,fine_category,playing banjo,1048,-0.8062286376953125,23
+M2D,fine_category,playing cymbal,1049,-0.8068023920059204,24
+M2D,fine_category,fireworks banging,1046,-0.8081700801849365,25
+M2D,fine_category,people eating crisps,440,-0.8103400468826294,26
+M2D,fine_category,typing on computer keyboard,561,-0.8155137896537781,27
+M2D,fine_category,skidding,905,-0.8196618556976318,28
+M2D,fine_category,playing cello,1050,-0.820385754108429,29
+M2D,fine_category,people clapping,901,-0.8254179954528809,30
+M2D,fine_category,police car (siren),1050,-0.8306406736373901,31
+M2D,fine_category,playing tabla,1046,-0.8309990167617798,32
+M2D,fine_category,"subway, metro, underground",1000,-0.856143593788147,33
+M2D,fine_category,playing flute,1048,-0.8675293922424316,34
+M2D,fine_category,"playing marimba, xylophone",1049,-0.8740326166152954,35
+M2D,fine_category,fire truck siren,958,-0.8742443323135376,36
+M2D,fine_category,"playing steel guitar, slide guitar",926,-0.8753565549850464,37
+M2D,fine_category,ocean burbling,983,-0.8769761323928833,38
+M2D,fine_category,playing didgeridoo,1050,-0.892772912979126,39
+M2D,fine_category,playing electronic organ,839,-0.9008421301841736,40
+M2D,fine_category,cat purring,861,-0.9028923511505127,41
+M2D,fine_category,lions roaring,962,-0.9030808210372925,42
+M2D,fine_category,playing gong,555,-0.9225746393203735,43
+M2D,fine_category,civil defense siren,977,-0.9295594692230225,44
+M2D,fine_category,sea waves,250,-0.9312577247619629,45
+M2D,fine_category,playing trombone,1050,-0.9393981695175171,46
+M2D,fine_category,playing saxophone,1049,-0.9403754472732544,47
+M2D,fine_category,playing erhu,971,-0.9403955936431885,48
+M2D,fine_category,"playing violin, fiddle",1047,-0.9406608939170837,49
+M2D,fine_category,basketball bounce,1049,-0.9408639073371887,50
+M2D,fine_category,chicken clucking,624,-0.9425292611122131,51
+M2D,fine_category,playing french horn,862,-0.9467318058013916,52
+M2D,fine_category,rapping,638,-0.9479408264160156,53
+M2D,fine_category,baltimore oriole calling,200,-0.9481235146522522,54
+M2D,fine_category,playing harmonica,824,-0.948857307434082,55
+M2D,fine_category,playing mandolin,824,-0.94903564453125,56
+M2D,fine_category,playing congas,465,-0.9490988254547119,57
+M2D,fine_category,people sobbing,480,-0.9549638032913208,58
+M2D,fine_category,"race car, auto racing",1048,-0.9565205574035645,59
+M2D,fine_category,ripping paper,559,-0.9577468633651733,60
+M2D,fine_category,playing electric guitar,1050,-0.9617503881454468,61
+M2D,fine_category,playing djembe,430,-0.9624450206756592,62
+M2D,fine_category,female singing,1050,-0.9634497165679932,63
+M2D,fine_category,playing trumpet,835,-0.9667239189147949,64
+M2D,fine_category,underwater bubbling,420,-0.9681339263916016,65
+M2D,fine_category,dog barking,765,-0.97319096326828,66
+M2D,fine_category,playing snare drum,985,-0.9738442897796631,67
+M2D,fine_category,playing clarinet,1048,-0.9745885729789734,68
+M2D,fine_category,waterfall burbling,512,-0.978011965751648,69
+M2D,fine_category,baby laughter,880,-0.9787812829017639,70
+M2D,fine_category,singing choir,759,-0.9805048108100891,71
+M2D,fine_category,lip smacking,263,-0.983619213104248,72
+M2D,fine_category,hail,718,-0.9864516854286194,73
+M2D,fine_category,playing zither,538,-0.9865094423294067,74
+M2D,fine_category,playing bongo,920,-0.988823652267456,75
+M2D,fine_category,"railroad car, train wagon",1049,-0.9891241788864136,76
+M2D,fine_category,playing piano,1049,-0.994503378868103,77
+M2D,fine_category,train horning,770,-0.9952926635742188,78
+M2D,fine_category,wood thrush calling,681,-1.000867247581482,79
+M2D,fine_category,cat meowing,587,-1.0016570091247559,80
+M2D,fine_category,playing badminton,999,-1.0020068883895874,81
+M2D,fine_category,airplane flyby,962,-1.0034642219543457,82
+M2D,fine_category,people whistling,883,-1.0057072639465332,83
+M2D,fine_category,sailing,592,-1.0069693326950073,84
+M2D,fine_category,people cheering,703,-1.0071630477905273,85
+M2D,fine_category,sheep bleating,514,-1.0073169469833374,86
+M2D,fine_category,playing ukulele,905,-1.0075756311416626,87
+M2D,fine_category,baby crying,666,-1.010789394378662,88
+M2D,fine_category,people crowd,1045,-1.0134341716766357,89
+M2D,fine_category,skateboarding,913,-1.0153228044509888,90
+M2D,fine_category,playing timpani,628,-1.0159181356430054,91
+M2D,fine_category,helicopter,1047,-1.0173004865646362,92
+M2D,fine_category,police radio chatter,957,-1.0175096988677979,93
+M2D,fine_category,turkey gobbling,644,-1.018953800201416,94
+M2D,fine_category,playing drum kit,1049,-1.0217970609664917,95
+M2D,fine_category,beat boxing,997,-1.022147297859192,96
+M2D,fine_category,"heart sounds, heartbeat",754,-1.0232150554656982,97
+M2D,fine_category,people eating noodle,560,-1.025516152381897,98
+M2D,fine_category,playing glockenspiel,1046,-1.0377699136734009,99
+M2D,fine_category,machine gun shooting,986,-1.042360544204712,100
+M2D,fine_category,playing bass guitar,1048,-1.0438520908355713,101
+M2D,fine_category,lawn mowing,856,-1.0446258783340454,102
+M2D,fine_category,playing cornet,890,-1.0491323471069336,103
+M2D,fine_category,cow lowing,199,-1.0530292987823486,104
+M2D,fine_category,driving buses,1050,-1.0545547008514404,105
+M2D,fine_category,playing bassoon,1049,-1.056861162185669,106
+M2D,fine_category,blowtorch igniting,250,-1.0576450824737549,107
+M2D,fine_category,"bee, wasp, etc. buzzing",549,-1.0612229108810425,108
+M2D,fine_category,frog croaking,1017,-1.0625828504562378,109
+M2D,fine_category,train whistling,608,-1.0636520385742188,110
+M2D,fine_category,ice cracking,363,-1.064106822013855,111
+M2D,fine_category,people babbling,586,-1.0654970407485962,112
+M2D,fine_category,playing oboe,544,-1.065517544746399,113
+M2D,fine_category,train wheels squealing,333,-1.0666561126708984,114
+M2D,fine_category,playing timbales,585,-1.0672966241836548,115
+M2D,fine_category,goose honking,787,-1.071547269821167,116
+M2D,fine_category,cat caterwauling,236,-1.0717599391937256,117
+M2D,fine_category,tapping guitar,780,-1.0747203826904297,118
+M2D,fine_category,car engine knocking,990,-1.0771324634552002,119
+M2D,fine_category,"cattle, bovinae cowbell",644,-1.0786538124084473,120
+M2D,fine_category,playing tympani,463,-1.0822447538375854,121
+M2D,fine_category,orchestra,1049,-1.0829352140426636,122
+M2D,fine_category,playing bass drum,862,-1.0872178077697754,123
+M2D,fine_category,playing double bass,808,-1.0881595611572266,124
+M2D,fine_category,playing table tennis,1048,-1.0895143747329712,125
+M2D,fine_category,stream burbling,690,-1.093514084815979,126
+M2D,fine_category,cattle mooing,735,-1.0941638946533203,127
+M2D,fine_category,people belly laughing,516,-1.0952799320220947,128
+M2D,fine_category,people burping,1047,-1.0957434177398682,129
+M2D,fine_category,people eating,225,-1.097500205039978,130
+M2D,fine_category,dog howling,924,-1.0980520248413086,131
+M2D,fine_category,male singing,1049,-1.1002990007400513,132
+M2D,fine_category,sloshing water,276,-1.1088790893554688,133
+M2D,fine_category,dog growling,825,-1.1122150421142578,134
+M2D,fine_category,dog baying,412,-1.1164342164993286,135
+M2D,fine_category,crow cawing,991,-1.1182770729064941,136
+M2D,fine_category,footsteps on snow,251,-1.1196625232696533,137
+M2D,fine_category,wind noise,921,-1.125575304031372,138
+M2D,fine_category,singing bowl,1048,-1.1276333332061768,139
+M2D,fine_category,bowling impact,968,-1.1336274147033691,140
+M2D,fine_category,tractor digging,969,-1.1351408958435059,141
+M2D,fine_category,printer printing,878,-1.1366746425628662,142
+M2D,fine_category,playing volleyball,989,-1.1385998725891113,143
+M2D,fine_category,"engine accelerating, revving, vroom",1049,-1.1451890468597412,144
+M2D,fine_category,elk bugling,557,-1.1477926969528198,145
+M2D,fine_category,mynah bird singing,880,-1.1492116451263428,146
+M2D,fine_category,shot football,226,-1.1516625881195068,147
+M2D,fine_category,"bird chirping, tweeting",1048,-1.1531240940093994,148
+M2D,fine_category,driving snowmobile,601,-1.153757929801941,149
+M2D,fine_category,fire crackling,492,-1.1545768976211548,150
+M2D,fine_category,baby babbling,597,-1.1549171209335327,151
+M2D,fine_category,playing theremin,1007,-1.1568266153335571,152
+M2D,fine_category,woodpecker pecking tree,744,-1.1577708721160889,153
+M2D,fine_category,canary calling,717,-1.159316062927246,154
+M2D,fine_category,driving motorcycle,1046,-1.1609218120574951,155
+M2D,fine_category,disc scratching,200,-1.1627447605133057,156
+M2D,fine_category,people booing,1049,-1.1632999181747437,157
+M2D,fine_category,cricket chirping,702,-1.1651020050048828,158
+M2D,fine_category,barn swallow calling,418,-1.166430950164795,159
+M2D,fine_category,slot machine,997,-1.1665047407150269,160
+M2D,fine_category,people giggling,271,-1.1686047315597534,161
+M2D,fine_category,playing tennis,390,-1.1715636253356934,162
+M2D,fine_category,dog bow-wow,628,-1.1728328466415405,163
+M2D,fine_category,striking bowling,326,-1.1765950918197632,164
+M2D,fine_category,magpie calling,429,-1.177704095840454,165
+M2D,fine_category,child singing,990,-1.1848584413528442,166
+M2D,fine_category,car engine idling,370,-1.1898752450942993,167
+M2D,fine_category,people nose blowing,228,-1.1930797100067139,168
+M2D,fine_category,"female speech, woman speaking",1048,-1.195050597190857,169
+M2D,fine_category,lions growling,597,-1.1960985660552979,170
+M2D,fine_category,"rowboat, canoe, kayak rowing",1049,-1.1994214057922363,171
+M2D,fine_category,owl hooting,753,-1.2032840251922607,172
+M2D,fine_category,cat growling,385,-1.2043288946151733,173
+M2D,fine_category,people marching,815,-1.2130131721496582,174
+M2D,fine_category,chinchilla barking,213,-1.2133760452270508,175
+M2D,fine_category,duck quacking,599,-1.2135214805603027,176
+M2D,fine_category,splashing water,614,-1.214471697807312,177
+M2D,fine_category,gibbon howling,791,-1.2159614562988281,178
+M2D,fine_category,"male speech, man speaking",1049,-1.217792272567749,179
+M2D,fine_category,"motorboat, speedboat acceleration",1047,-1.2179088592529297,180
+M2D,fine_category,lathe spinning,859,-1.2243646383285522,181
+M2D,fine_category,using sewing machines,625,-1.2254061698913574,182
+M2D,fine_category,playing squash,1048,-1.2258177995681763,183
+M2D,fine_category,black capped chickadee calling,445,-1.2260016202926636,184
+M2D,fine_category,wind chime,389,-1.235427737236023,185
+M2D,fine_category,parrot talking,592,-1.236915111541748,186
+M2D,fine_category,warbler chirping,264,-1.2376432418823242,187
+M2D,fine_category,horse clip-clop,882,-1.2410719394683838,188
+M2D,fine_category,smoke detector beeping,221,-1.2421486377716064,189
+M2D,fine_category,people hiccup,394,-1.2422504425048828,190
+M2D,fine_category,dog whimpering,461,-1.2434501647949219,191
+M2D,fine_category,playing tambourine,809,-1.2486554384231567,192
+M2D,fine_category,"vehicle horn, car horn, honking",1049,-1.2506582736968994,193
+M2D,fine_category,eating with cutlery,528,-1.2595677375793457,194
+M2D,fine_category,pheasant crowing,933,-1.2617820501327515,195
+M2D,fine_category,playing washboard,200,-1.263824224472046,196
+M2D,fine_category,dinosaurs bellowing,633,-1.2659893035888672,197
+M2D,fine_category,playing hockey,400,-1.2664169073104858,198
+M2D,fine_category,snake hissing,284,-1.2690858840942383,199
+M2D,fine_category,playing bugle,442,-1.2713168859481812,200
+M2D,fine_category,people sniggering,890,-1.273651123046875,201
+M2D,fine_category,car passing by,595,-1.274745225906372,202
+M2D,fine_category,"ice cream truck, ice cream van",676,-1.2748967409133911,203
+M2D,fine_category,"donkey, ass braying",437,-1.2789192199707031,204
+M2D,fine_category,coyote howling,490,-1.2816499471664429,205
+M2D,fine_category,forging swords,264,-1.2819550037384033,206
+M2D,fine_category,missile launch,974,-1.2836679220199585,207
+M2D,fine_category,opening or closing car electric windows,205,-1.288700819015503,208
+M2D,fine_category,cat hissing,320,-1.2923024892807007,209
+M2D,fine_category,people running,422,-1.2939343452453613,210
+M2D,fine_category,swimming,566,-1.2941665649414062,211
+M2D,fine_category,chopping wood,254,-1.2941874265670776,212
+M2D,fine_category,people slapping,211,-1.295269250869751,213
+M2D,fine_category,people coughing,452,-1.29594087600708,214
+M2D,fine_category,yodelling,958,-1.2967417240142822,215
+M2D,fine_category,chimpanzee pant-hooting,473,-1.297386884689331,216
+M2D,fine_category,bathroom ventilation fan running,200,-1.2982993125915527,217
+M2D,fine_category,vacuum cleaner cleaning floors,1008,-1.3052914142608643,218
+M2D,fine_category,strike lighter,229,-1.3112868070602417,219
+M2D,fine_category,"fly, housefly buzzing",198,-1.3116700649261475,220
+M2D,fine_category,"child speech, kid speaking",1046,-1.3127200603485107,221
+M2D,fine_category,raining,473,-1.3151891231536865,222
+M2D,fine_category,striking pool,401,-1.3154566287994385,223
+M2D,fine_category,francolin calling,643,-1.3174195289611816,224
+M2D,fine_category,tap dancing,1050,-1.3178867101669312,225
+M2D,fine_category,wind rustling leaves,560,-1.3189613819122314,226
+M2D,fine_category,car engine starting,491,-1.3223639726638794,227
+M2D,fine_category,zebra braying,199,-1.324164867401123,228
+M2D,fine_category,playing synthesizer,909,-1.325727939605713,229
+M2D,fine_category,skiing,976,-1.326568365097046,230
+M2D,fine_category,chipmunk chirping,261,-1.3285759687423706,231
+M2D,fine_category,cuckoo bird calling,218,-1.3295315504074097,232
+M2D,fine_category,snake rattling,199,-1.3297224044799805,233
+M2D,fine_category,goat bleating,246,-1.3309659957885742,234
+M2D,fine_category,squishing water,430,-1.3323651552200317,235
+M2D,fine_category,telephone bell ringing,200,-1.3406096696853638,236
+M2D,fine_category,golf driving,302,-1.341925859451294,237
+M2D,fine_category,playing lacrosse,282,-1.3443753719329834,238
+M2D,fine_category,people humming,391,-1.3459242582321167,239
+M2D,fine_category,hedge trimmer running,251,-1.3584470748901367,240
+M2D,fine_category,firing muskets,417,-1.3605234622955322,241
+M2D,fine_category,playing tuning fork,200,-1.3696938753128052,242
+M2D,fine_category,people gargling,221,-1.3700498342514038,243
+M2D,fine_category,people sneezing,688,-1.3731151819229126,244
+M2D,fine_category,pig oinking,443,-1.376262903213501,245
+M2D,fine_category,typing on typewriter,744,-1.3799432516098022,246
+M2D,fine_category,people farting,554,-1.3854343891143799,247
+M2D,fine_category,bull bellowing,316,-1.3913954496383667,248
+M2D,fine_category,fox barking,360,-1.3933894634246826,249
+M2D,fine_category,ferret dooking,239,-1.394834280014038,250
+M2D,fine_category,roller coaster running,677,-1.3952285051345825,251
+M2D,fine_category,air conditioning noise,245,-1.3991093635559082,252
+M2D,fine_category,playing guiro,475,-1.4179859161376953,253
+M2D,fine_category,"electric shaver, electric razor shaving",906,-1.4229538440704346,254
+M2D,fine_category,bouncing on trampoline,526,-1.4266775846481323,255
+M2D,fine_category,playing castanets,197,-1.4273231029510498,256
+M2D,fine_category,playing shofar,198,-1.428974986076355,257
+M2D,fine_category,sliding door,587,-1.43035089969635,258
+M2D,fine_category,playing darts,555,-1.441552758216858,259
+M2D,fine_category,children shouting,200,-1.4444012641906738,260
+M2D,fine_category,tornado roaring,356,-1.4500113725662231,261
+M2D,fine_category,volcano explosion,842,-1.4520169496536255,262
+M2D,fine_category,plastic bottle crushing,262,-1.4541959762573242,263
+M2D,fine_category,eletric blender running,214,-1.4547419548034668,264
+M2D,fine_category,writing on blackboard with chalk,280,-1.4558320045471191,265
+M2D,fine_category,sharpen knife,774,-1.4585944414138794,266
+M2D,fine_category,horse neighing,584,-1.4715595245361328,267
+M2D,fine_category,cheetah chirrup,403,-1.473962426185608,268
+M2D,fine_category,penguins braying,318,-1.478102445602417,269
+M2D,fine_category,firing cannon,336,-1.491220474243164,270
+M2D,fine_category,whale calling,200,-1.4965718984603882,271
+M2D,fine_category,people shuffling,673,-1.4998434782028198,272
+M2D,fine_category,people screaming,728,-1.5045058727264404,273
+M2D,fine_category,opening or closing drawers,458,-1.505282998085022,274
+M2D,fine_category,cap gun shooting,902,-1.5070794820785522,275
+M2D,fine_category,air horn,196,-1.5110986232757568,276
+M2D,fine_category,bird squawking,348,-1.518927812576294,277
+M2D,fine_category,mouse clicking,658,-1.5282663106918335,278
+M2D,fine_category,lighting firecrackers,852,-1.529524803161621,279
+M2D,fine_category,alarm clock ringing,331,-1.5331799983978271,280
+M2D,fine_category,cutting hair with electric trimmers,268,-1.5413708686828613,281
+M2D,fine_category,planing timber,816,-1.543969988822937,282
+M2D,fine_category,popping popcorn,252,-1.545482873916626,283
+M2D,fine_category,foghorn,217,-1.5468237400054932,284
+M2D,fine_category,hammering nails,612,-1.548237919807434,285
+M2D,fine_category,chopping food,200,-1.5521245002746582,286
+M2D,fine_category,electric grinder grinding,424,-1.5529431104660034,287
+M2D,fine_category,arc welding,931,-1.5616402626037598,288
+M2D,fine_category,otter growling,363,-1.563309907913208,289
+M2D,fine_category,elephant trumpeting,310,-1.5688960552215576,290
+M2D,fine_category,spraying water,278,-1.5716391801834106,291
+M2D,fine_category,bird wings flapping,256,-1.589107632637024,292
+M2D,fine_category,rope skipping,967,-1.593825101852417,293
+M2D,fine_category,airplane,504,-1.5981862545013428,294
+M2D,fine_category,mouse pattering,430,-1.5995450019836426,295
+M2D,fine_category,opening or closing car doors,457,-1.650000810623169,296
+M2D,fine_category,reversing beeps,485,-1.6678779125213623,297
+M2D,fine_category,metronome,200,-1.6697652339935303,298
+M2D,fine_category,"alligators, crocodiles hissing",361,-1.67268967628479,299
+M2D,fine_category,people finger snapping,200,-1.6829670667648315,300
+M2D,fine_category,mouse squeaking,238,-1.6909575462341309,301
+M2D,fine_category,hair dryer drying,343,-1.6976163387298584,302
+M2D,fine_category,door slamming,200,-1.7157528400421143,303
+M2D,fine_category,sea lion barking,211,-1.7193316221237183,304
+M2D,fine_category,pumping water,199,-1.7254899740219116,305
+M2D,fine_category,cell phone buzzing,198,-1.7329115867614746,306
+M2D,fine_category,running electric fan,318,-1.7330886125564575,307
+M2D,fine_category,eagle screaming,252,-1.7361385822296143,308
+M2D,fine_category,people battle cry,291,-1.7902584075927734,309
+M2D,fine_category,mosquito buzzing,435,-1.790649652481079,310
+MGA,fine_category,cupboard opening or closing,330,-0.011773179285228252,1
+MGA,fine_category,extending ladders,224,-0.5067983865737915,2
+MGA,fine_category,playing accordion,1049,-0.7609281539916992,3
+MGA,fine_category,chainsawing trees,1048,-0.7659152150154114,4
+MGA,fine_category,playing cello,1050,-0.7922880053520203,5
+MGA,fine_category,playing cymbal,1049,-0.821215033531189,6
+MGA,fine_category,church bell ringing,804,-0.8336694240570068,7
+MGA,fine_category,playing bagpipes,958,-0.8510105609893799,8
+MGA,fine_category,playing harpsichord,1022,-0.8828399777412415,9
+MGA,fine_category,playing hammond organ,1044,-0.9262446761131287,10
+MGA,fine_category,"playing violin, fiddle",1047,-0.9464308023452759,11
+MGA,fine_category,playing trombone,1050,-0.9471644163131714,12
+MGA,fine_category,playing harp,1048,-0.974259078502655,13
+MGA,fine_category,scuba diving,963,-0.9933922290802002,14
+MGA,fine_category,playing saxophone,1049,-1.0025118589401245,15
+MGA,fine_category,"pigeon, dove cooing",1049,-1.0046594142913818,16
+MGA,fine_category,playing acoustic guitar,1050,-1.0122904777526855,17
+MGA,fine_category,cat purring,861,-1.013916015625,18
+MGA,fine_category,playing vibraphone,885,-1.0164399147033691,19
+MGA,fine_category,playing electric guitar,1050,-1.034468173980713,20
+MGA,fine_category,typing on computer keyboard,561,-1.0358800888061523,21
+MGA,fine_category,playing trumpet,835,-1.0364863872528076,22
+MGA,fine_category,chicken crowing,1048,-1.037153720855713,23
+MGA,fine_category,playing sitar,858,-1.039980411529541,24
+MGA,fine_category,"playing steel guitar, slide guitar",926,-1.0539522171020508,25
+MGA,fine_category,playing banjo,1048,-1.0585291385650635,26
+MGA,fine_category,skidding,905,-1.0612523555755615,27
+MGA,fine_category,ambulance siren,1049,-1.0875673294067383,28
+MGA,fine_category,playing french horn,862,-1.114948034286499,29
+MGA,fine_category,playing steelpan,504,-1.1180088520050049,30
+MGA,fine_category,playing tabla,1046,-1.133367896080017,31
+MGA,fine_category,playing piano,1049,-1.141104817390442,32
+MGA,fine_category,thunder,325,-1.141482949256897,33
+MGA,fine_category,people whispering,745,-1.1441071033477783,34
+MGA,fine_category,playing snare drum,985,-1.1616617441177368,35
+MGA,fine_category,people clapping,901,-1.1621941328048706,36
+MGA,fine_category,playing electronic organ,839,-1.1648560762405396,37
+MGA,fine_category,"playing marimba, xylophone",1049,-1.1707446575164795,38
+MGA,fine_category,fireworks banging,1046,-1.1756067276000977,39
+MGA,fine_category,playing drum kit,1049,-1.1922595500946045,40
+MGA,fine_category,toilet flushing,1049,-1.203505277633667,41
+MGA,fine_category,orchestra,1049,-1.2141300439834595,42
+MGA,fine_category,singing choir,759,-1.219687819480896,43
+MGA,fine_category,people slurping,562,-1.2230162620544434,44
+MGA,fine_category,civil defense siren,977,-1.2266993522644043,45
+MGA,fine_category,fire truck siren,958,-1.2334702014923096,46
+MGA,fine_category,police car (siren),1050,-1.2392412424087524,47
+MGA,fine_category,playing erhu,971,-1.2413004636764526,48
+MGA,fine_category,lawn mowing,856,-1.243240237236023,49
+MGA,fine_category,"heart sounds, heartbeat",754,-1.2482306957244873,50
+MGA,fine_category,playing flute,1048,-1.259811520576477,51
+MGA,fine_category,"race car, auto racing",1048,-1.2656567096710205,52
+MGA,fine_category,car engine knocking,990,-1.273374080657959,53
+MGA,fine_category,female singing,1050,-1.274998426437378,54
+MGA,fine_category,playing djembe,430,-1.284803032875061,55
+MGA,fine_category,people eating crisps,440,-1.286412239074707,56
+MGA,fine_category,rapping,638,-1.2879964113235474,57
+MGA,fine_category,playing bass guitar,1048,-1.2975481748580933,58
+MGA,fine_category,playing zither,538,-1.3006324768066406,59
+MGA,fine_category,chicken clucking,624,-1.3101279735565186,60
+MGA,fine_category,playing cornet,890,-1.3240796327590942,61
+MGA,fine_category,playing gong,555,-1.325399398803711,62
+MGA,fine_category,playing bass drum,862,-1.3320226669311523,63
+MGA,fine_category,playing bongo,920,-1.3321633338928223,64
+MGA,fine_category,people eating apple,360,-1.334720492362976,65
+MGA,fine_category,playing congas,465,-1.3412363529205322,66
+MGA,fine_category,baltimore oriole calling,200,-1.346921443939209,67
+MGA,fine_category,playing bassoon,1049,-1.3550156354904175,68
+MGA,fine_category,playing mandolin,824,-1.3613759279251099,69
+MGA,fine_category,male singing,1049,-1.3625640869140625,70
+MGA,fine_category,playing clarinet,1048,-1.3639912605285645,71
+MGA,fine_category,playing tympani,463,-1.36452054977417,72
+MGA,fine_category,wood thrush calling,681,-1.369079828262329,73
+MGA,fine_category,baby laughter,880,-1.3719466924667358,74
+MGA,fine_category,tapping guitar,780,-1.3775675296783447,75
+MGA,fine_category,cat meowing,587,-1.388454794883728,76
+MGA,fine_category,playing didgeridoo,1050,-1.3955618143081665,77
+MGA,fine_category,baby crying,666,-1.4036966562271118,78
+MGA,fine_category,ocean burbling,983,-1.4056071043014526,79
+MGA,fine_category,playing timbales,585,-1.4059386253356934,80
+MGA,fine_category,helicopter,1047,-1.4246500730514526,81
+MGA,fine_category,people whistling,883,-1.4278104305267334,82
+MGA,fine_category,"cattle, bovinae cowbell",644,-1.4292409420013428,83
+MGA,fine_category,lions roaring,962,-1.4307641983032227,84
+MGA,fine_category,frog croaking,1017,-1.4346007108688354,85
+MGA,fine_category,sea waves,250,-1.4346851110458374,86
+MGA,fine_category,"engine accelerating, revving, vroom",1049,-1.4349501132965088,87
+MGA,fine_category,beat boxing,997,-1.441443681716919,88
+MGA,fine_category,basketball bounce,1049,-1.4469436407089233,89
+MGA,fine_category,playing glockenspiel,1046,-1.4495964050292969,90
+MGA,fine_category,sheep bleating,514,-1.4535542726516724,91
+MGA,fine_category,people sobbing,480,-1.456542730331421,92
+MGA,fine_category,playing timpani,628,-1.460513949394226,93
+MGA,fine_category,singing bowl,1048,-1.4609375,94
+MGA,fine_category,dog barking,765,-1.4638644456863403,95
+MGA,fine_category,waterfall burbling,512,-1.4704891443252563,96
+MGA,fine_category,crow cawing,991,-1.4708144664764404,97
+MGA,fine_category,playing oboe,544,-1.4771554470062256,98
+MGA,fine_category,train horning,770,-1.4928278923034668,99
+MGA,fine_category,"subway, metro, underground",1000,-1.4929637908935547,100
+MGA,fine_category,playing double bass,808,-1.4983004331588745,101
+MGA,fine_category,underwater bubbling,420,-1.5014976263046265,102
+MGA,fine_category,cat caterwauling,236,-1.5073612928390503,103
+MGA,fine_category,police radio chatter,957,-1.512876033782959,104
+MGA,fine_category,playing bugle,442,-1.5157047510147095,105
+MGA,fine_category,airplane flyby,962,-1.5205051898956299,106
+MGA,fine_category,goose honking,787,-1.5267678499221802,107
+MGA,fine_category,cow lowing,199,-1.52682363986969,108
+MGA,fine_category,cricket chirping,702,-1.5282014608383179,109
+MGA,fine_category,driving motorcycle,1046,-1.5492547750473022,110
+MGA,fine_category,child singing,990,-1.5602155923843384,111
+MGA,fine_category,dog howling,924,-1.5634167194366455,112
+MGA,fine_category,people cheering,703,-1.572497010231018,113
+MGA,fine_category,train whistling,608,-1.5833067893981934,114
+MGA,fine_category,people burping,1047,-1.583855390548706,115
+MGA,fine_category,machine gun shooting,986,-1.5845134258270264,116
+MGA,fine_category,ice cracking,363,-1.5859354734420776,117
+MGA,fine_category,people crowd,1045,-1.5900837182998657,118
+MGA,fine_category,disc scratching,200,-1.6010359525680542,119
+MGA,fine_category,mynah bird singing,880,-1.6062347888946533,120
+MGA,fine_category,ripping paper,559,-1.6084462404251099,121
+MGA,fine_category,tractor digging,969,-1.6117234230041504,122
+MGA,fine_category,dog growling,825,-1.613304853439331,123
+MGA,fine_category,"fly, housefly buzzing",198,-1.6265534162521362,124
+MGA,fine_category,playing harmonica,824,-1.6293460130691528,125
+MGA,fine_category,"bee, wasp, etc. buzzing",549,-1.6305041313171387,126
+MGA,fine_category,sailing,592,-1.6305865049362183,127
+MGA,fine_category,"bird chirping, tweeting",1048,-1.6400830745697021,128
+MGA,fine_category,turkey gobbling,644,-1.6409316062927246,129
+MGA,fine_category,"female speech, woman speaking",1048,-1.6430234909057617,130
+MGA,fine_category,footsteps on snow,251,-1.650688886642456,131
+MGA,fine_category,dog baying,412,-1.6553326845169067,132
+MGA,fine_category,people belly laughing,516,-1.6586089134216309,133
+MGA,fine_category,"railroad car, train wagon",1049,-1.6697978973388672,134
+MGA,fine_category,canary calling,717,-1.6817092895507812,135
+MGA,fine_category,hail,718,-1.6824251413345337,136
+MGA,fine_category,warbler chirping,264,-1.68478524684906,137
+MGA,fine_category,blowtorch igniting,250,-1.6848132610321045,138
+MGA,fine_category,duck quacking,599,-1.6941208839416504,139
+MGA,fine_category,fire crackling,492,-1.694995641708374,140
+MGA,fine_category,wind chime,389,-1.6984834671020508,141
+MGA,fine_category,cattle mooing,735,-1.7090271711349487,142
+MGA,fine_category,lip smacking,263,-1.7125428915023804,143
+MGA,fine_category,driving snowmobile,601,-1.7154184579849243,144
+MGA,fine_category,"male speech, man speaking",1049,-1.7167898416519165,145
+MGA,fine_category,people marching,815,-1.72964346408844,146
+MGA,fine_category,stream burbling,690,-1.7307977676391602,147
+MGA,fine_category,people babbling,586,-1.7308306694030762,148
+MGA,fine_category,playing washboard,200,-1.7313077449798584,149
+MGA,fine_category,owl hooting,753,-1.7328755855560303,150
+MGA,fine_category,driving buses,1050,-1.7353854179382324,151
+MGA,fine_category,"motorboat, speedboat acceleration",1047,-1.7410025596618652,152
+MGA,fine_category,wind noise,921,-1.7438669204711914,153
+MGA,fine_category,dog bow-wow,628,-1.7475972175598145,154
+MGA,fine_category,train wheels squealing,333,-1.7531192302703857,155
+MGA,fine_category,playing ukulele,905,-1.7597039937973022,156
+MGA,fine_category,lions growling,597,-1.7604289054870605,157
+MGA,fine_category,car engine idling,370,-1.7668805122375488,158
+MGA,fine_category,people giggling,271,-1.7729673385620117,159
+MGA,fine_category,striking pool,401,-1.7902042865753174,160
+MGA,fine_category,people humming,391,-1.8019767999649048,161
+MGA,fine_category,yodelling,958,-1.8109630346298218,162
+MGA,fine_category,people booing,1049,-1.8150758743286133,163
+MGA,fine_category,car passing by,595,-1.8151371479034424,164
+MGA,fine_category,playing theremin,1007,-1.8183817863464355,165
+MGA,fine_category,playing tuning fork,200,-1.8233221769332886,166
+MGA,fine_category,barn swallow calling,418,-1.8246102333068848,167
+MGA,fine_category,people eating,225,-1.832491159439087,168
+MGA,fine_category,playing badminton,999,-1.8362503051757812,169
+MGA,fine_category,"vehicle horn, car horn, honking",1049,-1.8393230438232422,170
+MGA,fine_category,car engine starting,491,-1.8417725563049316,171
+MGA,fine_category,cat growling,385,-1.8423718214035034,172
+MGA,fine_category,telephone bell ringing,200,-1.8445236682891846,173
+MGA,fine_category,people eating noodle,560,-1.8506603240966797,174
+MGA,fine_category,using sewing machines,625,-1.8515501022338867,175
+MGA,fine_category,strike lighter,229,-1.8515677452087402,176
+MGA,fine_category,playing synthesizer,909,-1.86093270778656,177
+MGA,fine_category,chimpanzee pant-hooting,473,-1.8722363710403442,178
+MGA,fine_category,playing volleyball,989,-1.8820011615753174,179
+MGA,fine_category,goat bleating,246,-1.8835418224334717,180
+MGA,fine_category,smoke detector beeping,221,-1.888710618019104,181
+MGA,fine_category,black capped chickadee calling,445,-1.8893314599990845,182
+MGA,fine_category,printer printing,878,-1.9047166109085083,183
+MGA,fine_category,sloshing water,276,-1.9209100008010864,184
+MGA,fine_category,magpie calling,429,-1.9285826683044434,185
+MGA,fine_category,baby babbling,597,-1.9373232126235962,186
+MGA,fine_category,typing on typewriter,744,-1.9393208026885986,187
+MGA,fine_category,playing squash,1048,-1.9505407810211182,188
+MGA,fine_category,hedge trimmer running,251,-1.9571970701217651,189
+MGA,fine_category,swimming,566,-1.959718942642212,190
+MGA,fine_category,people hiccup,394,-1.968874454498291,191
+MGA,fine_category,skateboarding,913,-1.9699581861495972,192
+MGA,fine_category,horse neighing,584,-1.9700244665145874,193
+MGA,fine_category,pheasant crowing,933,-1.9816855192184448,194
+MGA,fine_category,pig oinking,443,-1.9819352626800537,195
+MGA,fine_category,dog whimpering,461,-1.9958484172821045,196
+MGA,fine_category,people sniggering,890,-1.9982682466506958,197
+MGA,fine_category,tap dancing,1050,-2.0050389766693115,198
+MGA,fine_category,firing cannon,336,-2.007333278656006,199
+MGA,fine_category,horse clip-clop,882,-2.009742498397827,200
+MGA,fine_category,people nose blowing,228,-2.0139999389648438,201
+MGA,fine_category,chinchilla barking,213,-2.0146584510803223,202
+MGA,fine_category,splashing water,614,-2.0214571952819824,203
+MGA,fine_category,playing tambourine,809,-2.022581100463867,204
+MGA,fine_category,missile launch,974,-2.0319948196411133,205
+MGA,fine_category,coyote howling,490,-2.035860776901245,206
+MGA,fine_category,people farting,554,-2.0412168502807617,207
+MGA,fine_category,raining,473,-2.041578531265259,208
+MGA,fine_category,woodpecker pecking tree,744,-2.045522928237915,209
+MGA,fine_category,people coughing,452,-2.045600652694702,210
+MGA,fine_category,cuckoo bird calling,218,-2.0480260848999023,211
+MGA,fine_category,shot football,226,-2.0484464168548584,212
+MGA,fine_category,cat hissing,320,-2.0495193004608154,213
+MGA,fine_category,"electric shaver, electric razor shaving",906,-2.0507304668426514,214
+MGA,fine_category,playing table tennis,1048,-2.050783634185791,215
+MGA,fine_category,playing tennis,390,-2.055535078048706,216
+MGA,fine_category,playing castanets,197,-2.066340208053589,217
+MGA,fine_category,people shuffling,673,-2.075970411300659,218
+MGA,fine_category,eating with cutlery,528,-2.0777411460876465,219
+MGA,fine_category,"ice cream truck, ice cream van",676,-2.0787880420684814,220
+MGA,fine_category,chopping wood,254,-2.0907506942749023,221
+MGA,fine_category,"rowboat, canoe, kayak rowing",1049,-2.1121819019317627,222
+MGA,fine_category,wind rustling leaves,560,-2.1156914234161377,223
+MGA,fine_category,lathe spinning,859,-2.1232566833496094,224
+MGA,fine_category,opening or closing car electric windows,205,-2.13769793510437,225
+MGA,fine_category,slot machine,997,-2.1396305561065674,226
+MGA,fine_category,playing guiro,475,-2.1471080780029297,227
+MGA,fine_category,people sneezing,688,-2.1498632431030273,228
+MGA,fine_category,forging swords,264,-2.1629059314727783,229
+MGA,fine_category,firing muskets,417,-2.166382074356079,230
+MGA,fine_category,snake rattling,199,-2.1819653511047363,231
+MGA,fine_category,playing shofar,198,-2.1853039264678955,232
+MGA,fine_category,francolin calling,643,-2.18578839302063,233
+MGA,fine_category,vacuum cleaner cleaning floors,1008,-2.1928279399871826,234
+MGA,fine_category,chipmunk chirping,261,-2.20184588432312,235
+MGA,fine_category,bull bellowing,316,-2.207390785217285,236
+MGA,fine_category,striking bowling,326,-2.208638906478882,237
+MGA,fine_category,playing hockey,400,-2.222198963165283,238
+MGA,fine_category,planing timber,816,-2.232867956161499,239
+MGA,fine_category,"child speech, kid speaking",1046,-2.239716053009033,240
+MGA,fine_category,dinosaurs bellowing,633,-2.2419331073760986,241
+MGA,fine_category,air conditioning noise,245,-2.242218017578125,242
+MGA,fine_category,playing lacrosse,282,-2.245187759399414,243
+MGA,fine_category,air horn,196,-2.2535064220428467,244
+MGA,fine_category,alarm clock ringing,331,-2.2538042068481445,245
+MGA,fine_category,people slapping,211,-2.255936622619629,246
+MGA,fine_category,bathroom ventilation fan running,200,-2.2588887214660645,247
+MGA,fine_category,eletric blender running,214,-2.2594964504241943,248
+MGA,fine_category,mouse clicking,658,-2.2645814418792725,249
+MGA,fine_category,children shouting,200,-2.27500057220459,250
+MGA,fine_category,cutting hair with electric trimmers,268,-2.278930425643921,251
+MGA,fine_category,bowling impact,968,-2.283787488937378,252
+MGA,fine_category,fox barking,360,-2.2984182834625244,253
+MGA,fine_category,golf driving,302,-2.3048763275146484,254
+MGA,fine_category,bird wings flapping,256,-2.3076746463775635,255
+MGA,fine_category,parrot talking,592,-2.3174195289611816,256
+MGA,fine_category,people running,422,-2.32192063331604,257
+MGA,fine_category,cap gun shooting,902,-2.327629566192627,258
+MGA,fine_category,squishing water,430,-2.3422107696533203,259
+MGA,fine_category,sharpen knife,774,-2.344463586807251,260
+MGA,fine_category,foghorn,217,-2.3460822105407715,261
+MGA,fine_category,lighting firecrackers,852,-2.3479645252227783,262
+MGA,fine_category,snake hissing,284,-2.359318733215332,263
+MGA,fine_category,opening or closing drawers,458,-2.3640589714050293,264
+MGA,fine_category,tornado roaring,356,-2.366730213165283,265
+MGA,fine_category,chopping food,200,-2.373602867126465,266
+MGA,fine_category,roller coaster running,677,-2.3957059383392334,267
+MGA,fine_category,bird squawking,348,-2.3981552124023438,268
+MGA,fine_category,ferret dooking,239,-2.403162717819214,269
+MGA,fine_category,elk bugling,557,-2.4069314002990723,270
+MGA,fine_category,playing darts,555,-2.409196615219116,271
+MGA,fine_category,gibbon howling,791,-2.414431571960449,272
+MGA,fine_category,skiing,976,-2.4191906452178955,273
+MGA,fine_category,volcano explosion,842,-2.4212687015533447,274
+MGA,fine_category,writing on blackboard with chalk,280,-2.4277098178863525,275
+MGA,fine_category,plastic bottle crushing,262,-2.4279322624206543,276
+MGA,fine_category,"donkey, ass braying",437,-2.436300754547119,277
+MGA,fine_category,hammering nails,612,-2.4469449520111084,278
+MGA,fine_category,people gargling,221,-2.454958438873291,279
+MGA,fine_category,metronome,200,-2.4597434997558594,280
+MGA,fine_category,people finger snapping,200,-2.4699959754943848,281
+MGA,fine_category,people screaming,728,-2.474719285964966,282
+MGA,fine_category,zebra braying,199,-2.4791526794433594,283
+MGA,fine_category,sliding door,587,-2.483738899230957,284
+MGA,fine_category,rope skipping,967,-2.508861780166626,285
+MGA,fine_category,electric grinder grinding,424,-2.5162441730499268,286
+MGA,fine_category,bouncing on trampoline,526,-2.52331805229187,287
+MGA,fine_category,arc welding,931,-2.5369739532470703,288
+MGA,fine_category,otter growling,363,-2.5439231395721436,289
+MGA,fine_category,airplane,504,-2.548269748687744,290
+MGA,fine_category,elephant trumpeting,310,-2.554363489151001,291
+MGA,fine_category,reversing beeps,485,-2.5567305088043213,292
+MGA,fine_category,mosquito buzzing,435,-2.5608816146850586,293
+MGA,fine_category,opening or closing car doors,457,-2.562622547149658,294
+MGA,fine_category,spraying water,278,-2.5633020401000977,295
+MGA,fine_category,mouse squeaking,238,-2.5678486824035645,296
+MGA,fine_category,whale calling,200,-2.573946475982666,297
+MGA,fine_category,cell phone buzzing,198,-2.5854368209838867,298
+MGA,fine_category,cheetah chirrup,403,-2.5870327949523926,299
+MGA,fine_category,running electric fan,318,-2.5941481590270996,300
+MGA,fine_category,popping popcorn,252,-2.642756938934326,301
+MGA,fine_category,hair dryer drying,343,-2.6584548950195312,302
+MGA,fine_category,penguins braying,318,-2.7002670764923096,303
+MGA,fine_category,pumping water,199,-2.7162678241729736,304
+MGA,fine_category,mouse pattering,430,-2.71878719329834,305
+MGA,fine_category,door slamming,200,-2.7552478313446045,306
+MGA,fine_category,"alligators, crocodiles hissing",361,-2.7725327014923096,307
+MGA,fine_category,people battle cry,291,-2.799158811569214,308
+MGA,fine_category,eagle screaming,252,-2.9344959259033203,309
+MGA,fine_category,sea lion barking,211,-2.9409844875335693,310
+MSCLAP,fine_category,cupboard opening or closing,137,-0.028737349435687065,1
+MSCLAP,fine_category,extending ladders,108,-0.40157827734947205,2
+MSCLAP,fine_category,church bell ringing,380,-0.5537239909172058,3
+MSCLAP,fine_category,chainsawing trees,443,-0.5586550235748291,4
+MSCLAP,fine_category,playing accordion,412,-0.6161056160926819,5
+MSCLAP,fine_category,playing bagpipes,427,-0.6550369262695312,6
+MSCLAP,fine_category,playing harp,358,-0.6668491959571838,7
+MSCLAP,fine_category,"pigeon, dove cooing",439,-0.7063278555870056,8
+MSCLAP,fine_category,ambulance siren,461,-0.7225489020347595,9
+MSCLAP,fine_category,skidding,438,-0.7254645228385925,10
+MSCLAP,fine_category,sea waves,130,-0.7305770516395569,11
+MSCLAP,fine_category,scuba diving,376,-0.7425712943077087,12
+MSCLAP,fine_category,thunder,145,-0.7438634037971497,13
+MSCLAP,fine_category,police car (siren),440,-0.7573604583740234,14
+MSCLAP,fine_category,playing steelpan,236,-0.7642056941986084,15
+MSCLAP,fine_category,people clapping,383,-0.7719380259513855,16
+MSCLAP,fine_category,fire truck siren,416,-0.7757343649864197,17
+MSCLAP,fine_category,car engine knocking,413,-0.7871251702308655,18
+MSCLAP,fine_category,playing harpsichord,471,-0.8103554248809814,19
+MSCLAP,fine_category,playing banjo,461,-0.8193071484565735,20
+MSCLAP,fine_category,toilet flushing,475,-0.8235634565353394,21
+MSCLAP,fine_category,fireworks banging,439,-0.8239668607711792,22
+MSCLAP,fine_category,ocean burbling,424,-0.8268148899078369,23
+MSCLAP,fine_category,lawn mowing,394,-0.8299898505210876,24
+MSCLAP,fine_category,playing cymbal,422,-0.831243634223938,25
+MSCLAP,fine_category,"race car, auto racing",461,-0.8315722942352295,26
+MSCLAP,fine_category,cat purring,352,-0.8350607752799988,27
+MSCLAP,fine_category,playing saxophone,434,-0.8384114503860474,28
+MSCLAP,fine_category,playing trumpet,386,-0.8410559892654419,29
+MSCLAP,fine_category,playing sitar,374,-0.8670156002044678,30
+MSCLAP,fine_category,playing acoustic guitar,656,-0.8738934993743896,31
+MSCLAP,fine_category,waterfall burbling,267,-0.880423367023468,32
+MSCLAP,fine_category,playing cello,413,-0.89655601978302,33
+MSCLAP,fine_category,helicopter,439,-0.8968949913978577,34
+MSCLAP,fine_category,tractor digging,454,-0.9007805585861206,35
+MSCLAP,fine_category,train horning,352,-0.9087362289428711,36
+MSCLAP,fine_category,rapping,276,-0.9093132615089417,37
+MSCLAP,fine_category,baby laughter,381,-0.9205777645111084,38
+MSCLAP,fine_category,"subway, metro, underground",458,-0.922260046005249,39
+MSCLAP,fine_category,"playing violin, fiddle",647,-0.9223210215568542,40
+MSCLAP,fine_category,playing trombone,453,-0.924206554889679,41
+MSCLAP,fine_category,people sobbing,221,-0.9305902123451233,42
+MSCLAP,fine_category,baby crying,316,-0.9320297241210938,43
+MSCLAP,fine_category,"playing steel guitar, slide guitar",373,-0.9334994554519653,44
+MSCLAP,fine_category,playing tabla,493,-0.9348161220550537,45
+MSCLAP,fine_category,civil defense siren,438,-0.9356597661972046,46
+MSCLAP,fine_category,train whistling,254,-0.939271867275238,47
+MSCLAP,fine_category,playing didgeridoo,395,-0.9401735067367554,48
+MSCLAP,fine_category,playing french horn,361,-0.9406654834747314,49
+MSCLAP,fine_category,playing hammond organ,433,-0.9412506222724915,50
+MSCLAP,fine_category,playing electric guitar,724,-0.9439101219177246,51
+MSCLAP,fine_category,playing vibraphone,393,-0.9446898698806763,52
+MSCLAP,fine_category,beat boxing,440,-0.9451719522476196,53
+MSCLAP,fine_category,female singing,844,-0.9491280317306519,54
+MSCLAP,fine_category,playing mandolin,360,-0.9516392946243286,55
+MSCLAP,fine_category,people slurping,251,-0.955431342124939,56
+MSCLAP,fine_category,"engine accelerating, revving, vroom",511,-0.9581091403961182,57
+MSCLAP,fine_category,"railroad car, train wagon",449,-0.9583682417869568,58
+MSCLAP,fine_category,sheep bleating,251,-0.9616284370422363,59
+MSCLAP,fine_category,playing drum kit,452,-0.961876392364502,60
+MSCLAP,fine_category,chicken crowing,478,-0.968574047088623,61
+MSCLAP,fine_category,hail,329,-0.9761903285980225,62
+MSCLAP,fine_category,sailing,287,-0.984480619430542,63
+MSCLAP,fine_category,playing flute,483,-0.9866161346435547,64
+MSCLAP,fine_category,dog baying,188,-0.9883160591125488,65
+MSCLAP,fine_category,"playing marimba, xylophone",450,-0.9904965758323669,66
+MSCLAP,fine_category,playing cornet,386,-0.9951998591423035,67
+MSCLAP,fine_category,driving motorcycle,442,-1.0100488662719727,68
+MSCLAP,fine_category,orchestra,421,-1.0101218223571777,69
+MSCLAP,fine_category,singing choir,338,-1.0201982259750366,70
+MSCLAP,fine_category,playing djembe,211,-1.0243794918060303,71
+MSCLAP,fine_category,people cheering,303,-1.024678349494934,72
+MSCLAP,fine_category,dog barking,348,-1.0256750583648682,73
+MSCLAP,fine_category,cat caterwauling,118,-1.0260227918624878,74
+MSCLAP,fine_category,frog croaking,400,-1.029821753501892,75
+MSCLAP,fine_category,playing congas,194,-1.0314264297485352,76
+MSCLAP,fine_category,goose honking,355,-1.0316444635391235,77
+MSCLAP,fine_category,airplane flyby,479,-1.0363677740097046,78
+MSCLAP,fine_category,cat meowing,379,-1.0377358198165894,79
+MSCLAP,fine_category,dog growling,358,-1.040645956993103,80
+MSCLAP,fine_category,playing electronic organ,384,-1.042600154876709,81
+MSCLAP,fine_category,people crowd,452,-1.052202820777893,82
+MSCLAP,fine_category,underwater bubbling,203,-1.05339515209198,83
+MSCLAP,fine_category,playing piano,444,-1.0565617084503174,84
+MSCLAP,fine_category,stream burbling,321,-1.0587786436080933,85
+MSCLAP,fine_category,driving buses,442,-1.0615286827087402,86
+MSCLAP,fine_category,blowtorch igniting,141,-1.0626771450042725,87
+MSCLAP,fine_category,typing on computer keyboard,266,-1.0652803182601929,88
+MSCLAP,fine_category,lions roaring,379,-1.0665347576141357,89
+MSCLAP,fine_category,playing snare drum,443,-1.0672364234924316,90
+MSCLAP,fine_category,people whispering,342,-1.0701909065246582,91
+MSCLAP,fine_category,playing bongo,365,-1.0704959630966187,92
+MSCLAP,fine_category,playing bugle,198,-1.0736020803451538,93
+MSCLAP,fine_category,playing gong,249,-1.0762629508972168,94
+MSCLAP,fine_category,playing ukulele,224,-1.0796599388122559,95
+MSCLAP,fine_category,"motorboat, speedboat acceleration",624,-1.091820240020752,96
+MSCLAP,fine_category,machine gun shooting,438,-1.0934802293777466,97
+MSCLAP,fine_category,playing erhu,438,-1.0943561792373657,98
+MSCLAP,fine_category,chicken clucking,328,-1.0960050821304321,99
+MSCLAP,fine_category,playing zither,206,-1.1009995937347412,100
+MSCLAP,fine_category,driving snowmobile,288,-1.1018184423446655,101
+MSCLAP,fine_category,footsteps on snow,127,-1.1033046245574951,102
+MSCLAP,fine_category,car engine idling,178,-1.1040594577789307,103
+MSCLAP,fine_category,wind noise,577,-1.1075236797332764,104
+MSCLAP,fine_category,ripping paper,236,-1.1088465452194214,105
+MSCLAP,fine_category,male singing,806,-1.1092554330825806,106
+MSCLAP,fine_category,people eating crisps,219,-1.1112406253814697,107
+MSCLAP,fine_category,dog howling,391,-1.1121364831924438,108
+MSCLAP,fine_category,playing bassoon,451,-1.1128625869750977,109
+MSCLAP,fine_category,playing clarinet,379,-1.1212948560714722,110
+MSCLAP,fine_category,people whistling,359,-1.1239603757858276,111
+MSCLAP,fine_category,playing bass drum,398,-1.1281777620315552,112
+MSCLAP,fine_category,people belly laughing,207,-1.1298867464065552,113
+MSCLAP,fine_category,train wheels squealing,157,-1.136172890663147,114
+MSCLAP,fine_category,people marching,359,-1.1411170959472656,115
+MSCLAP,fine_category,police radio chatter,431,-1.144031286239624,116
+MSCLAP,fine_category,"heart sounds, heartbeat",314,-1.1454411745071411,117
+MSCLAP,fine_category,child singing,508,-1.1467537879943848,118
+MSCLAP,fine_category,people giggling,135,-1.14696204662323,119
+MSCLAP,fine_category,dog bow-wow,371,-1.1503088474273682,120
+MSCLAP,fine_category,"bee, wasp, etc. buzzing",279,-1.1522603034973145,121
+MSCLAP,fine_category,basketball bounce,431,-1.1546881198883057,122
+MSCLAP,fine_category,"cattle, bovinae cowbell",294,-1.1583828926086426,123
+MSCLAP,fine_category,"fly, housefly buzzing",105,-1.159379243850708,124
+MSCLAP,fine_category,tapping guitar,354,-1.1606626510620117,125
+MSCLAP,fine_category,playing timpani,279,-1.1607457399368286,126
+MSCLAP,fine_category,baltimore oriole calling,115,-1.162405252456665,127
+MSCLAP,fine_category,playing harmonica,322,-1.1624720096588135,128
+MSCLAP,fine_category,sloshing water,140,-1.1753681898117065,129
+MSCLAP,fine_category,playing glockenspiel,467,-1.178317904472351,130
+MSCLAP,fine_category,people eating apple,205,-1.1825006008148193,131
+MSCLAP,fine_category,wood thrush calling,279,-1.1841782331466675,132
+MSCLAP,fine_category,disc scratching,110,-1.1908966302871704,133
+MSCLAP,fine_category,playing tympani,201,-1.192360758781433,134
+MSCLAP,fine_category,horse clip-clop,703,-1.1975412368774414,135
+MSCLAP,fine_category,playing timbales,248,-1.2005655765533447,136
+MSCLAP,fine_category,turkey gobbling,323,-1.2010548114776611,137
+MSCLAP,fine_category,people babbling,263,-1.201900601387024,138
+MSCLAP,fine_category,playing oboe,277,-1.207103967666626,139
+MSCLAP,fine_category,playing bass guitar,519,-1.2111268043518066,140
+MSCLAP,fine_category,using sewing machines,292,-1.211405634880066,141
+MSCLAP,fine_category,playing double bass,342,-1.2179864645004272,142
+MSCLAP,fine_category,hedge trimmer running,123,-1.2183921337127686,143
+MSCLAP,fine_category,people burping,416,-1.2273263931274414,144
+MSCLAP,fine_category,singing bowl,451,-1.2276171445846558,145
+MSCLAP,fine_category,lathe spinning,384,-1.2298436164855957,146
+MSCLAP,fine_category,people booing,423,-1.2305724620819092,147
+MSCLAP,fine_category,"male speech, man speaking",929,-1.2308093309402466,148
+MSCLAP,fine_category,car passing by,371,-1.2331132888793945,149
+MSCLAP,fine_category,car engine starting,289,-1.2338279485702515,150
+MSCLAP,fine_category,shot football,122,-1.2381519079208374,151
+MSCLAP,fine_category,skateboarding,398,-1.2452044486999512,152
+MSCLAP,fine_category,lions growling,278,-1.2627732753753662,153
+MSCLAP,fine_category,splashing water,280,-1.263598918914795,154
+MSCLAP,fine_category,printer printing,365,-1.2730332612991333,155
+MSCLAP,fine_category,pig oinking,207,-1.2735042572021484,156
+MSCLAP,fine_category,duck quacking,266,-1.2750742435455322,157
+MSCLAP,fine_category,"female speech, woman speaking",722,-1.2775068283081055,158
+MSCLAP,fine_category,yodelling,442,-1.2859703302383423,159
+MSCLAP,fine_category,striking bowling,143,-1.2876001596450806,160
+MSCLAP,fine_category,playing badminton,438,-1.2884138822555542,161
+MSCLAP,fine_category,ice cracking,168,-1.290224313735962,162
+MSCLAP,fine_category,playing washboard,108,-1.3000142574310303,163
+MSCLAP,fine_category,"rowboat, canoe, kayak rowing",477,-1.3034757375717163,164
+MSCLAP,fine_category,"vehicle horn, car horn, honking",459,-1.3153845071792603,165
+MSCLAP,fine_category,mynah bird singing,373,-1.3214805126190186,166
+MSCLAP,fine_category,tap dancing,445,-1.3219205141067505,167
+MSCLAP,fine_category,people sniggering,354,-1.3234496116638184,168
+MSCLAP,fine_category,crow cawing,424,-1.3283514976501465,169
+MSCLAP,fine_category,playing volleyball,410,-1.34232759475708,170
+MSCLAP,fine_category,cow lowing,108,-1.353363037109375,171
+MSCLAP,fine_category,cat growling,193,-1.354650855064392,172
+MSCLAP,fine_category,people eating noodle,252,-1.357924461364746,173
+MSCLAP,fine_category,cattle mooing,320,-1.360684871673584,174
+MSCLAP,fine_category,goat bleating,128,-1.3630574941635132,175
+MSCLAP,fine_category,playing squash,423,-1.367497444152832,176
+MSCLAP,fine_category,"bird chirping, tweeting",452,-1.373292088508606,177
+MSCLAP,fine_category,wind chime,187,-1.373439908027649,178
+MSCLAP,fine_category,vacuum cleaner cleaning floors,398,-1.3741025924682617,179
+MSCLAP,fine_category,warbler chirping,129,-1.383208990097046,180
+MSCLAP,fine_category,missile launch,418,-1.3836153745651245,181
+MSCLAP,fine_category,canary calling,334,-1.3919038772583008,182
+MSCLAP,fine_category,people humming,186,-1.3926762342453003,183
+MSCLAP,fine_category,eletric blender running,106,-1.3928290605545044,184
+MSCLAP,fine_category,cat hissing,155,-1.4048831462860107,185
+MSCLAP,fine_category,dinosaurs bellowing,277,-1.4054040908813477,186
+MSCLAP,fine_category,people slapping,111,-1.4070905447006226,187
+MSCLAP,fine_category,bowling impact,419,-1.4182697534561157,188
+MSCLAP,fine_category,firing muskets,213,-1.423928141593933,189
+MSCLAP,fine_category,playing table tennis,408,-1.4336974620819092,190
+MSCLAP,fine_category,playing theremin,400,-1.4359867572784424,191
+MSCLAP,fine_category,baby babbling,276,-1.438083291053772,192
+MSCLAP,fine_category,raining,235,-1.4425911903381348,193
+MSCLAP,fine_category,"ice cream truck, ice cream van",280,-1.4431829452514648,194
+MSCLAP,fine_category,chopping wood,128,-1.4494647979736328,195
+MSCLAP,fine_category,swimming,297,-1.4594391584396362,196
+MSCLAP,fine_category,horse neighing,313,-1.4630719423294067,197
+MSCLAP,fine_category,children shouting,101,-1.4633122682571411,198
+MSCLAP,fine_category,magpie calling,210,-1.4683797359466553,199
+MSCLAP,fine_category,playing tennis,108,-1.469266414642334,200
+MSCLAP,fine_category,slot machine,439,-1.4698288440704346,201
+MSCLAP,fine_category,striking pool,188,-1.4717475175857544,202
+MSCLAP,fine_category,wind rustling leaves,321,-1.4725301265716553,203
+MSCLAP,fine_category,owl hooting,345,-1.4785410165786743,204
+MSCLAP,fine_category,people shuffling,280,-1.4925249814987183,205
+MSCLAP,fine_category,playing shofar,103,-1.4931803941726685,206
+MSCLAP,fine_category,people nose blowing,115,-1.4978550672531128,207
+MSCLAP,fine_category,people hiccup,184,-1.498828411102295,208
+MSCLAP,fine_category,opening or closing car electric windows,106,-1.5078586339950562,209
+MSCLAP,fine_category,cricket chirping,304,-1.5090813636779785,210
+MSCLAP,fine_category,eating with cutlery,238,-1.5126487016677856,211
+MSCLAP,fine_category,coyote howling,220,-1.5146770477294922,212
+MSCLAP,fine_category,skiing,432,-1.5152971744537354,213
+MSCLAP,fine_category,lip smacking,129,-1.5190964937210083,214
+MSCLAP,fine_category,"child speech, kid speaking",417,-1.5199065208435059,215
+MSCLAP,fine_category,strike lighter,130,-1.527856469154358,216
+MSCLAP,fine_category,roller coaster running,311,-1.5389387607574463,217
+MSCLAP,fine_category,planing timber,355,-1.5437031984329224,218
+MSCLAP,fine_category,fire crackling,233,-1.5488324165344238,219
+MSCLAP,fine_category,air conditioning noise,133,-1.5494035482406616,220
+MSCLAP,fine_category,barn swallow calling,191,-1.5551350116729736,221
+MSCLAP,fine_category,"electric shaver, electric razor shaving",390,-1.5618211030960083,222
+MSCLAP,fine_category,parrot talking,295,-1.5664513111114502,223
+MSCLAP,fine_category,dog whimpering,203,-1.573921799659729,224
+MSCLAP,fine_category,typing on typewriter,329,-1.5768229961395264,225
+MSCLAP,fine_category,playing lacrosse,144,-1.5871217250823975,226
+MSCLAP,fine_category,people coughing,201,-1.5905978679656982,227
+MSCLAP,fine_category,smoke detector beeping,117,-1.5996370315551758,228
+MSCLAP,fine_category,pheasant crowing,412,-1.6079391241073608,229
+MSCLAP,fine_category,lighting firecrackers,379,-1.6107710599899292,230
+MSCLAP,fine_category,people eating,121,-1.6128411293029785,231
+MSCLAP,fine_category,gibbon howling,358,-1.6170440912246704,232
+MSCLAP,fine_category,volcano explosion,364,-1.6171612739562988,233
+MSCLAP,fine_category,tornado roaring,181,-1.6197477579116821,234
+MSCLAP,fine_category,black capped chickadee calling,232,-1.6246623992919922,235
+MSCLAP,fine_category,people running,210,-1.632115364074707,236
+MSCLAP,fine_category,people gargling,107,-1.6343401670455933,237
+MSCLAP,fine_category,playing tambourine,331,-1.6349859237670898,238
+MSCLAP,fine_category,golf driving,146,-1.6367614269256592,239
+MSCLAP,fine_category,chinchilla barking,117,-1.639943242073059,240
+MSCLAP,fine_category,people sneezing,291,-1.6462669372558594,241
+MSCLAP,fine_category,chopping food,102,-1.6496022939682007,242
+MSCLAP,fine_category,playing guiro,227,-1.658172845840454,243
+MSCLAP,fine_category,sharpen knife,334,-1.6596366167068481,244
+MSCLAP,fine_category,playing darts,239,-1.6616485118865967,245
+MSCLAP,fine_category,francolin calling,281,-1.6644210815429688,246
+MSCLAP,fine_category,telephone bell ringing,116,-1.664866328239441,247
+MSCLAP,fine_category,cutting hair with electric trimmers,132,-1.6674275398254395,248
+MSCLAP,fine_category,electric grinder grinding,210,-1.6680331230163574,249
+MSCLAP,fine_category,bull bellowing,166,-1.6683717966079712,250
+MSCLAP,fine_category,bird wings flapping,132,-1.671761155128479,251
+MSCLAP,fine_category,bouncing on trampoline,259,-1.6805980205535889,252
+MSCLAP,fine_category,woodpecker pecking tree,328,-1.6817326545715332,253
+MSCLAP,fine_category,squishing water,190,-1.6874890327453613,254
+MSCLAP,fine_category,fox barking,169,-1.6894090175628662,255
+MSCLAP,fine_category,people farting,235,-1.6916718482971191,256
+MSCLAP,fine_category,snake rattling,104,-1.6930139064788818,257
+MSCLAP,fine_category,rope skipping,427,-1.6955921649932861,258
+MSCLAP,fine_category,playing tuning fork,111,-1.7070749998092651,259
+MSCLAP,fine_category,playing hockey,201,-1.7099863290786743,260
+MSCLAP,fine_category,pumping water,109,-1.71132493019104,261
+MSCLAP,fine_category,arc welding,418,-1.7178341150283813,262
+MSCLAP,fine_category,plastic bottle crushing,131,-1.7180428504943848,263
+MSCLAP,fine_category,chimpanzee pant-hooting,212,-1.7224301099777222,264
+MSCLAP,fine_category,playing synthesizer,377,-1.7298216819763184,265
+MSCLAP,fine_category,air horn,106,-1.7300279140472412,266
+MSCLAP,fine_category,cap gun shooting,401,-1.7326005697250366,267
+MSCLAP,fine_category,people screaming,326,-1.7327494621276855,268
+MSCLAP,fine_category,airplane,174,-1.7337307929992676,269
+MSCLAP,fine_category,chipmunk chirping,144,-1.7428687810897827,270
+MSCLAP,fine_category,zebra braying,117,-1.7439649105072021,271
+MSCLAP,fine_category,forging swords,124,-1.7455787658691406,272
+MSCLAP,fine_category,spraying water,137,-1.7552098035812378,273
+MSCLAP,fine_category,penguins braying,149,-1.7583117485046387,274
+MSCLAP,fine_category,"donkey, ass braying",204,-1.7631021738052368,275
+MSCLAP,fine_category,ferret dooking,127,-1.767232894897461,276
+MSCLAP,fine_category,alarm clock ringing,188,-1.7743721008300781,277
+MSCLAP,fine_category,foghorn,115,-1.7743921279907227,278
+MSCLAP,fine_category,sliding door,326,-1.774430751800537,279
+MSCLAP,fine_category,popping popcorn,124,-1.7762224674224854,280
+MSCLAP,fine_category,cuckoo bird calling,115,-1.781415343284607,281
+MSCLAP,fine_category,hammering nails,283,-1.7851463556289673,282
+MSCLAP,fine_category,snake hissing,146,-1.7882311344146729,283
+MSCLAP,fine_category,elk bugling,239,-1.7905280590057373,284
+MSCLAP,fine_category,opening or closing drawers,223,-1.7980740070343018,285
+MSCLAP,fine_category,firing cannon,165,-1.8104904890060425,286
+MSCLAP,fine_category,playing castanets,102,-1.8441566228866577,287
+MSCLAP,fine_category,cheetah chirrup,190,-1.8641791343688965,288
+MSCLAP,fine_category,mouse clicking,290,-1.865649700164795,289
+MSCLAP,fine_category,reversing beeps,202,-1.873612642288208,290
+MSCLAP,fine_category,mosquito buzzing,202,-1.8747615814208984,291
+MSCLAP,fine_category,bathroom ventilation fan running,126,-1.8897258043289185,292
+MSCLAP,fine_category,elephant trumpeting,173,-1.8898919820785522,293
+MSCLAP,fine_category,whale calling,96,-1.908190131187439,294
+MSCLAP,fine_category,cell phone buzzing,119,-1.9107770919799805,295
+MSCLAP,fine_category,door slamming,127,-1.9141759872436523,296
+MSCLAP,fine_category,bird squawking,169,-1.9147586822509766,297
+MSCLAP,fine_category,otter growling,163,-1.926254391670227,298
+MSCLAP,fine_category,writing on blackboard with chalk,134,-1.942110300064087,299
+MSCLAP,fine_category,opening or closing car doors,230,-1.953804612159729,300
+MSCLAP,fine_category,people battle cry,229,-1.9617574214935303,301
+MSCLAP,fine_category,hair dryer drying,168,-1.961966633796692,302
+MSCLAP,fine_category,metronome,114,-1.968112826347351,303
+MSCLAP,fine_category,"alligators, crocodiles hissing",173,-1.977787971496582,304
+MSCLAP,fine_category,mouse pattering,212,-1.9779446125030518,305
+MSCLAP,fine_category,people finger snapping,106,-1.9840484857559204,306
+MSCLAP,fine_category,running electric fan,207,-2.0502233505249023,307
+MSCLAP,fine_category,sea lion barking,127,-2.155141830444336,308
+MSCLAP,fine_category,eagle screaming,129,-2.2231032848358154,309
+MSCLAP,fine_category,mouse squeaking,129,-2.280506134033203,310
