@@ -11,6 +11,7 @@ env/
 input/
 results/
 temp/
+human_verify_output/
 
 # Third party models & checkpoints
 models_third_party/
